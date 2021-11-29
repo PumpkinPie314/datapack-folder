@@ -1,0 +1,563 @@
+{
+	"name": "Extreme Aquaphobia",
+	"description": "You take damage from water, and you experience intense anxiety around everything water, to the point where you struggle to breathe when you're near any. You also refuse to use potions, pour water buckets, or touch blocks near or in water.",
+	
+	"type": "origins:multiple",
+	
+	"shaking": {
+		"description": "Doesn't work for whatever reason?",
+		"type": "origins:shaking",
+		"condition":{
+			"type": "origins:command",
+			"command": "data get entity @s[gamemode=!creative,gamemode=!spectator] Air",
+			"comparison": "<",
+			"compare_to": 300
+		}
+	},
+	
+	"lose_air": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:gain_air",
+			"value": -6
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:command",
+					"command": "execute if entity @s[gamemode=!creative,gamemode=!spectator]",
+					"comparison": "==",
+					"compare_to": 1
+				},
+				{
+					"type": "origins:command",
+					"command": "data get entity @s Air",
+					"comparison": ">=",
+					"compare_to": -10
+				},
+				{
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:resource",
+							"resource": "inkbat:nether_fear_strider",
+							"comparison": "==",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:and",
+							"conditions": [
+								{
+									"type": "origins:block_in_radius",
+									"block_condition": {
+										"type": "origins:exposed_to_sky"
+									},
+									"radius": 3,
+									"shape": "cube",
+									"comparison": ">=",
+									"compare_to": 1
+								},
+								{
+									"type": "origins:or",
+									"conditions": [
+										{
+											"type": "origins:command",
+											"command": "execute if predicate inkbat:weather_rain",
+											"comparison": "==",
+											"compare_to": 1
+										},
+										{
+											"type": "origins:command",
+											"command": "execute if predicate inkbat:weather_thunderstorm",
+											"comparison": "==",
+											"compare_to": 1
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "origins:block_in_radius",
+							"block_condition": {
+								"type": "origins:fluid",
+								"fluid_condition": {
+									"type": "origins:in_tag",
+									"tag": "minecraft:water"
+								}
+							},
+							"radius": 3,
+							"shape": "cube",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:block_in_radius",
+							"block_condition": {
+								"type": "origins:block",
+								"block": "minecraft:wet_sponge"
+							},
+							"radius": 3,
+							"shape": "cube",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:block_in_radius",
+							"block_condition": {
+								"type": "origins:and",
+								"conditions": [
+									{
+										"type": "origins:block",
+										"block": "minecraft:water_cauldron"
+									},
+									{
+										"type": "origins:block_state",
+										"property": "level",
+										"comparison": ">=",
+										"compare_to": 1
+									}
+								]
+							},
+							"radius": 3,
+							"shape": "cube",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:block_in_radius",
+							"block_condition": {
+								"type": "origins:and",
+								"conditions": [
+									{
+										"type": "origins:block",
+										"block": "minecraft:brewing_stand"
+									},
+									{
+										"type": "origins:block_state",
+										"property": "has_bottle_0",
+										"value": true
+									}
+								]
+							},
+							"radius": 3,
+							"shape": "cube",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:block_in_radius",
+							"block_condition": {
+								"type": "origins:and",
+								"conditions": [
+									{
+										"type": "origins:block",
+										"block": "minecraft:brewing_stand"
+									},
+									{
+										"type": "origins:block_state",
+										"property": "has_bottle_1",
+										"value": true
+									}
+								]
+							},
+							"radius": 3,
+							"shape": "cube",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:block_in_radius",
+							"block_condition": {
+								"type": "origins:and",
+								"conditions": [
+									{
+										"type": "origins:block",
+										"block": "minecraft:brewing_stand"
+									},
+									{
+										"type": "origins:block_state",
+										"property": "has_bottle_2",
+										"value": true
+									}
+								]
+							},
+							"radius": 3,
+							"shape": "cube",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						
+						{
+							"type": "origins:command",
+							"command": "execute as @e[type=minecraft:area_effect_cloud,distance=..5,sort=nearest,limit=1] if data entity @s Potion",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute as @e[type=minecraft:area_effect_cloud,distance=..5,sort=nearest,limit=1] if data entity @s Effects",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[type=item,distance=..3,nbt={Item:{id:'minecraft:wet_sponge'}}]",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[type=item,distance=..3,nbt={Item:{id:'minecraft:axolotl_bucket'}}]",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[type=item,distance=..3,nbt={Item:{id:'minecraft:cod_bucket'}}]",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[type=item,distance=..3,nbt={Item:{id:'minecraft:pufferfish_bucket'}}]",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[type=item,distance=..3,nbt={Item:{id:'minecraft:salmon_bucket'}}]",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[type=item,distance=..3,nbt={Item:{id:'minecraft:tropical_fish_bucket'}}]",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[type=item,distance=..3,nbt={Item:{id:'minecraft:water_bucket'}}]",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[type=item,distance=..3,nbt={Item:{id:'minecraft:potion'}}]",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[type=item,distance=..3,nbt={Item:{id:'minecraft:splash_potion'}}]",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[type=item,distance=..3,nbt={Item:{id:'minecraft:lingering_potion'}}]",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[distance=..3,predicate=inkbat:mainhand_sponge_wet]",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[distance=..3,predicate=inkbat:mainhand_bucket_axolotl]",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[distance=..3,predicate=inkbat:mainhand_bucket_cod]",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[distance=..3,predicate=inkbat:mainhand_bucket_pufferfish]",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[distance=..3,predicate=inkbat:mainhand_bucket_salmon]",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[distance=..3,predicate=inkbat:mainhand_bucket_tropical]",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[distance=..3,predicate=inkbat:mainhand_bucket_water]",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[distance=..3,predicate=inkbat:mainhand_potion_drink]",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[distance=..3,predicate=inkbat:mainhand_potion_splash]",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[distance=..3,predicate=inkbat:mainhand_potion_linger]",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[distance=..3,predicate=inkbat:offhand_sponge_wet]",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[distance=..3,predicate=inkbat:offhand_bucket_axolotl]",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[distance=..3,predicate=inkbat:offhand_bucket_cod]",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[distance=..3,predicate=inkbat:offhand_bucket_pufferfish]",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[distance=..3,predicate=inkbat:offhand_bucket_salmon]",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[distance=..3,predicate=inkbat:offhand_bucket_tropical]",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[distance=..3,predicate=inkbat:offhand_bucket_water]",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[distance=..3,predicate=inkbat:offhand_potion_drink]",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[distance=..3,predicate=inkbat:offhand_potion_splash]",
+							"comparison": ">=",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if entity @e[distance=..3,predicate=inkbat:offhand_potion_linger]",
+							"comparison": ">=",
+							"compare_to": 1
+						}
+					]
+				}
+			]
+		}
+	},
+	
+	"damage_water": {
+		"type": "origins:damage_over_time",
+		"interval": 20,
+		"onset_delay": 1,
+		"damage": 2,
+		"damage_easy": 1,
+		"damage_source": {
+			"name": "hurt_by_water",
+			"unblockable": true,
+			"bypasses_armor": true
+		},
+		"protection_enchantment": "origins:water_protection",
+		"protection_effectiveness": 1.0,
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:command",
+					"command": "execute if entity @s[gamemode=!creative,gamemode=!spectator]",
+					"comparison": "==",
+					"compare_to": 1
+				},
+				{
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:fluid_height",
+							"fluid": "minecraft:water",
+							"comparison": ">",
+							"compare_to": 0.0
+						},
+						{
+							"type": "origins:in_rain"
+						},
+						{
+							"type": "origins:resource",
+							"resource": "inkbat:aquaphobia_waterlogged",
+							"comparison": "==",
+							"compare_to": 1
+						}
+					]
+				}
+			]
+		}
+	},
+	
+	"damage_suffocation": {
+		"type": "origins:damage_over_time",
+		"interval": 20,
+		"onset_delay": 1,
+		"damage": 2,
+		"damage_easy": 1,
+		"damage_source": {
+			"name": "generic",
+			"unblockable": true,
+			"bypasses_armor": true
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:command",
+					"command": "execute if entity @s[gamemode=!creative,gamemode=!spectator]",
+					"comparison": "==",
+					"compare_to": 1
+				},
+				{
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:command",
+							"command": "data get entity @s[gamemode=!creative,gamemode=!spectator] Air",
+							"comparison": "<=",
+							"compare_to": -1
+						}
+					]
+				}
+			]
+		}
+	},
+	
+	"waterlogged": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 1,
+		"hud_render": {
+			"should_render": false
+		}
+	},
+	
+	"waterlogged_reset": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:delay",
+			"ticks": 2,
+			"action": {
+				"type": "origins:change_resource",
+				"resource": "inkbat:aquaphobia_waterlogged",
+				"change": -1
+			}
+		},
+		"condition": {
+			"type": "origins:resource",
+			"resource": "inkbat:aquaphobia_waterlogged",
+			"comparison": "==",
+			"compare_to": 1
+		}
+	},
+
+	"prevent_waterlogged_use": {
+		"type": "origins:prevent_block_use",
+		"block_condition": {
+			"type": "origins:block_state",
+			"property": "waterlogged",
+			"value": true
+		}
+	},
+	
+	"prevent_waterblock_break": {
+		"type": "origins:modify_break_speed",
+		"block_condition": {
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:block_state",
+					"property": "waterlogged",
+					"value": true
+				},
+				{
+					"type": "origins:adjacent",
+					"adjacent_condition": {
+						"type": "origins:fluid",
+						"fluid_condition": {
+							"type": "origins:in_tag",
+							"tag": "minecraft:water"
+						}
+					},
+					"comparison": ">=",
+					"compare_to": 3
+				},
+				{
+					"type": "origins:offset",
+					"condition": {
+						"type": "origins:fluid",
+						"fluid_condition": {
+							"type": "origins:in_tag",
+							"tag": "minecraft:water"
+						}
+					},
+					"y": 1
+				}
+			]
+		},
+		"modifier": {
+			"operation": "multiply_total",
+			"value": -1
+		}
+	},
+	
+	"prevent_items_use": {
+		"type": "origins:prevent_item_use",
+		"item_condition": {
+			"description": "Removed wet sponge so they can dry it in the nether.",
+			"type": "origins:ingredient",
+			"ingredient": {
+				"tag": "inkbat:aquaphobic"
+			}
+		}
+	}
+}

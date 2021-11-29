@@ -1,0 +1,16 @@
+{
+	"powers": [
+		"dryad:flammable",
+		"dryad:hot_biomes",
+		"dryad:light_dependant",
+		"dryad:plant_energy",
+		"dryad:sunlight",
+		"dryad:teleport",
+		"extraorigins:green_thumb"
+	],
+	"icon": "minecraft:dark_oak_sapling",
+	"order": 10,
+	"impact": 0,
+	"name": "Dryad",
+	"description": "A rare hybrid of Floran and Enderian, your strange combination of powers leave your body in constant state of disorder and instability"
+}

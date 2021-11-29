@@ -1,0 +1,20 @@
+{
+	"powers": [
+		"origins:vegetarian",
+		"satyr:biome_speed",
+		"satyr:high_jump",
+		"satyr:no_fall_damage",
+		"satyr:no_helmet",
+		"satyr:piggie_back",
+		"satyr:ram_people",
+		"satyr:sturdiness",
+		"satyr:tall"
+	],
+	"fin":[
+	],
+	"icon": "minecraft:goat_spawn_egg",
+	"order": 9,
+	"impact": 0,
+	"name": "Satyr",
+	"description": "Half man half goat."
+}

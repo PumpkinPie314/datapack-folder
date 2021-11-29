@@ -1,0 +1,10 @@
+{
+  "powers": [
+    "fletcher:cheaper_arrows",
+    "fletcher:tipped_arrows"
+  ],
+  "icon": "minecraft:arrow",
+  "order": 9,
+  "impact": 0,
+  "name": "fletcher"
+}

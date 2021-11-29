@@ -1,0 +1,12 @@
+{
+    "type": "origins:modify_damage_taken",
+    "damage_condition": {
+        "type": "origins:fire"
+    },
+    "modifier": {
+        "operation": "multiply_base",
+        "value": 2
+    },
+    "name": "Combustible",
+    "description":"You take three time as much damage from fire"
+}

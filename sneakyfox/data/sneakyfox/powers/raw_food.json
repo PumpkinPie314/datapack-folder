@@ -1,0 +1,19 @@
+{
+    "name": "Raw diet",
+    "description": "Eating raw food gives more saturation",
+    "type": "origins:modify_food",
+    "item_condition": {
+        "type": "origins:ingredient",
+        "ingredient": {
+            "tag": "sneakyfox:raw"
+        }
+    },
+    "food_modifier": {
+        "operation": "addition",
+        "value": 4
+    },
+    "saturation_modifier": {
+        "operation": "addition",
+        "value": 6
+    }
+}

@@ -1,0 +1,405 @@
+{
+	"name": "Bridging",
+	"description": "In the End, right-clicking with one of the following blocks in hand allows you to scaffold: end stone, end stone brick, obsidian, crying obsidian, purpur block, purpur pillar, or purple stained glass. This is disabled when you're sneaking.",
+	
+	"type": "origins:multiple",
+	
+	"endstone": {
+		"type": "origins:active_self",
+		"cooldown": 0,
+		"hud_render": {
+			"should_render": false
+		},
+		"key": {
+			"key": "key.use",
+			"continuous": true
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "setblock ~ ~-1 ~ end_stone",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:equipped_item_action",
+					"equipment_slot": "mainhand",
+					"action": {
+						"type": "origins:consume",
+						"amount": 1
+					}
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:equipped_item",
+					"equipment_slot": "mainhand",
+					"item_condition": {
+						"type": "origins:ingredient",
+						"ingredient": {
+							"item": "minecraft:end_stone"
+						}
+					}
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if block ~ ~-1 ~ air",
+					"comparison": "==",
+					"compare_to": 1
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if entity @s[predicate=inkbat:world_end,predicate=!inkbat:player_sneaking]",
+					"comparison": "==",
+					"compare_to": 1
+				}
+			]
+		}
+	},
+	
+	"endstone_bricks": {
+		"type": "origins:active_self",
+		"cooldown": 0,
+		"hud_render": {
+			"should_render": false
+		},
+		"key": {
+			"key": "key.use",
+			"continuous": true
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "setblock ~ ~-1 ~ end_stone_bricks",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:equipped_item_action",
+					"equipment_slot": "mainhand",
+					"action": {
+						"type": "origins:consume",
+						"amount": 1
+					}
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:equipped_item",
+					"equipment_slot": "mainhand",
+					"item_condition": {
+						"type": "origins:ingredient",
+						"ingredient": {
+							"item": "minecraft:end_stone_bricks"
+						}
+					}
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if block ~ ~-1 ~ air",
+					"comparison": "==",
+					"compare_to": 1
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if entity @s[predicate=inkbat:world_end,predicate=!inkbat:player_sneaking]",
+					"comparison": "==",
+					"compare_to": 1
+				}
+			]
+		}
+	},
+	
+	"obsidian": {
+		"type": "origins:active_self",
+		"cooldown": 0,
+		"hud_render": {
+			"should_render": false
+		},
+		"key": {
+			"key": "key.use",
+			"continuous": true
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "setblock ~ ~-1 ~ obsidian",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:equipped_item_action",
+					"equipment_slot": "mainhand",
+					"action": {
+						"type": "origins:consume",
+						"amount": 1
+					}
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:equipped_item",
+					"equipment_slot": "mainhand",
+					"item_condition": {
+						"type": "origins:ingredient",
+						"ingredient": {
+							"item": "minecraft:obsidian"
+						}
+					}
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if block ~ ~-1 ~ air",
+					"comparison": "==",
+					"compare_to": 1
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if entity @s[predicate=inkbat:world_end,predicate=!inkbat:player_sneaking]",
+					"comparison": "==",
+					"compare_to": 1
+				}
+			]
+		}
+	},
+	
+	"crying_obsidian": {
+		"type": "origins:active_self",
+		"cooldown": 0,
+		"hud_render": {
+			"should_render": false
+		},
+		"key": {
+			"key": "key.use",
+			"continuous": true
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "setblock ~ ~-1 ~ crying_obsidian",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:equipped_item_action",
+					"equipment_slot": "mainhand",
+					"action": {
+						"type": "origins:consume",
+						"amount": 1
+					}
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:equipped_item",
+					"equipment_slot": "mainhand",
+					"item_condition": {
+						"type": "origins:ingredient",
+						"ingredient": {
+							"item": "minecraft:crying_obsidian"
+						}
+					}
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if block ~ ~-1 ~ air",
+					"comparison": "==",
+					"compare_to": 1
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if entity @s[predicate=inkbat:world_end,predicate=!inkbat:player_sneaking]",
+					"comparison": "==",
+					"compare_to": 1
+				}
+			]
+		}
+	},
+	
+	"purpur_block": {
+		"type": "origins:active_self",
+		"cooldown": 0,
+		"hud_render": {
+			"should_render": false
+		},
+		"key": {
+			"key": "key.use",
+			"continuous": true
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "setblock ~ ~-1 ~ purpur_block",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:equipped_item_action",
+					"equipment_slot": "mainhand",
+					"action": {
+						"type": "origins:consume",
+						"amount": 1
+					}
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:equipped_item",
+					"equipment_slot": "mainhand",
+					"item_condition": {
+						"type": "origins:ingredient",
+						"ingredient": {
+							"item": "minecraft:purpur_block"
+						}
+					}
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if block ~ ~-1 ~ air",
+					"comparison": "==",
+					"compare_to": 1
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if entity @s[predicate=inkbat:world_end,predicate=!inkbat:player_sneaking]",
+					"comparison": "==",
+					"compare_to": 1
+				}
+			]
+		}
+	},
+	
+	"purpur_pillar": {
+		"type": "origins:active_self",
+		"cooldown": 0,
+		"hud_render": {
+			"should_render": false
+		},
+		"key": {
+			"key": "key.use",
+			"continuous": true
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "setblock ~ ~-1 ~ purpur_pillar",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:equipped_item_action",
+					"equipment_slot": "mainhand",
+					"action": {
+						"type": "origins:consume",
+						"amount": 1
+					}
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:equipped_item",
+					"equipment_slot": "mainhand",
+					"item_condition": {
+						"type": "origins:ingredient",
+						"ingredient": {
+							"item": "minecraft:purpur_pillar"
+						}
+					}
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if block ~ ~-1 ~ air",
+					"comparison": "==",
+					"compare_to": 1
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if entity @s[predicate=inkbat:world_end,predicate=!inkbat:player_sneaking]",
+					"comparison": "==",
+					"compare_to": 1
+				}
+			]
+		}
+	},
+	
+	"purple_stained_glass": {
+		"type": "origins:active_self",
+		"cooldown": 0,
+		"hud_render": {
+			"should_render": false
+		},
+		"key": {
+			"key": "key.use",
+			"continuous": true
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "setblock ~ ~-1 ~ purple_stained_glass",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:equipped_item_action",
+					"equipment_slot": "mainhand",
+					"action": {
+						"type": "origins:consume",
+						"amount": 1
+					}
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:equipped_item",
+					"equipment_slot": "mainhand",
+					"item_condition": {
+						"type": "origins:ingredient",
+						"ingredient": {
+							"item": "minecraft:purple_stained_glass"
+						}
+					}
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if block ~ ~-1 ~ air",
+					"comparison": "==",
+					"compare_to": 1
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if entity @s[predicate=inkbat:world_end,predicate=!inkbat:player_sneaking]",
+					"comparison": "==",
+					"compare_to": 1
+				}
+			]
+		}
+	}
+}

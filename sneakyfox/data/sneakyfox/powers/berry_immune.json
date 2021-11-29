@@ -1,0 +1,9 @@
+{
+    "name": "Thorny habitat",
+    "description": "Berry bushes dont hurt you",
+    "type": "origins:invulnerability",
+    "damage_condition": {
+        "type": "origins:name",
+        "name": "sweetBerryBush"
+    }
+}

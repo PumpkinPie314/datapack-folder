@@ -1,0 +1,10 @@
+{
+    "name": "queenly",
+    "description": "bees dont attack you",
+    "type": "origins:action_over_time",
+    "interval": 20,
+    "entity_action": {
+        "type": "origins:execute_command",
+        "command": "execute as @e[type=bee,distance=..10] run data merge entity @s {AngerTime:0}"
+    }
+}

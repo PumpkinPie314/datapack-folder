@@ -1,0 +1,13 @@
+{
+	"powers": [
+		"creative:no_clip",
+		"creative:gamemode",
+		"creative:reach",
+		"creative:toggle"
+	],
+	"icon": "minecraft:grass_block",
+	"order": 9,
+	"impact": 0,
+	"name": "Creative Origin",
+	"description": "an origin to improve the creative building experience, not to be used in a survival world"
+}

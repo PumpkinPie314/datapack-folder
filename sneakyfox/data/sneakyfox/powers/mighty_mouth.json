@@ -1,0 +1,11 @@
+{
+    "name": "Mighty mouth",
+    "description": "You carry a secret stash that no one but you has access to. You can access this pouch by using your secondary.",
+    
+    "type": "origins:inventory",
+    "drop_on_death": false,
+    "key": {
+        "key": "key.origins.secondary_active",
+        "continuous": false
+    }
+}

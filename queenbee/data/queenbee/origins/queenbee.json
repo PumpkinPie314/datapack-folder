@@ -1,0 +1,21 @@
+{
+	"powers": [
+		"queenbee:cute",
+		"queenbee:fall_damage",
+		"queenbee:fire",
+		"queenbee:flowers",
+		"queenbee:honey_bottle",
+		"queenbee:less_health",
+		"queenbee:levitate",
+		"queenbee:pacify_bees",
+		"queenbee:poisonous",
+		"queenbee:ride_players",
+		"queenbee:slowfall",
+		"queenbee:water"
+	],
+	"icon": "minecraft:honeycomb",
+	"order": 10,
+	"impact": 0,
+	"name": "Queen Bee",
+	"description": "a bee after eating royal jelly"
+}

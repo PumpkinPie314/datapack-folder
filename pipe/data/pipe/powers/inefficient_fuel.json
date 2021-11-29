@@ -1,0 +1,13 @@
+{
+    "name": "Inefficient Fuel",
+    "description": "Food is not a very efficient fuel source; Food values are halved",
+    "type": "origins:modify_food",
+    "food_modifier": {
+        "operation": "multiply_base",
+        "value": -0.5
+    },
+    "saturation_modifier": {
+        "operation": "multiply_base",
+        "value": -0.5
+    }
+}

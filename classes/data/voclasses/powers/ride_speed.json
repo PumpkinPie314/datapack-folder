@@ -1,0 +1,49 @@
+{
+    "name": "driver",
+    "description": "zoom",
+    "hidden": false,
+    "type": "origins:multiple",
+    "tick": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "rising_action": {
+            "type": "origins:riding_action",
+            "action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:execute_command",
+                        "command": "/tag @s add fast"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "scale add pehkui:motion 0.2"
+                    }
+                ]
+            }
+        },
+        "falling_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "/execute as @e[limit=1,sort=nearest,tag=fast] run scale add pehkui:motion -0.2"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "/tag @e[limit=1,sort=nearest,tag=fast] remove fast"
+                }
+            ]
+        },
+        "condition":{
+            "type": "origins:riding_root",
+            "bientity_condition": {
+                "type": "origins:target_condition",
+                "condition": {
+                    "type": "origins:constant",
+                    "value": true
+                }
+            }
+        }
+    }
+}

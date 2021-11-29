@@ -1,0 +1,13 @@
+{
+    "name": "Nice knees",
+    "description": "you dont take as much damage from falling",
+    "type": "origins:modify_damage_taken",
+    "damage_condition": {
+        "type": "origins:name",
+        "name": "fall"
+    },
+    "modifier": {
+        "operation": "multiply_total",
+        "value": -1
+    }
+}

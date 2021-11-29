@@ -1,0 +1,17 @@
+{
+  "type": "origins:inventory",
+  "drop_on_death": true,
+  "drop_on_death_filter": {
+    "type": "origins:ingredient",
+    "ingredient": {
+      "tag": "voclasses:builder_blocks"
+    },
+    "inverted": true
+  },
+  "key": {
+    "key": "key.swapOffhand",
+    "continuous": false
+  },
+  "name": "Handy Sack",
+  "description": "You have a 3x3 sack of extra inventory by pressing F. (Do it on an empty hand) Anything but planks, bricks, stairs, slabs, and fences will drop on death."
+}

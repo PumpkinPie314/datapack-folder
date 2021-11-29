@@ -1,0 +1,137 @@
+{
+	"name": "Butterfingers",
+	"description": "If you die or move too fast, the container that you're carrying can fall and drop to the floor.",
+	
+	"type": "origins:multiple",
+	
+	"death_reset_resources": {
+		"type": "origins:action_on_callback",
+		"entity_action_respawned": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "inkbat:storage_move_is_carrying",
+					"change": -1
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "inkbat:storage_movebarrel_is_carrying",
+					"change": -1
+				}
+			]
+		}
+	},
+	
+	"timesincedeath_scoreboard": {
+		"type": "origins:action_on_callback",
+		"entity_action_chosen": {
+			"type": "origins:execute_command",
+			"command": "scoreboard objectives add TimeSinceDeath minecraft.custom:minecraft.time_since_death",
+			"permission_level": 2
+		},
+		"entity_action_added": {
+			"type": "origins:execute_command",
+			"command": "scoreboard objectives add TimeSinceDeath minecraft.custom:minecraft.time_since_death",
+			"permission_level": 2
+		}
+	},
+	
+	"no_chest_reset": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "inkbat:storage_move_is_carrying",
+					"change": -1
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:command",
+					"command": "execute if entity @e[tag=ChestCarrier,distance=..5]",
+					"comparison": "==",
+					"compare_to": 0
+				}
+			]
+		}
+	},
+	
+	"no_barrel_reset": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "inkbat:storage_movebarrel_is_carrying",
+					"change": -1
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:command",
+					"command": "execute if entity @e[tag=BarrelCarrier,distance=..5]",
+					"comparison": "==",
+					"compare_to": 0
+				}
+			]
+		}
+	},
+	
+	
+	"generic_drop_chest": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "execute as @e[tag=ChestCarrier,nbt={ArmorItems:[{},{},{},{id:'minecraft:chest'}]}] at @s unless entity @p[distance=..2,nbt={cardinal_components:{'origins:origin':{OriginLayers:[{Origin:'inkbat:end_spiriter'}]}}}] run data modify entity @e[tag=ChestStorage,distance=..2,sort=nearest,limit=1] NoGravity set value 0",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute as @e[tag=ChestCarrier,nbt={ArmorItems:[{},{},{},{id:'minecraft:chest'}]}] at @s unless entity @p[distance=..2,nbt={cardinal_components:{'origins:origin':{OriginLayers:[{Origin:'inkbat:end_spiriter'}]}}}] run kill @s",
+					"permission_level": 2
+				}
+			]
+		}
+	},
+	
+	"generic_drop_barrel": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "execute as @e[tag=BarrelCarrier,nbt={ArmorItems:[{},{},{},{id:'minecraft:barrel'}]}] at @s unless entity @p[distance=..2,nbt={cardinal_components:{'origins:origin':{OriginLayers:[{Origin:'inkbat:end_spiriter'}]}}}] run data modify entity @e[tag=BarrelStorage,distance=..2,sort=nearest,limit=1] BlockState.Name set value 'minecraft:barrel'",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute as @e[tag=BarrelCarrier,nbt={ArmorItems:[{},{},{},{id:'minecraft:barrel'}]}] at @s unless entity @p[distance=..2,nbt={cardinal_components:{'origins:origin':{OriginLayers:[{Origin:'inkbat:end_spiriter'}]}}}] run data modify entity @e[tag=BarrelStorage,distance=..2,sort=nearest,limit=1] NoGravity set value 0",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute as @e[tag=BarrelCarrier,nbt={ArmorItems:[{},{},{},{id:'minecraft:barrel'}]}] at @s unless entity @p[distance=..2,nbt={cardinal_components:{'origins:origin':{OriginLayers:[{Origin:'inkbat:end_spiriter'}]}}}] run kill @s",
+					"permission_level": 2
+				}
+			]
+		}
+	}
+}

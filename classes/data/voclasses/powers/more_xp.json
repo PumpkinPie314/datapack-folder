@@ -1,0 +1,9 @@
+{
+  "type": "origins:modify_xp_gain",
+  "modifier": {
+    "operation": "multiply_total",
+    "value": 0.5
+  },
+  "name": "Scholar",
+  "description": "You learn faster and get more xp."
+}

@@ -1,0 +1,31 @@
+{
+    "name": "Ground Slam",
+    "description": "if you slam into the ground from a certain height, entities around you get sent up into the air.",
+    "type": "origins:action_on_land",
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "execute as @e[distance=..10,type=!player] run data merge entity @s {Motion:[0.0,1.0,0.0]}"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "power grant @a[distance=0.1..10] windlander:temp_throw"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "power grant @e[distance=0.1..10] windlander:hurt"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "playsound minecraft:entity.firework_rocket.blast_far master @s ~ ~ ~ 1 0.55"
+            }
+        ]
+    },
+    "condition": {
+        "type": "origins:fall_distance",
+        "comparison": ">=",
+        "compare_to": 20
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "name": "Lightweight",
+    "description": "You dont take fall damage as long as you have dry wings",
+    "type": "origins:invulnerability",
+    "damage_condition": {
+        "type": "origins:name",
+        "name": "fall"
+    },
+    "condition": {
+        "type": "origins:in_rain",
+        "inverted": true
+    }
+}

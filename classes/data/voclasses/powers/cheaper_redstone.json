@@ -1,0 +1,102 @@
+{
+    "name": "cheaper redstone",
+    "description": "redstone components are quadrupled!",
+    "hidden": false,
+    "type": "origins:multiple",
+    "torch": {
+        "type": "origins:modify_crafting",
+        "recipe": "minecraft:redstone_torch",
+        "result": {
+            "item": "minecraft:redstone_torch",
+            "amount": 4
+        }
+    },
+    "repeater": {
+        "type": "origins:modify_crafting",
+        "recipe": "minecraft:repeater",
+        "result": {
+            "item": "minecraft:repeater",
+            "amount": 4
+        }
+    },
+    "comparator": {
+        "type": "origins:modify_crafting",
+        "recipe": "minecraft:comparator",
+        "result": {
+            "item": "minecraft:comparator",
+            "amount": 4
+        }
+    },
+    "piston": {
+        "type": "origins:modify_crafting",
+        "recipe": "minecraft:piston",
+        "result": {
+            "item": "minecraft:piston",
+            "amount": 4
+        }
+    },
+    "sticky_piston": {
+        "type": "origins:modify_crafting",
+        "recipe": "minecraft:sticky_piston",
+        "result": {
+            "item": "minecraft:sticky_piston",
+            "amount": 4
+        }
+    },
+    "target": {
+        "type": "origins:modify_crafting",
+        "recipe": "minecraft:target",
+        "result": {
+            "item": "minecraft:target",
+            "amount": 4
+        }
+    },
+    "dispenser": {
+        "type": "origins:modify_crafting",
+        "recipe": "minecraft:dispenser",
+        "result": {
+            "item": "minecraft:dispenser",
+            "amount": 4
+        }
+    },
+    "dropper": {
+        "type": "origins:modify_crafting",
+        "recipe": "minecraft:dropper",
+        "result": {
+            "item": "minecraft:dropper",
+            "amount": 4
+        }
+    },
+    "observer": {
+        "type": "origins:modify_crafting",
+        "recipe": "minecraft:observer",
+        "result": {
+            "item": "minecraft:observer",
+            "amount": 4
+        }
+    },
+    "hopper": {
+        "type": "origins:modify_crafting",
+        "recipe": "minecraft:hopper",
+        "result": {
+            "item": "minecraft:hopper",
+            "amount": 4
+        }
+    },
+    "daylight_detector": {
+        "type": "origins:modify_crafting",
+        "recipe": "minecraft:daylight_detector",
+        "result": {
+            "item": "minecraft:daylight_detector",
+            "amount": 4
+        }
+    },
+    "redstone_lamp": {
+        "type": "origins:modify_crafting",
+        "recipe": "minecraft:redstone_lamp",
+        "result": {
+            "item": "minecraft:redstone_lamp",
+            "amount": 4
+        }
+    }
+}

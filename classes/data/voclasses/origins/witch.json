@@ -1,0 +1,10 @@
+{
+  "powers": [
+    "voclasses:longer_potions"
+  ],
+  "icon": "minecraft:potion",
+  "order": 7,
+  "impact": 0,
+  "name": "Witch",
+  "description": "potions!"
+}

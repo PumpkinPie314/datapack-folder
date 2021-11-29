@@ -1,0 +1,24 @@
+{
+	"replace": false,
+	"values": [
+		"minecraft:air",
+		"minecraft:water",
+		"minecraft:grass",
+		"minecraft:tall_grass",
+		"minecraft:snow",
+
+		"#minecraft:banners",
+		"#minecraft:buttons",
+		"#minecraft:candles",
+		"#minecraft:carpets",
+		"#minecraft:corals",
+		"#minecraft:crops",
+		"#minecraft:fire",
+		"#minecraft:flowers",
+		"#minecraft:portals",
+		"#minecraft:pressure_plates",
+		"#minecraft:rails",
+		"#minecraft:saplings",
+		"#minecraft:signs"
+	]
+}

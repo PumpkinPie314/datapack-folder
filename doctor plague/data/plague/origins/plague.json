@@ -1,0 +1,16 @@
+{
+	"powers": [
+		"plague:axes",
+		"plague:heal",
+		"plague:max_health",
+		"plague:not_trusted",
+		"plague:poison",
+		"plague:potion_pouch",
+		"plague:potions_for_everything"
+	],
+	"icon": "minecraft:wither_rose",
+	"order": 9,
+	"impact": 0,
+	"name": "Doctor Plague",
+	"description": "a \"doctor\" that kills you (sometimes)"
+}

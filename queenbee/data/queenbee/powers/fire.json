@@ -1,0 +1,12 @@
+{
+    "name": "fluffy",
+    "description": "fire kills you twice as fast",
+    "type": "origins:modify_damage_taken",
+    "damage_condition": {
+        "type": "origins:fire"
+    },
+    "modifier": {
+        "operation": "multiply_base",
+        "value": 1
+    }
+}

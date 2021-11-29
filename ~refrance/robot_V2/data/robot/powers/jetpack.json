@@ -1,0 +1,162 @@
+{
+	"type":"origins:multiple",
+	"consume_gold":{
+		"type":"origins:active_self",
+		"entity_action":{
+			"type":"origins:and",
+			"actions":[
+				{
+					"type": "origins:equipped_item_action",
+					"equipment_slot": "mainhand",
+					"action": {
+						"type": "origins:consume",
+						"amount": 1
+					}
+				},
+				{
+					"type":"origins:play_sound",
+					"sound": "minecraft:entity.ghast.shoot"
+				},
+                {
+                    "type": "origins:change_resource",
+                    "resource": "robot:gold_fuel_tank",
+                    "change": 10
+                }
+            ]
+		},
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type":"origins:equipped_item",
+                    "equipment_slot":"mainhand",
+                    "item_condition":{
+                        "type":"origins:ingredient",
+                        "ingredient":{
+                            "item":"minecraft:gold_ingot"
+                        }
+	        		}
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "robot:gold_fuel_tank",
+                    "comparison": "<",
+                    "compare_to": 80
+                }
+            ]
+		},
+		"cooldown":3,
+        "hud_render": {
+            "should_render": false
+        },
+		"key":{
+			"key":"key.use",
+			"continuous": true
+		}
+	},
+    "fly":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:add_velocity",
+                    "space":"world",
+                    "y": 0.1
+                },
+                {
+                    "type": "origins:add_velocity",
+                    "space":"local",
+                    "z": 0.1
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "robot:gold_fuel_tank",
+                    "change": -1
+                },
+                {
+                    "type": "origins:set_fall_distance",
+                    "fall_distance": 3
+                },
+                {
+                    "type": "origins:execute_command",
+                    "permission_level": 4,
+                    "command": "/particle minecraft:flame ~ ~0.5 ~ 0 -0.5 0 1 0 normal"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "permission_level": 4,
+                    "command": "/particle minecraft:flame ~0.5 ~ ~ 0 -0.5 0 1 0 normal"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "permission_level": 4,
+                    "command": "/particle minecraft:flame ~ ~ ~0.5 0 -0.5 0 1 0 normal"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "permission_level": 4,
+                    "command": "/particle minecraft:flame ~-0.5 ~ ~ 0 -0.5 0 1 0 normal"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "permission_level": 4,
+                    "command": "/particle minecraft:flame ~ ~ ~-0.5 0 -0.5 0 1 0 normal"
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "robot:gold_fuel_tank",
+                    "comparison": ">",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "key": {
+            "key": "key.origins.primary_active",
+            "continuous": true
+        },
+        "cooldown": 2,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "fly_sound":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:play_sound",
+                    "sound": "block.lava.extinguish",
+                    "pitch":0.6,
+                    "volume":0.2
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "robot:gold_fuel_tank",
+                    "comparison": ">",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "key": {
+            "key": "key.origins.primary_active"
+        },
+        "cooldown": 10,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+	"name":"jetpack",
+	"description":"eat gold to fill your fuel bar. press g to propell upward (the direction you look matters)"
+}

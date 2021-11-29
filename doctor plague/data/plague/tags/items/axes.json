@@ -1,0 +1,26 @@
+{
+	"replace": false,
+	"values": [
+		"minecraft:wooden_axe",
+		"medievalweapons:wooden_small_axe",
+		"medievalweapons:wooden_big_axe",
+		"minecraft:stone_axe",
+		"medievalweapons:stone_small_axe",
+		"medievalweapons:stone_big_axe",
+		"minecraft:stone_axe",
+		"medievalweapons:stone_small_axe",
+		"medievalweapons:stone_big_axe",
+		"minecraft:golden_axe",
+		"medievalweapons:golden_small_axe",
+		"medievalweapons:golden_big_axe",
+		"minecraft:iron_axe",
+		"medievalweapons:iron_small_axe",
+		"medievalweapons:iron_big_axe",
+		"minecraft:diamond_axe",
+		"medievalweapons:diamond_small_axe",
+		"medievalweapons:diamond_big_axe",
+		"minecraft:netherite_axe",
+		"medievalweapons:netherite_small_axe",
+		"medievalweapons:netherite_big_axe"
+	]
+}

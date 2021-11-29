@@ -1,0 +1,11 @@
+{
+  "powers": [
+    "origins-classes:no_mining_exhaustion",
+    "voclasses:mining_speed"
+  ],
+  "icon": "minecraft:iron_pickaxe",
+  "order": 3,
+  "impact": 0,
+  "name": "miner",
+  "description": "you are a miner"
+}

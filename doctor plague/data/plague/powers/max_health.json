@@ -1,0 +1,10 @@
+{
+    "name": "Diseases",
+    "description": "because of your exposure to many illnesses you aren't at the best health 8 health bars",
+    "type": "origins:attribute",
+    "modifier": {
+        "attribute": "minecraft:generic.max_health",
+        "operation": "addition",
+        "value": -4
+    }
+}

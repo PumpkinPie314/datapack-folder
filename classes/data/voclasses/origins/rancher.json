@@ -1,0 +1,11 @@
+{
+  "powers": [
+    "origins-classes:twin_breeding",
+    "origins-classes:more_animal_loot"
+  ],
+  "icon": "minecraft:lead",
+  "order": 10,
+  "impact": 0,
+  "name": "rancher",
+  "description": "ranch!"
+}

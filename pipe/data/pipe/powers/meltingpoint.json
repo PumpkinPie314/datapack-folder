@@ -1,0 +1,13 @@
+{
+    "name": "High Melting point",
+    "description": "Fire does half damage to you",
+    "type": "origins:modify_damage_taken",
+    "damage_condition": {
+        "type": "origins:fire"
+    },
+    "modifier": {
+        "name": "Weak to cursed items",
+        "operation": "multiply_base",
+        "value": -0.5
+    }
+}

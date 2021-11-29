@@ -1,0 +1,21 @@
+{
+	"powers": [
+		"rattling:night_vision",
+		"rattling:short",
+		"rattling:speed",
+		"rattling:climb",
+		"rattling:stomach",
+		"rattling:no_fall_damage",
+
+		"rattling:cat_weakness",
+		"rattling:eight_hearts",
+		"rattling:hungry",
+		"rattling:no_shield",
+		"rattling:more_poison_damage"
+	],
+	"icon": "minecraft:silverfish_spawn_egg",
+	"order": 10,
+	"impact": 0,
+	"name": "Rattling",
+	"description": "A terrifying but cute rodent"
+}

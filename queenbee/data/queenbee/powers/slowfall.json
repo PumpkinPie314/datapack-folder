@@ -1,0 +1,10 @@
+{
+    "name": "Slow Fall",
+    "description": "sneak to fall slower",
+    "type": "origins:modify_falling",
+    "velocity": 0.01,
+    "take_fall_damage": false,
+    "condition": {
+        "type": "origins:sneaking"
+    }
+}

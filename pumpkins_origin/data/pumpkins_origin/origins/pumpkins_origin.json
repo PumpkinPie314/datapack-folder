@@ -1,0 +1,10 @@
+{
+	"powers": [
+		"pumpkins_origin:decay",
+		"pumpkins_origin:lore"
+	],
+	"icon": "charm:fire_sea_lantern",
+	"order": 9,
+	"impact": 0,
+	"name": "Pumpkins Origins"
+}

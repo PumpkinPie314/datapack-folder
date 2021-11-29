@@ -1,0 +1,47 @@
+{
+    "name": "Honey lover",
+    "description": "a single honey bottle will fill your hunger bar (no saturation), however you cant eat anything else",
+    "type": "origins:multiple",
+    "better_honey":{
+        "type": "origins:modify_food",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:honey_bottle"
+            }
+        },
+        "food_modifier": {
+            "operation": "addition",
+            "value": 20
+        },
+        "saturation_modifier": {
+            "operation": "multiply_base",
+            "value": -1
+        }
+    },
+	"cant_eat":{
+		"type":"origins:prevent_item_use",
+		"item_condition":{
+			"type":"origins:and",
+            "conditions": [
+                {
+                    "type":"origins:food"
+                },
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "item": "minecraft:honey_bottle"
+                    },
+                    "inverted": true
+                }
+            ]
+        }
+	},
+	"no_cakes":{
+		"type":"origins:prevent_block_use",
+		"block_condition":{
+			"type":"origins:block",
+			"block":"minecraft:cake"
+		}
+	}
+}

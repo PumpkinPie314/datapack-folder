@@ -1,0 +1,37 @@
+{
+    "name": "Biome preference",
+    "description": "You move faster in taiga and desserts",
+	"type":"origins:multiple",
+    "speed_up":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.movement_speed",
+            "operation": "multiply_base",
+            "value": 0.20
+        },
+        "tick_rate": 20,
+        "condition": {
+            "type": "origins:biome",
+            "condition": {
+                "type": "origins:category",
+                "category": "taiga"
+            }
+        }
+    },
+    "slow_down":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.movement_speed",
+            "operation": "multiply_base",
+            "value": -0.20
+        },
+        "tick_rate": 20,
+        "condition": {
+            "type": "origins:biome",
+            "condition": {
+                "type": "origins:category",
+                "category": "desert"
+            }
+        }
+    }
+}

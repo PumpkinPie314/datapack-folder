@@ -1,0 +1,32 @@
+{
+    "type": "origins:disable_regen",
+    "condition": {
+        "type": "origins:or",
+        "conditions": [
+            {
+                "type":"origins:block_in_radius",
+                "block_condition":{
+                    "type": "origins:in_tag",
+                    "tag": "minecraft:leaves"
+                },
+                "radius":15,
+                "comparison": ">=",
+                "compare_to": 15
+            },
+            {
+                "type":"origins:block_in_radius",
+                "block_condition":{
+                    "type": "origins:in_tag",
+                    "tag": "minecraft:flowers"
+                },
+                "radius":5
+            },
+            {
+                "type": "origins:exposed_to_sun",
+                "inverted": true
+            }
+        ]
+    },
+    "name":"Light Dependant",
+    "description":"You cannot regen using saturation when not in sunlight"
+}

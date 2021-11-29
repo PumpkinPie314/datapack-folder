@@ -1,0 +1,19 @@
+{
+    "name": "Venal",
+    "description": "You are unable to attack someone holding berries.",
+    "type": "origins:modify_damage_dealt",
+    "modifier": {
+        "operation": "multiply_total",
+        "value": -1
+    },
+    "target_condition": {
+        "type": "origins:equipped_item",
+        "equipment_slot": "mainhand",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:sweet_berries"
+            }
+        }
+    }
+}

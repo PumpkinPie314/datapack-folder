@@ -1,0 +1,288 @@
+{
+    "name": "Uncover",
+    "description": "While mining stone, there is a chance you will uncover an ore. (The lower you are, the better ores you will find.)",
+    "type": "origins:multiple",
+    "coal":
+    {
+        "type": "origins:action_on_block_break",
+        "only_when_harvested": false,
+        "block_condition":
+        {
+            "type": "origins:and",
+            "inverted": false,
+            "conditions": [
+                {
+                    "type": "origins:height",
+                    "inverted": false,
+                    "comparison": "<=",
+                    "compare_to": 132
+                },
+                {
+                    "type": "origins:block",
+                    "inverted": false,
+                    "block": "stone"
+                }
+            ]
+        },
+        "block_action":
+        {
+            "type": "origins:chance",
+            "chance": 0.0125,
+            "action":
+            {
+                "type": "origins:execute_command",
+                "permission_level": 4,
+                "command": "setblock ~ ~ ~ minecraft:coal_ore"
+            }
+        }
+    },
+    "copper":
+    {
+        "type": "origins:action_on_block_break",
+        "only_when_harvested": false,
+        "block_condition":
+        {
+            "type": "origins:and",
+            "inverted": false,
+            "conditions": [
+                {
+                    "type": "origins:height",
+                    "inverted": false,
+                    "comparison": "<=",
+                    "compare_to": 132
+                },
+                {
+                    "type": "origins:block",
+                    "inverted": false,
+                    "block": "stone"
+                }
+            ]
+        },
+        "block_action":
+        {
+            "type": "origins:chance",
+            "chance": 0.0125,
+            "action":
+            {
+                "type": "origins:execute_command",
+                "permission_level": 4,
+                "command": "setblock ~ ~ ~ minecraft:copper_ore"
+            }
+        }
+    },
+    "iron":
+    {
+        "type": "origins:action_on_block_break",
+        "only_when_harvested": false,
+        "block_condition":
+        {
+            "type": "origins:and",
+            "inverted": false,
+            "conditions": [
+                {
+                    "type": "origins:height",
+                    "inverted": false,
+                    "comparison": "<=",
+                    "compare_to": 68
+                },
+                {
+                    "type": "origins:block",
+                    "inverted": false,
+                    "block": "stone"
+                }
+            ]
+        },
+        "block_action":
+        {
+            "type": "origins:chance",
+            "chance": 0.0072,
+            "action":
+            {
+                "type": "origins:execute_command",
+                "permission_level": 4,
+                "command": "setblock ~ ~ ~ minecraft:iron_ore"
+            }
+        }
+    },
+    "redstone":
+    {
+        "type": "origins:action_on_block_break",
+        "only_when_harvested": false,
+        "block_condition":
+        {
+            "type": "origins:and",
+            "inverted": false,
+            "conditions": [
+                {
+                    "type": "origins:height",
+                    "inverted": false,
+                    "comparison": "<=",
+                    "compare_to": 17
+                },
+                {
+                    "type": "origins:block",
+                    "inverted": false,
+                    "block": "stone"
+                }
+            ]
+        },
+        "block_action":
+        {
+            "type": "origins:chance",
+            "chance": 0.01025,
+            "action":
+            {
+                "type": "origins:execute_command",
+                "permission_level": 4,
+                "command": "setblock ~ ~ ~ minecraft:redstone_ore"
+            }
+        }
+    },
+    "lapis":
+    {
+        "type": "origins:action_on_block_break",
+        "only_when_harvested": false,
+        "block_condition":
+        {
+            "type": "origins:and",
+            "inverted": false,
+            "conditions": [
+                {
+                    "type": "origins:height",
+                    "inverted": false,
+                    "comparison": "<=",
+                    "compare_to": 33
+                },
+                {
+                    "type": "origins:block",
+                    "inverted": false,
+                    "block": "stone"
+                }
+            ]
+        },
+        "block_action":
+        {
+            "type": "origins:chance",
+            "chance": 0.001013,
+            "action":
+            {
+                "type": "origins:execute_command",
+                "permission_level": 4,
+                "command": "setblock ~ ~ ~ minecraft:lapis_ore"
+            }
+        }
+    },
+    "gold":
+    {
+        "type": "origins:action_on_block_break",
+        "only_when_harvested": false,
+        "block_condition":
+        {
+            "type": "origins:and",
+            "inverted": false,
+            "conditions": [
+                {
+                    "type": "origins:height",
+                    "inverted": false,
+                    "comparison": "<=",
+                    "compare_to": 34
+                },
+                {
+                    "type": "origins:block",
+                    "inverted": false,
+                    "block": "stone"
+                }
+            ]
+        },
+        "block_action":
+        {
+            "type": "origins:chance",
+            "chance": 0.001437,
+            "action":
+            {
+                "type": "origins:execute_command",
+                "permission_level": 4,
+                "command": "setblock ~ ~ ~ minecraft:gold_ore"
+            }
+        }
+    },
+    "emerald":
+    {
+        "type": "origins:action_on_block_break",
+        "only_when_harvested": false,
+        "block_condition":
+        {
+            "type": "origins:and",
+            "inverted": false,
+            "conditions": [
+                {
+                    "type": "origins:height",
+                    "inverted": false,
+                    "comparison": "<=",
+                    "compare_to": 33
+                },
+                {
+                    "type": "origins:block",
+                    "inverted": false,
+                    "block": "stone"
+                }
+            ]
+        },
+        "block_action":
+        {
+            "type": "origins:chance",
+            "chance": 0.001437,
+            "action":
+            {
+                "type": "origins:execute_command",
+                "permission_level": 4,
+                "command": "setblock ~ ~ ~ minecraft:emerald_ore"
+            }
+        },
+        "condition":
+        {
+            "type": "origins:biome",
+            "inverted": false,
+            "condition":
+            {
+                "type": "origins:category",
+                "inverted": false,
+                "category": "extreme_hills"
+            }
+        }
+    },
+    "diamond":
+    {
+        "type": "origins:action_on_block_break",
+        "only_when_harvested": false,
+        "block_condition":
+        {
+            "type": "origins:and",
+            "inverted": false,
+            "conditions": [
+                {
+                    "type": "origins:height",
+                    "inverted": false,
+                    "comparison": "<=",
+                    "compare_to": 16
+                },
+                {
+                    "type": "origins:block",
+                    "inverted": false,
+                    "block": "stone"
+                }
+            ]
+        },
+        "block_action":
+        {
+            "type": "origins:chance",
+            "chance": 0.01276,
+            "action":
+            {
+                "type": "origins:execute_command",
+                "permission_level": 4,
+                "command": "setblock ~ ~ ~ minecraft:diamond_ore"
+            }
+        }
+    }
+}

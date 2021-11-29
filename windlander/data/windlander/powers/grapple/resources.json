@@ -1,0 +1,76 @@
+{
+    "hidden": true,
+    "type": "origins:multiple",
+    "grapple_bar":{
+        "type": "origins:resource",
+        "start_value": 120,
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "operation": "set",
+                    "resource": "*:grapple/resources_bar_can_refill",
+                    "change": 0
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 60,
+                    "action": {
+                        "type": "origins:change_resource",
+                        "operation": "set",
+                        "resource": "*:grapple/resources_bar_can_refill",
+                        "change": 1
+                    }
+                }
+            ]
+        },
+        "min": 0,
+        "max": 120,
+        "hud_render": {
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_01.png",
+            "bar_index": 14,
+            "condition":{
+                "type": "origins:resource",
+                "resource": "*:grapple/resources_grapple_bar",
+                "comparison": "!=",
+                "compare_to": 120
+            }
+        }
+    },
+    "bar_can_refill":{
+        "type": "origins:resource",
+        "start_value": 1,
+        "min": 0,
+        "max": 1,
+        "hud_render": {"should_render": false}
+    },
+    "can_cast":{
+        "type": "origins:resource",
+        "start_value": 0,
+        "min": 0,
+        "max": 1,
+        "hud_render": {"should_render": false}
+    },
+    "is_flying": {
+        "type": "origins:resource",
+        "start_value": 0,
+        "min": 0,
+        "max": 1,
+        "hud_render": {"should_render": false}
+    },
+    "is_casting":{
+        "type": "origins:resource",
+        "start_value": 0,
+        "min": 0,
+        "max": 1,
+        "hud_render": {"should_render": false}
+    },
+    "is_grappling":{
+        "type": "origins:resource",
+        "start_value": 0,
+        "min": 0,
+        "max": 1,
+        "hud_render": {"should_render": false}
+    }
+}

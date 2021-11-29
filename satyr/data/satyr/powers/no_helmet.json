@@ -1,0 +1,9 @@
+{
+    "name": "Big horns",
+    "description": "You cant fit a helmet on your head",
+    "type": "origins:restrict_armor",
+    "head": {
+        "type": "origins:constant",
+        "value": true
+    }
+}

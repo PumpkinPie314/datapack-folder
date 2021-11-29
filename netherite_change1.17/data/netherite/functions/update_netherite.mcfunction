@@ -1,0 +1,4 @@
+execute unless entity @s[nbt={Inventory:[{Slot:103b,tag:{AttributeModifiers:[{}]}}]}] if entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:netherite_helmet"}]}] run item modify entity @s armor.head netherite:helmet
+execute unless entity @s[nbt={Inventory:[{Slot:102b,tag:{AttributeModifiers:[{}]}}]}] if entity @s[nbt={Inventory:[{Slot:102b,id:"minecraft:netherite_chestplate"}]}] run item modify entity @s armor.chest netherite:chestplate
+execute unless entity @s[nbt={Inventory:[{Slot:101b,tag:{AttributeModifiers:[{}]}}]}] if entity @s[nbt={Inventory:[{Slot:101b,id:"minecraft:netherite_leggings"}]}] run item modify entity @s armor.legs netherite:leggings
+execute unless entity @s[nbt={Inventory:[{Slot:100b,tag:{AttributeModifiers:[{}]}}]}] if entity @s[nbt={Inventory:[{Slot:100b,id:"minecraft:netherite_boots"}]}] run item modify entity @s armor.feet netherite:boots

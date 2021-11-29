@@ -1,0 +1,29 @@
+{
+    "name": "Conductive",
+    "description": "Getting struck by lightning does no damage and automatically activates overdrive for 5 minutes without using up the steam meter at all",
+    "type": "origins:action_over_time",
+    "interval": 5,
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:change_resource",
+                "operation": "set",
+                "resource": "*:overdrive_is",
+                "change": 1
+            },
+            {
+                "type": "origins:change_resource",
+                "operation": "set",
+                "resource": "*:steam_resource",
+                "change": 18000
+            }
+        ]
+    },
+    "condition": {
+        "type": "origins:command",
+        "command": "execute if entity @e[type=minecraft:lightning_bolt,distance=..50]",
+        "comparison": "==",
+        "compare_to": 1
+    }
+}

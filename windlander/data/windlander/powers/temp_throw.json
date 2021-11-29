@@ -1,0 +1,24 @@
+{
+    "hidden": true,
+    "type": "origins:action_on_callback",
+    "execute_chosen_when_orb": true,
+    "entity_action_added": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:add_velocity",
+                "y": 1,
+                "space": "world",
+                "set": false
+            },
+            {
+                "type": "origins:delay",
+                "ticks": 20,
+                "action": {
+                    "type": "origins:execute_command",
+                    "command": "power remove @s windlander:temp_throw"
+                }
+            }
+        ]
+    }
+}

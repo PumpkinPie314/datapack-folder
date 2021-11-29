@@ -1,0 +1,62 @@
+{
+    "name": "Switch gamemodes",
+    "description": "press your secondary key to switch to survival, this disables all abilitys",
+    "type": "origins:active_self",
+    "cooldown": 10,
+    "entity_action": {
+        "type": "origins:if_else_list",
+        "actions": [
+            {
+                "action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:execute_command",
+                            "command": "gamemode survival"
+                        },
+                        {
+                            "type": "origins:toggle",
+                            "power": "*:toggle"
+                        }
+                    ]
+                },
+                "condition": {
+                    "type": "origins:and",
+                    "conditions": [
+                        {
+                            "type": "origins:gamemode",
+                            "gamemode": "creative"
+                        },
+                        {
+                            "type": "origins:power_active",
+                            "power": "*:toggle"
+                        }
+                    ]
+                }
+            },
+            {
+                "action": {
+                    "type": "origins:execute_command",
+                    "command": "gamemode survival"
+                },
+                "condition": {
+                    "type": "origins:gamemode",
+                    "gamemode": "creative"
+                }
+            },
+            {
+                "action": {
+                    "type": "origins:execute_command",
+                    "command": "gamemode survival"
+                },
+                "condition": {
+                    "type": "origins:gamemode",
+                    "gamemode": "creative"
+                }
+            }
+        ]
+    },
+    "key": {
+        "key": "key.origins.secondary_active"
+    }
+}

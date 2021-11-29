@@ -1,0 +1,20 @@
+{
+	"powers": [
+		"pipe:callback",
+		"pipe:chimes",
+		"pipe:clunky",
+		"pipe:conductive",
+		"pipe:inefficient_fuel",
+		"pipe:steam",
+		"pipe:overdrive_bar",
+		"pipe:overdrive",
+		"pipe:meltingpoint",
+		"pipe:steam",
+		"pipe:water"
+	],
+	"icon": "minecraft:bucket",
+	"order": 10,
+	"impact": 0,
+	"name": "Pipe",
+	"description": "It's like a steampunk pipe organ robot"
+}

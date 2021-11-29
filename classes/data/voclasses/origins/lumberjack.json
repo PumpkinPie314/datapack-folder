@@ -1,0 +1,10 @@
+{
+    "powers": [
+        "origins-classes:tree_felling"
+    ],
+    "icon": "minecraft:iron_axe",
+    "order": 4,
+    "impact": 0,
+    "name": "lumberjack",
+    "description":"its just tree felling"
+}

@@ -1,0 +1,19 @@
+{
+	"powers": [
+		"inkbat:parallel_end",
+		"inkbat:end_benefits",
+		"inkbat:end_recipes",
+		"inkbat:end_bridge",
+		"inkbat:storage_swap",
+		"inkbat:storage_move",
+		"inkbat:storage_movebarrel",
+		"inkbat:storage_drop",
+		"inkbat:aquaphobia",
+		"inkbat:nether_fear"
+    ],
+    "icon": "minecraft:ender_chest",
+    "order": 16,
+    "impact": 3,
+	"name": "End Spiriter",
+	"description": "To you, the Overworld and the End are two dimensions on the same plane."
+}

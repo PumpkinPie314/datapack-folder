@@ -1,0 +1,9 @@
+{
+  "powers": [
+    "voclasses:more_xp"
+  ],
+  "icon": "minecraft:book",
+  "order": 9,
+  "name": "Magician",
+  "description": "xp gather"
+}

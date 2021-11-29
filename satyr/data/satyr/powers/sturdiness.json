@@ -1,0 +1,10 @@
+{
+    "name": "Good footing",
+    "description": "You resist being knocked back",
+    "type": "origins:attribute",
+    "modifier": {
+        "attribute": "minecraft:generic.knockback_resistance",
+        "value": 0.3,
+        "operation": "addition"
+    }
+}

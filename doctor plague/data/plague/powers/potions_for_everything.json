@@ -1,0 +1,147 @@
+{
+    "name": "situational potions",
+    "description": "pressing space while you're on fire, submerged in water, or falling a significant distance will give you a helpful potion effect for that situation",
+    "hidden": false,
+    "type": "origins:multiple",
+    "resource": {
+        "type": "origins:resource",
+        "start_value": 0,
+        "min": 0,
+        "max": 40,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/resource_bar.png",
+            "bar_index": 8,
+            "condition": {
+                "type": "origins:resource",
+                "resource": "*:*_resource",
+                "comparison": "!=",
+                "compare_to": 40
+            }
+        }
+    },
+    "tick": {
+        "type": "origins:action_over_time",
+        "interval": 20,
+        "entity_action": {
+            "type": "origins:change_resource",
+            "operation": "add",
+            "resource": "*:*_resource",
+            "change": 1
+        },
+        "condition":{
+            "type": "origins:resource",
+            "resource": "*:*_resource",
+            "comparison": "<",
+            "compare_to": 40
+        }
+    },
+    "active": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:if_else_list",
+            "actions": [
+                {
+                    "condition": {
+                        "type": "origins:on_fire"
+                    },
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:apply_effect",
+                                "effect": {
+                                    "effect": "minecraft:fire_resistance",
+                                    "duration": 200,
+                                    "amplifier": 0
+                                }
+                            },
+                            {
+                                "type": "origins:play_sound",
+                                "sound": "entity.witch.drink"
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "operation": "set",
+                                "resource": "*:*_resource",
+                                "change": 0
+                            }
+                        ]
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:fall_distance",
+                        "comparison": ">=",
+                        "compare_to": 4
+                    },
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:apply_effect",
+                                "effect": {
+                                    "effect": "minecraft:slow_falling",
+                                    "duration": 200,
+                                    "amplifier": 0
+                                }
+                            },
+                            {
+                                "type": "origins:play_sound",
+                                "sound": "entity.witch.drink"
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "operation": "set",
+                                "resource": "*:*_resource",
+                                "change": 20
+                            }
+                        ]
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:submerged_in",
+                        "fluid": "minecraft:water"
+                    },
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:apply_effect",
+                                "effect": {
+                                    "effect": "minecraft:water_breathing",
+                                    "duration": 200,
+                                    "amplifier": 0
+                                }
+                            },
+                            {
+                                "type": "origins:play_sound",
+                                "sound": "entity.witch.drink"
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "operation": "set",
+                                "resource": "*:*_resource",
+                                "change": 0
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_resource",
+            "comparison": "==",
+            "compare_to": 40
+        },
+        "cooldown": 0,
+        "key": {
+            "key":"key.jump"
+        },
+        "hud_render": {
+            "should_render": false
+        }
+    }
+}

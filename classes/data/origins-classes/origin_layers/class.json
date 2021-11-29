@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "origins": [
+    "voclasses:adventurer",
+    "voclasses:builder",
+    "voclasses:farmer",
+    "voclasses:looter",
+    "voclasses:lumberjack",
+    "voclasses:magician",
+    "voclasses:miner",
+    "voclasses:noclass",
+    "voclasses:rancher",
+    "voclasses:rider",
+    "voclasses:witch"
+  ]
+}

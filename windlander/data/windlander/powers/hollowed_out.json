@@ -1,0 +1,18 @@
+{
+    "name": "hollowed out",
+    "description": "you must be light to fly; your body is hollow and weak. 2 less hearts and permanent weakness 1.",
+    "hidden": false,
+    "type": "origins:attribute",
+    "modifiers": [
+        {
+            "attribute": "minecraft:generic.max_health",
+            "operation": "addition",
+            "value": -4
+        },
+        {
+            "attribute": "minecraft:generic.attack_damage",
+            "operation": "addition",
+            "value": -4
+        }
+    ]
+}

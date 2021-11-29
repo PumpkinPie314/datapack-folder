@@ -1,0 +1,29 @@
+{
+    "type": "origins:modify_damage_dealt",
+    "modifier":{
+        "operation": "multiply_total",
+        "value": -0.99
+    },
+    "target_action": {
+        "type": "origins:heal",
+        "amount": 2
+    },
+    "self_action": {
+        "type": "origins:damage",
+        "amount": 2,
+        "source": {
+          "name": "magic",
+          "magic": true,
+          "bypasses_armor": true,
+          "unblockable": true
+        }
+    },
+    "target_condition":{
+        "type": "origins:sneaking"
+    },
+    "condition": {
+        "type": "origins:sneaking"
+    },
+    "name": "Maa-sharm",
+    "description": "give your health to others by hitting them when both of you are sneaking"
+}

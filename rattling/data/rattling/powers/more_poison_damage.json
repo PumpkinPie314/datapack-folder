@@ -1,0 +1,16 @@
+{
+  "name": "Rat Poison",
+  "description": "You take double poison damage!!",
+  "damage_condition": {
+    "type": "origins:name",
+    "name": "magic"
+  },
+  "modifier": {
+      "operation": "multiply_base",
+      "value": 1
+  },
+  "condition": {
+    "type": "origins:status_effect",
+    "effect": "minecraft:poison"
+  }
+}

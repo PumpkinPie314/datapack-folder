@@ -1,0 +1,11 @@
+{
+    "type": "origins:attribute",
+    "modifier": {
+        "name": "Max health increase",
+        "attribute": "minecraft:generic.max_health",
+        "value": 10,
+        "operation": "addition"
+    },
+	"name":"more health",
+	"description":"your robot armor gives you +5 hearts"
+}

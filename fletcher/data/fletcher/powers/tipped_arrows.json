@@ -1,0 +1,45 @@
+{
+    "name": "Cheap tipped arrows",
+    "description": "throw 4 arrows and a potion on the ground to make one tipped arrow of that type",
+    "hidden": false,
+    "type": "origins:multiple",
+    "tag_item": {
+        "type": "origins:active_self",
+        "cooldown": 1,
+        "entity_action": {
+            "type": "origins:delay",
+            "ticks": 1,
+            "action": {
+                "type": "origins:execute_command",
+                "command": "execute anchored eyes as @e[limit=1,type=minecraft:item,sort=nearest] run tag @s add FletcherThrown"
+            }
+        },
+        "hud_render": {"should_render": false},
+        "key": {
+            "key":"key.drop",
+            "continuous": false
+        }
+    },
+    "tick": {
+        "type": "origins:action_over_time",
+        "interval": 20,
+        "entity_action": {
+            "type": "origins:if_else",
+            "if_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:execute_command",
+                        "command": "execute as @e[type=minecraft:item,tag=FletcherThrown] at @s run function fletcher:potion_to_arrow"
+                    }
+                ]
+            },
+            "condition": {
+                "type": "origins:command",
+                "command": "execute at @e[type=minecraft:item,tag=FletcherThrown,nbt={Item:{Count:4b}}] if entity @e[nbt={Item:{id:\"minecraft:splash_potion\",Count:1b}},distance=0..1]",
+                "comparison": "==",
+                "compare_to": 1
+            }
+        }
+    }
+}

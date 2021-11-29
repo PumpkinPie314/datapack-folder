@@ -1,0 +1,117 @@
+{
+	"type":"origins:multiple",
+	"conditioned_attribute":{
+        "type": "origins:conditioned_attribute",
+        "modifiers": [
+            {
+                "attribute": "minecraft:generic.movement_speed",
+                "operation": "multiply_total",
+                "value": 1
+            },
+            {
+                "attribute": "minecraft:generic.attack_speed",
+                "operation": "multiply_total",
+                "value": 4
+            }
+        ],
+        "tick_rate": 20,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "robot:is_overcharging",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "haste":{
+        "type": "origins:modify_break_speed",
+        "modifier": {
+            "operation": "multiply_base",
+            "value": 2
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "robot:is_overcharging",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "brittel":{
+        "type": "origins:modify_damage_taken",
+        "damage_condition": {
+            "type": "origins:fire",
+            "inverted": true
+        },
+        "modifier": {
+            "operation": "multiply_total",
+            "value": 1
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "robot:is_overcharging",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+
+
+
+    
+    "recharge":{
+        "type": "origins:conditioned_attribute",
+        "modifiers": [
+            {
+                "attribute": "minecraft:generic.movement_speed",
+                "operation": "multiply_total",
+                "value": -0.5
+            },
+            {
+                "attribute": "minecraft:generic.attack_speed",
+                "operation": "multiply_total",
+                "value": -0.8
+            }
+        ],
+        "tick_rate": 20,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "robot:overcharge_time",
+                    "comparison": "<",
+                    "compare_to": 30
+                },
+                {
+                    "type":"origins:resource",
+                    "resource":"robot:is_overcharging",
+                    "comparison":"==",
+                    "compare_to": 0
+                }
+            ]
+        }
+    },
+    "fatigue":{
+        "type": "origins:modify_break_speed",
+        "modifier": {
+            "operation": "multiply_base",
+            "value": -0.5
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "robot:overcharge_time",
+                    "comparison": "<",
+                    "compare_to": 30
+                },
+                {
+                    "type":"origins:resource",
+                    "resource":"robot:is_overcharging",
+                    "comparison":"==",
+                    "compare_to": 0
+                }
+            ]
+        }
+    },
+    "hidden":true
+}

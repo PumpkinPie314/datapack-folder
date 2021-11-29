@@ -1,0 +1,1 @@
+execute as @a[scores={carrot=1..}] at @s anchored eyes positioned ^-0.5 ^ ^ run function tutorial:ray-trace

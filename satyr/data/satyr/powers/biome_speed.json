@@ -1,0 +1,63 @@
+{
+    "name": "Biome preference",
+    "description": "You move faster in plains, savanna, and mountain biomes and slower in beach, dessert, and swamp biomes",
+	"type":"origins:multiple",
+    "speed_up":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.movement_speed",
+            "operation": "multiply_base",
+            "value": 0.20
+        },
+        "tick_rate": 20,
+        "condition": {
+            "type": "origins:biome",
+            "condition": {
+                "type": "origins:or",
+                "conditions": [
+                    {
+                        "type": "origins:category",
+                        "category": "extreme_hills"
+                    },
+                    {
+                        "type": "origins:category",
+                        "category": "plains"
+                    },
+                    {
+                        "type": "origins:category",
+                        "category": "savanna"
+                    }
+                ]
+            }
+        }
+    },
+    "slow_down":{
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.movement_speed",
+            "operation": "multiply_base",
+            "value": -0.20
+        },
+        "tick_rate": 20,
+        "condition": {
+            "type": "origins:biome",
+            "condition": {
+                "type": "origins:or",
+                "conditions": [
+                    {
+                        "type": "origins:category",
+                        "category": "beach"
+                    },
+                    {
+                        "type": "origins:category",
+                        "category": "desert"
+                    },
+                    {
+                        "type": "origins:category",
+                        "category": "swamp"
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,12 @@
+{
+	"powers": [
+		"windlander:fall_damage",
+		"windlander:pull",
+		"windlander:push"
+	],
+	"icon": "minecraft:trident",
+	"order": 0,
+	"impact": 0,
+	"name": "windlander",
+	"description": "Has mastered the art of the Grappling Hook, moving like the wind in the sky."
+}

@@ -1,0 +1,27 @@
+{
+	"name": "TEST",
+	"type": "origins:action_over_time",
+    "description": "TEST",
+    "entity_action": {
+		"type": "origins:if_else",
+        "condition": {
+			"type": "origins:in_block",
+			"block_condition": {
+				"type": "origins:block",
+				"block": "minecraft:fire"
+			}
+		},
+			"if_action": {
+			"type": "origins:change_resource",
+			"resource": "templarknight:test",
+			"change": 1
+		},
+			"else_action": {
+			"type": "origins:change_resource",
+			"resource": "templarknight:test",
+			"operation": "set",
+			"change": 0
+		}
+    },
+	"interval": 20	
+}

@@ -1,0 +1,312 @@
+{
+	"name": "Parallel Universes",
+	"description": "Use G to move between the Overworld and the End. You cannot wear armor, hold items in your hands, or carry chests or barrels (see below) while traveling.",
+	
+	"type": "origins:multiple",
+	
+	"less_suffocation_damage": {
+		"type": "origins:modify_damage_taken",
+		"damage_condition": {
+			"type": "origins:name",
+			"name": "inWall"
+		},
+		"modifier": {
+			"operation": "multiple_total",
+			"value": -0.3
+		}
+	},
+	
+	"travel_error": {
+		"type": "origins:active_self",
+		"cooldown": 10,
+		"hud_render": {
+			"should_render": false
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "playsound minecraft:block.note_block.didgeridoo player @s ~ ~ ~ 0.9",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "/title @a actionbar {\"text\":\"You cannot travel while holding, wearing, or carrying items!\",\"color\":\"gray\"}",
+					"permission_level": 2
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:command",
+							"command": "execute if entity @s[predicate=inkbat:world_overworld]",
+							"comparison": "==",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if entity @s[predicate=inkbat:world_end]",
+							"comparison": "==",
+							"compare_to": 1
+						}
+					]
+				},
+				{
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:resource",
+							"resource": "inkbat:storage_move_is_carrying",
+							"comparison": "==",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:resource",
+							"resource": "inkbat:storage_movebarrel_is_carrying",
+							"comparison": "==",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if data entity @s SelectedItem",
+							"comparison": "==",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if data entity @s Inventory[{Slot:-106b}]",
+							"comparison": "==",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if data entity @s Inventory[{Slot:103b}]",
+							"comparison": "==",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if data entity @s Inventory[{Slot:102b}]",
+							"comparison": "==",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if data entity @s Inventory[{Slot:101b}]",
+							"comparison": "==",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute if data entity @s Inventory[{Slot:100b}]",
+							"comparison": "==",
+							"compare_to": 1
+						}
+					]
+				}
+			]
+		}
+	},
+	
+	"travel_to_end": {
+		"type": "origins:active_self",
+		"cooldown": 10,
+		"hud_render": {
+			"should_render": false
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "particle minecraft:instant_effect ~ ~0.5 ~ 0.5 0.5 0.5 0.1 16 normal",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 1,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "execute in minecraft:the_end run tp ~ ~ ~",
+						"permission_level": 2
+					}
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:command",
+					"command": "execute if entity @s[predicate=inkbat:world_overworld]",
+					"comparison": "==",
+					"compare_to": 1
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if entity @s[predicate=inkbat:world_end]",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:resource",
+					"resource": "inkbat:parallel_end_travel_to_overworld",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:resource",
+					"resource": "inkbat:storage_move_is_carrying",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:resource",
+					"resource": "inkbat:storage_movebarrel_is_carrying",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if data entity @s SelectedItem",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if data entity @s Inventory[{Slot:-106b}]",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if data entity @s Inventory[{Slot:103b}]",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if data entity @s Inventory[{Slot:102b}]",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if data entity @s Inventory[{Slot:101b}]",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if data entity @s Inventory[{Slot:100b}]",
+					"comparison": "==",
+					"compare_to": 0
+				}
+			]
+		}
+	},
+	
+	"travel_to_overworld": {
+		"type": "origins:active_self",
+		"cooldown": 10,
+		"hud_render": {
+			"should_render": false
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "particle minecraft:instant_effect ~ ~0.5 ~ 0.5 0.5 0.5 0.1 16 normal",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 1,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "execute in minecraft:overworld run tp ~ ~ ~",
+						"permission_level": 2
+					}
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:command",
+					"command": "execute if entity @s[predicate=inkbat:world_overworld]",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if entity @s[predicate=inkbat:world_end]",
+					"comparison": "==",
+					"compare_to": 1
+				},
+				{
+					"type": "origins:resource",
+					"resource": "inkbat:parallel_end_travel_to_end",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:resource",
+					"resource": "inkbat:storage_move_is_carrying",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:resource",
+					"resource": "inkbat:storage_movebarrel_is_carrying",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if data entity @s SelectedItem",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if data entity @s Inventory[{Slot:-106b}]",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if data entity @s Inventory[{Slot:103b}]",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if data entity @s Inventory[{Slot:102b}]",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if data entity @s Inventory[{Slot:101b}]",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if data entity @s Inventory[{Slot:100b}]",
+					"comparison": "==",
+					"compare_to": 0
+				}
+			]
+		}
+	}
+}

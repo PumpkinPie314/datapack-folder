@@ -1,0 +1,76 @@
+{
+    "name": "Push",
+    "description": "You can use your secondary key to throw yourself backwards",
+    "hidden": false,
+    "type": "origins:multiple",
+    "resource": {
+        "type": "origins:resource",
+        "start_value": 0,
+        "min": 0,
+        "max": 120,
+        "hud_render": {
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_01.png",
+            "bar_index": 15,
+            "condition":{
+                "type": "origins:resource",
+                "resource": "*:push_resource",
+                "comparison": "!=",
+                "compare_to": 120
+            }
+        }
+    },
+    "active_self":{
+        "type": "origins:active_self",
+        "cooldown": 1,
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:add_velocity",
+                    "z": -2,
+                    "space": "local",
+                    "set": true
+                },
+                {
+                    "type": "origins:set_fall_distance",
+                    "fall_distance": 0
+                },
+                {
+                    "type": "origins:change_resource",
+                    "operation": "add",
+                    "resource": "*:*_resource",
+                    "change": -60
+                },
+                {
+                    "type": "origins:execute_command",  
+                    "command": "particle poof ~ ~ ~ 0 0 0 0.2 40"
+                }
+            ]
+        },
+        "condition":{
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_resource",
+                    "comparison": ">=",
+                    "compare_to": 60
+                }
+            ]
+        },
+        "hud_render": {"should_render": false},
+        "key": {
+            "key":"key.origins.secondary_active",
+            "continuous": false
+        }
+    },
+    "refill": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_resource",
+            "change": 1
+        }
+    }
+}

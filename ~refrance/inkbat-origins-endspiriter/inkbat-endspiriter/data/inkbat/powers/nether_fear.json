@@ -1,0 +1,51 @@
+{
+	"name": "Foreign",
+	"description": "You are unfamiliar with the creatures of the nether, and you take more damage from them. You also don't trust striders enough to ride them.",
+	
+	"type": "origins:multiple",
+	
+	"nether_mobs": {
+		"type": "origins:modify_damage_taken",
+		"damage_condition": {
+			"type": "origins:attacker",
+			"entity_condition": {
+				"type": "origins:in_tag",
+				"tag": "inkbat:nether_only"
+			}
+		},
+		"modifier": {
+			"operation": "multiply_total",
+			"value": 0.5
+		}
+	},
+	
+	"strider": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 1,
+		"hud_render": {
+			"should_render": false
+		}
+	},
+	
+	"strider_check": {
+		"type": "origins:action_over_time",
+		"interval": 5,
+		"rising_action": {
+			"type": "origins:change_resource",
+			"resource": "inkbat:nether_fear_strider",
+			"change": 1
+		},
+		"falling_action": {
+			"type": "origins:change_resource",
+			"resource": "inkbat:nether_fear_strider",
+			"change": -1
+		},
+		"condition": {
+			"type": "origins:command",
+			"command": "execute as @e[type=minecraft:strider,distance=..2,sort=nearest,limit=1] if data entity @p[distance=..2] RootVehicle",
+			"comparison": ">=",
+			"compare_to": 1
+		}
+	}
+}

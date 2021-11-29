@@ -1,0 +1,55 @@
+
+{
+    "type": "origins:multiple",
+    "name": "Looter's Luck",
+    "description": "Luck is on your side! You get more loot from mobs, structures and fishing.",
+    "loading_priority": 1,
+    "looting":
+    {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "rising_action":
+        {
+            "type": "origins:execute_command",
+            "permission_level": 4,
+            "command": "/tag @s add looting"
+        },
+        "hidden": true,
+        "condition":
+        {
+            "type": "origins:command",
+            "inverted": true,
+            "comparison": "==",
+            "compare_to": 1,
+            "permission_level": 4,
+            "command": "/execute if entity @s[tag=looting]"
+        }
+    },
+    "looting_remove":
+    {
+        "type": "origins:action_on_callback",
+        "hidden": true,
+        "execute_chosen_when_orb": true,
+        "entity_action_removed":
+        {
+            "type": "origins:execute_command",
+            "permission_level": 4,
+            "command": "/tag @s remove looting"
+        },
+        "loading_priority": 1
+    },
+    "luck":
+    {
+        "type": "origins:stacking_status_effect",
+        "min_stacks": -10,
+        "max_stacks": 2,
+        "duration_per_stack": 20,
+        "effect":
+        {
+            "is_ambient": false,
+            "show_particles": false,
+            "show_icon": false,
+            "effect": "luck"
+        }
+    }
+}

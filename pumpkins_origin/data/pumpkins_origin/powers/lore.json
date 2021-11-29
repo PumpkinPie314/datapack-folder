@@ -1,0 +1,158 @@
+{
+    "name": "Scribe",
+    "description": "can add lore and enchant glow to everyday items",
+    "type": "origins:multiple",
+    "active_self": {
+        "type": "origins:active_self",
+        "cooldown": 1,
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[type=item,distance=..50] at @s if block ~ ~-1 ~ #pumpkins_origin:table run tag @s add LoreItemTemp"
+                },
+                {
+                    "type": "origins:if_else_list",
+                    "actions": [
+                        {
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "data remove entity @e[type=minecraft:item,sort=nearest,limit=1,tag=LoreItemTemp] Item.tag.display"
+                                    },
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "execute at @e[type=minecraft:item,sort=nearest,limit=1,tag=LoreItemTemp] run particle minecraft:item minecraft:gray_wool ~ ~ ~ 0 0 0 0.2 200 normal"
+                                    }
+                                ]
+                            },
+                            "condition": {
+                                "type": "origins:command",
+                                "command": "execute if entity @s[nbt={SelectedItem:{id:'minecraft:writable_book', tag: {pages: ['Reset']}}}]",
+                                "comparison": "==",
+                                "compare_to": 1
+                            }
+                        },
+                        {
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "data remove entity @e[type=minecraft:item,sort=nearest,limit=1,tag=LoreItemTemp] Item.tag.Enchantments"
+                                    },
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "execute at @e[type=minecraft:item,sort=nearest,limit=1,tag=LoreItemTemp] run particle minecraft:item minecraft:gray_wool ~ ~ ~ 0 0 0 0.2 200 normal"
+                                    }
+                                ]
+                            },
+                            "condition": {
+                                "type": "origins:command",
+                                "command": "execute if entity @s[nbt={SelectedItem:{id:'minecraft:writable_book', tag: {pages: ['Reset Glow']}}}]",
+                                "comparison": "==",
+                                "compare_to": 1
+                            }
+                        },
+                        {
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "data merge entity @e[type=minecraft:item,sort=nearest,limit=1,tag=LoreItemTemp] {Item:{tag:{Enchantments:[{}]}}}"
+                                    },
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "execute at @e[type=minecraft:item,sort=nearest,limit=1,tag=LoreItemTemp] run particle minecraft:item minecraft:blue_wool ~ ~ ~ 0 0 0 0.2 200 normal"
+                                    }
+                                ]
+                            },
+                            "condition": {
+                                "type": "origins:command",
+                                "command": "execute if entity @s[nbt={SelectedItem:{id:'minecraft:writable_book', tag: {pages: ['Glow']}}}]",
+                                "comparison": "==",
+                                "compare_to": 1
+                            }
+                        },
+                        {
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "data merge entity @e[type=minecraft:item,sort=nearest,limit=1,tag=LoreItemTemp] {Item:{tag:{display:{Name:'{}'}}}}"
+                                    },
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "data modify entity @e[type=minecraft:item,sort=nearest,limit=1,tag=LoreItemTemp] Item.tag.display.Name set from entity @s Inventory[{Slot:-106b}].tag.pages[0]"
+                                    },
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "execute at @e[type=minecraft:item,sort=nearest,limit=1,tag=LoreItemTemp] run particle minecraft:item minecraft:white_wool ~ ~ ~ 0 0 0 0.2 200 normal"
+                                    }
+                                ]
+                            },
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "offhand",
+                                "item_condition": {
+                                    "type": "origins:ingredient",
+                                    "ingredient": {
+                                        "item": "minecraft:writable_book"
+                                    }
+                                }                    
+                            }
+                        },
+                        {
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "data merge entity @e[type=minecraft:item,sort=nearest,limit=1,tag=LoreItemTemp] {Item:{tag:{display:{Lore:['{}']}}}}"
+                                    },
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "data modify entity @e[type=minecraft:item,sort=nearest,limit=1,tag=LoreItemTemp] Item.tag.display.Lore set from entity @s SelectedItem.tag.pages"
+                                    },
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "execute at @e[type=minecraft:item,sort=nearest,limit=1,tag=LoreItemTemp] run particle minecraft:item minecraft:purple_wool ~ ~ ~ 0 0 0 0.2 200 normal"
+                                    }
+                                ]
+                            },
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:ingredient",
+                                    "ingredient": {
+                                        "item": "minecraft:writable_book"
+                                    }
+                                }                    
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 20,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "execute as @e[type=item,tag=LoreItemTemp] run tag @s remove LoreItemTemp"
+                    }
+                }
+            ]
+        },
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.origins.primary_active"
+        }
+    }
+}

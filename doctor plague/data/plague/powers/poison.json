@@ -1,0 +1,18 @@
+{
+    "name": "Poison remedy",
+    "description": "Secondary to throw a poison potion",
+    "type": "origins:fire_projectile",
+    "entity_type": "minecraft:potion",
+    "cooldown": 800,
+    "speed": 0.5,
+    "hud_render": {
+        "should_render": true,
+        "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
+        "bar_index": 10
+    },
+    "tag": "{Item:{id:\"minecraft:splash_potion\",Count:1b,tag:{Potion:\"minecraft:strong_poison\"}}}",
+    "key": {
+        "key":"key.origins.secondary_active",
+        "continuous": false
+    }
+}

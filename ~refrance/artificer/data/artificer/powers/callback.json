@@ -1,0 +1,55 @@
+{
+    "name": "callback",
+    "description": "adds tags",
+	"type": "origins:action_on_callback",
+	"entity_action_chosen": {
+		"type": "origins:and",
+		"actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "tag @s add ArtificerOrigin",
+                "permission_level": 4
+            }
+		]
+	},
+	"entity_action_added": {
+		"type": "origins:and",
+		"actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "tag @s add ArtificerOrigin",
+                "permission_level": 4
+            }
+		]
+	},
+	"entity_action_lost": {
+		"type": "origins:and",
+		"actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "tag @s remove ArtificerOrigin",
+                "permission_level": 4
+            }
+		]
+	},
+	"entity_action_removed": {
+		"type": "origins:and",
+		"actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "tag @s remove ArtificerOrigin",
+                "permission_level": 4
+            }
+		]
+	},
+	"entity_action_respawned": {
+		"type": "origins:and",
+		"actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "tag @s add ArtificerOrigin",
+                "permission_level": 4
+            }
+		]
+	}
+}

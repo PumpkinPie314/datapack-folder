@@ -1,0 +1,14 @@
+{
+    "name": "no clip",
+    "description": "when toggled, you can fly through blocks",
+    "type": "origins:phasing",
+    "render_type": "blindness",
+    "view_distance": 100,
+    "phase_down_condition": {
+        "type": "origins:sneaking"
+    },
+    "condition": {
+        "type": "origins:power_active",
+        "power": "*:toggle"
+    }
+}

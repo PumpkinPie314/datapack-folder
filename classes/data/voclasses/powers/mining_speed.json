@@ -1,0 +1,13 @@
+{
+    "name": "increased mining speed",
+    "description": "you break blocks 20% faster",
+    "type": "origins:modify_break_speed",
+    "block_condition": {
+        "type": "origins:constant",
+        "value": true
+    },
+    "modifier": {
+        "operation": "multiply_total",
+        "value": 0.2
+    }
+}

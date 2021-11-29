@@ -1,0 +1,17 @@
+{
+    "name": "target",
+    "description": "click on an entity to target it",
+    "type": "origins:action_on_entity_use",
+    "bientity_action": {
+        "type": "origins:target_action",
+        "action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "say hi"
+                }
+            ]
+        }
+    }
+}

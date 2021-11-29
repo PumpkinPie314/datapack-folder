@@ -1,0 +1,82 @@
+{
+	"type":"origins:multiple",
+	"haste":{
+		"type": "origins:modify_break_speed",
+		"modifier": {
+			"operation": "multiply_base",
+			"value": 0.3
+		},
+		"condition":{
+			"type":"origins:and",
+			"conditions":[
+				{
+					"type":"origins:resource",
+					"resource":"pumpkin:bar",
+					"comparison":">=",
+					"compare_to":20
+				}
+			]
+		}
+	},
+	"strength":{
+		"type": "origins:modify_damage_dealt",
+		"modifier": {
+			"operation": "multiply_total",
+			"value": 1.15
+		},
+		"condition":{
+			"type":"origins:and",
+			"conditions":[
+				{
+					"type":"origins:resource",
+					"resource":"pumpkin:bar",
+					"comparison":">=",
+					"compare_to":20
+				}
+			]
+		}
+	},
+	"attributes":{
+		"type": "origins:conditioned_attribute",
+		"modifiers": [
+			{
+				"attribute": "minecraft:generic.attack_speed",
+				"operation": "multiply_total",
+				"value": 4
+			}
+		],
+		"tick_rate": 20,
+		"condition": {
+			"type":"origins:and",
+			"conditions":[
+				{
+					"type":"origins:resource",
+					"resource":"pumpkin:bar",
+					"comparison":">=",
+					"compare_to":20
+				}
+			]
+		}
+	},
+	"unbroken_luck":{
+		"type":"origins:stacking_status_effect",
+		"min_stacks":-2,
+		"max_stacks":2,
+		"duration_per_stack":20,
+		"effect":{
+			"effect":"minecraft:luck",
+			"amplifier":0,
+			"is_ambient":true,
+			"show_particles":true,
+			"show_icon":true
+		},
+		"condition":{
+			"type":"origins:resource",
+			"resource":"pumpkin:bar",
+			"comparison":">=",
+			"compare_to":20
+		}
+	},
+	"name":"Unbroken",
+	"description":"When your pumpkin is as happy as can be you become 'unbroken'. You deal more damage and break blocks 30% faster (haste 1.5). But if you take even a bit of damage all this work will dissapeer"
+}

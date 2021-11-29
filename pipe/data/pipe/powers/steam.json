@@ -1,0 +1,196 @@
+{
+	"type":"origins:multiple",
+    "name": "steam",
+    "description": "you gain steam by eating coal, it gos down over time. if it hits 0 you start dying. it depletes faster in hot biomes and slower in snowy biomes",
+    "resource": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 18000,
+        "start_value": 18000,
+        "hud_render": {
+            "bar_index": 5
+        }
+    },
+    "fuel": {
+        "type": "origins:active_self",
+        "cooldown": 10,
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+				{
+					"type":"origins:play_sound",
+					"sound": "minecraft:entity.ghast.shoot"
+				},
+                {
+                    "type": "origins:equipped_item_action",
+                    "equipment_slot": "mainhand",
+                    "action": {
+                        "type": "origins:consume",
+                        "amount": 1
+                    }
+                },
+                {
+                    "type":"origins:delay",
+                    "ticks":30,
+                    "action":{
+                        "type": "origins:change_resource",
+                        "resource": "*:*_resource",
+                        "change": 900
+                    }
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:equipped_item",
+            "equipment_slot": "mainhand",
+            "item_condition": {
+                "type": "origins:ingredient",
+                "ingredient": {
+                    "item": "minecraft:coal"
+                }
+            }
+        },
+        "key": {
+            "key": "key.use",
+            "continuous": true
+        },
+        "hud_render": {
+			"sprite_location":"origins:textures/gui/community/spiderkolo/resource_bar_01.png",
+			"bar_index":16
+        }
+    },
+    "tick":{
+        "type":"origins:action_over_time",
+        "interval": 10,
+        "entity_action": {
+            "type": "origins:if_else",
+            "if_action": {
+                "type": "origins:if_else",
+                "if_action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:if_else",
+                            "if_action": {
+                                "type": "origins:change_resource",
+                                "operation": "add",
+                                "resource": "*:*_resource",
+                                "change": -1
+                            },
+                            "condition": {
+                                "type": "origins:constant",
+                                "value": true
+                            }
+                        },
+                        {
+                            "type": "origins:if_else",
+                            "if_action": {
+                                "type": "origins:change_resource",
+                                "operation": "add",
+                                "resource": "*:*_resource",
+                                "change": -1
+                            },
+                            "condition": {
+                                "type": "origins:biome",
+                                "condition": {
+                                    "type": "origins:temperature",
+                                    "comparison": "<",
+                                    "compare_to": 2.0
+                                }
+                            }
+                        },
+                        {
+                            "type": "origins:if_else",
+                            "if_action": {
+                                "type": "origins:change_resource",
+                                "operation": "add",
+                                "resource": "*:*_resource",
+                                "change": -2
+                            },
+                            "condition": {
+                                "type": "origins:biome",
+                                "condition": {
+                                    "type": "origins:temperature",
+                                    "comparison": "<",
+                                    "compare_to": 0.15
+                                }
+                            }
+                        }
+                    ]
+                },
+                "else_action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:if_else",
+                            "if_action": {
+                                "type": "origins:change_resource",
+                                "operation": "add",
+                                "resource": "*:*_resource",
+                                "change": -5
+                            },
+                            "condition": {
+                                "type": "origins:constant",
+                                "value": true
+                            }
+                        },
+                        {
+                            "type": "origins:if_else",
+                            "if_action": {
+                                "type": "origins:change_resource",
+                                "operation": "add",
+                                "resource": "*:*_resource",
+                                "change": -5
+                            },
+                            "condition": {
+                                "type": "origins:biome",
+                                "condition": {
+                                    "type": "origins:temperature",
+                                    "comparison": "<",
+                                    "compare_to": 2.0
+                                }
+                            }
+                        },
+                        {
+                            "type": "origins:if_else",
+                            "if_action": {
+                                "type": "origins:change_resource",
+                                "operation": "add",
+                                "resource": "*:*_resource",
+                                "change": -10
+                            },
+                            "condition": {
+                                "type": "origins:biome",
+                                "condition": {
+                                    "type": "origins:temperature",
+                                    "comparison": "<",
+                                    "compare_to": 0.15
+                                }
+                            }
+                        }
+                    ]
+                },
+                "condition": {
+                    "type": "origins:resource",
+                    "resource": "*:overdrive_is",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            },
+            "else_action": {
+                "type": "origins:damage",
+                "amount": 1,
+                "source": {
+                    "name": "starve",
+                    "bypasses_armor": true
+                }
+            },
+            "condition": {
+                "type": "origins:resource",
+                "resource": "*:steam_resource",
+                "comparison": ">",
+                "compare_to": 0
+            }
+        }
+    }
+}

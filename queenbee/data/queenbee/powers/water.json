@@ -1,0 +1,49 @@
+{
+    "name": "Soggy wings",
+    "description": "water is like molasses to you, you can move once you touch it",
+    "type": "origins:multiple",
+    "weakness": {
+        "modifier": {
+            "operation": "addition",
+            "value": -4
+        },
+        "condition": {
+            "type": "origins:fluid_height",
+            "fluid": "minecraft:water",
+            "comparison": "!=",
+            "compare_to": 0
+        }
+    },
+    "speed_rain":{
+        "type": "origins:conditioned_attribute",
+        "tick_rate": 20,
+        "modifier": {
+            "operation": "multiply_base",
+            "value": -0.33
+        },
+        "condition": {
+            "type": "origins:in_rain"
+        }
+    },
+    "speed_water":{
+        "type": "origins:conditioned_attribute",
+        "tick_rate": 20,
+        "modifier": {
+            "operation": "multiply_base",
+            "value": -0.66
+        },
+        "condition": {
+            "type": "origins:fluid_height",
+            "fluid": "minecraft:water",
+            "comparison": "!=",
+            "compare_to": 0
+        }
+    },
+    "swim_speed": {
+        "type": "origins:modify_swim_speed",
+        "modifier": {
+            "operation": "multiply_base",
+            "value": -0.66
+        }
+    }
+}

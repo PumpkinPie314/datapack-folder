@@ -1,0 +1,24 @@
+{
+	"powers": [
+		"robot:eat_coal",
+		"robot:heal_with_iron",
+		"robot:more_health",
+
+		"robot:gold_fuel_tank",
+		"robot:jetpack",
+
+		"robot:night_vision",
+		"robot:nightvision_time",
+
+		"robot:is_overcharging",
+		"robot:overcharge_time",
+		"robot:overcharge_change",
+		"robot:overcharge",
+		"robot:rust"
+	],
+	"icon": "minecraft:iron_ingot",
+	"order": 10,
+	"impact": 0,
+	"name": "Robot",
+	"description": "completely synthetic, you are a metal force to be reckoned with"
+}

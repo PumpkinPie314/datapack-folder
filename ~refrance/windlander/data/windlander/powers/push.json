@@ -1,0 +1,59 @@
+{
+    "name": "Push",
+    "description": "Use your secondary ability key to push backwards",
+    "type": "origins:multiple",
+    "resource": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 120,
+        "hud_render": {
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_01.png",
+            "bar_index": 15,
+            "condition": {
+                "type": "origins:resource",
+                "resource": "*:*_*",
+                "comparison": "!=",
+                "compare_to": 120
+            }
+        }
+    },
+    "fill": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_resource",
+            "change": 1
+        }
+    },
+    "push": {
+        "type": "origins:active_self",
+        "cooldown": 20,
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_resource",
+                    "change": -60
+                },
+                {
+                    "type": "origins:add_velocity",
+                    "z": -2,
+                    "space": "local"
+                }
+            ]
+        },
+        "condition":{
+            "type": "origins:resource",
+            "resource": "*:*_resource",
+            "comparison": ">=",
+            "compare_to": 60
+        },
+        "hud_render": {"should_render": false},
+        "key": {
+            "key":"key.origins.secondary_active",
+            "continuous": false
+        }
+    }
+}

@@ -1,0 +1,76 @@
+{
+    "description": "when the primary key is held the is_casting is set to 1",
+    "hidden": true,
+    "type": "origins:multiple",
+    "active_self":{
+        "type": "origins:active_self",
+        "cooldown": 1,
+        "entity_action": {
+                "type": "origins:change_resource",
+                "operation": "add",
+                "resource": "*:grapple/primary_hold_buffer",
+                "change": 2
+        },
+        "hud_render": {"should_render": false},
+        "key": {
+            "key":"key.origins.primary_active",
+            "continuous": true
+        }
+    },
+    "set_is_casting": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "rising_action": {
+            "type": "origins:change_resource",
+            "operation": "set",
+            "resource": "*:grapple/resources_is_casting",
+            "change": 1
+        },
+        "falling_action": {
+            "type": "origins:change_resource",
+            "operation": "set",
+            "resource": "*:grapple/resources_is_casting",
+            "change": 0
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:grapple/primary_hold_buffer",
+                    "comparison": ">",
+                    "compare_to": 1
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:grapple/resources_can_cast",
+                    "comparison": "==",
+                    "compare_to": 1
+                }
+            ]
+        }
+    },
+    "hold_buffer": {
+        "type": "origins:resource",
+        "start_value": 0,
+        "min": 0,
+        "max": 3,
+        "hud_render": {"should_render": false}
+    },
+    "deplete":{
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:change_resource",
+            "operation": "add",
+            "resource": "*:grapple/primary_hold_buffer",
+            "change": -1
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:grapple/primary_hold_buffer",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    }
+}

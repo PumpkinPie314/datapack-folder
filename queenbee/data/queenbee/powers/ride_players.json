@@ -1,0 +1,15 @@
+{
+	"name": "Ride players",
+	"description": "You're small and light, you can ride players",
+    "type": "origins:action_on_entity_use",
+    "bientity_action": {
+        "type": "origins:mount"
+    },
+    "bientity_condition": {
+        "type": "origins:target_condition",
+        "condition": {
+            "type": "origins:entity_type",
+            "entity_type": "minecraft:player"
+        }
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "name": "Light body",
+    "description": "you can fall from any hight and not take damage",
+    "type": "origins:invulnerability",
+    "damage_condition": {
+        "type": "origins:name",
+        "name": "fall"
+    }
+}

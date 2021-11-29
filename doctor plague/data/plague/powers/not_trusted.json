@@ -1,0 +1,22 @@
+{
+	"name": "Witch",
+	"description": "You are a witch so illagers wont attack you but also you cant trade with villagers",
+	
+	"type": "origins:multiple",
+	
+	"illager": {
+		"type": "origins:entity_group",
+		"group": "illager"
+	},
+	
+	"no_trading": {
+		"type": "origins:prevent_entity_use",
+		"bientity_condition": {
+			"type": "origins:target_condition",
+			"condition": {
+				"type": "origins:entity_type",
+				"entity_type": "minecraft:villager"
+			}
+		}
+	}
+}

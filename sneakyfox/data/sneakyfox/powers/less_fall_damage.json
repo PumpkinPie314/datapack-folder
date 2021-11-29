@@ -1,0 +1,27 @@
+{
+    "name": "Nice knees",
+    "description": "you dont take as much damage from falling",
+    "type": "origins:multiple",
+    "damage_taken":{
+        "type": "origins:modify_damage_taken",
+        "damage_condition": {
+            "type": "origins:name",
+            "name": "fall"
+        },
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -0.5
+        }
+    },
+    "on_jump": {
+        "type": "origins:modify_jump",
+        "entity_action": {
+            "type": "origins:delay",
+            "ticks": 15,
+            "action": {
+                "type": "origins:set_fall_distance",
+                "fall_distance": 0
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{
+	"name": "Poison",
+	"description": "Bees are cute, but people often forget that they're really good at defending themselves",
+	"type": "origins:target_action_on_hit",
+	"entity_action": {
+		"type": "origins:apply_effect",
+		"effect": { 
+			"effect": "minecraft:poison",
+			"amplifier": 2,
+			"duration": 50
+		}
+	},	
+	"cooldown": 100
+}

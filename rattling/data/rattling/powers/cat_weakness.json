@@ -1,0 +1,11 @@
+{
+    "name": "Ailurophobia",
+    "description": "You have an immense and very rational fear of cats. Even wielding the power of lightning won't help with that.",
+    "type": "origins:action_over_time",
+    "entity_action": {
+      "type": "origins:execute_command",
+      "command": "execute at @e[type=cat,distance=0..20] run effect give @s weakness 2 1 true",
+      "permission_level": 4
+    },
+    "interval": 20
+  }

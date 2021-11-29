@@ -1,0 +1,52 @@
+{
+    "name": "Wings",
+    "description": "you can slowly levitate with your primary key, however you cant do this in the rain or in water",
+    "type": "origins:multiple",
+    "active_self": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:or",
+                "conditions": [
+                    {
+                        "type": "origins:status_effect",
+                        "effect": "minecraft:levitation"
+                    },
+                    {
+                        "type": "origins:in_rain"
+                    }
+                ]
+            },
+            "if_action": {
+                "type": "origins:clear_effect",
+                "effect": "minecraft:levitation"
+            },
+            "else_action": {
+                "type": "origins:apply_effect",
+                "effect": {
+                    "effect": "minecraft:levitation",
+                    "is_ambient": true,
+                    "show_particles": false,
+                    "show_icon": false,
+                    "duration": 6000
+                }
+            }
+        },
+        "cooldown": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "rain_check": {
+        "type": "origins:action_over_time",
+        "interval": 5,
+        "rising_action": {
+            "type": "origins:clear_effect",
+            "effect": "minecraft:levitation"
+        },
+        "condition": {
+            "type": "origins:in_rain"
+        }
+    }
+}

@@ -1,0 +1,145 @@
+{
+	"name": "Feeling Safe at Home",
+	"description": "In the End, you are stronger, faster, and more resistant. You also take no fall damage. When you jump while looking straight up or down, you jump 5 blocks high. Endermen also ignore you, even if you attack them.",
+	
+	"type": "origins:multiple",
+	
+	"no_fall_damage": {
+		"type": "origins:invulnerability",
+		"damage_condition": {
+			"type": "origins:name",
+			"name": "fall"
+		},
+		"condition": {
+			"type": "origins:command",
+			"command": "execute if predicate inkbat:world_end",
+			"comparison": "==",
+			"compare_to": 1
+		}
+	},
+	
+	"status_effects": {
+		"type": "origins:stacking_status_effect",
+		"min_stacks": 1,
+		"max_stacks": 1,
+		"duration_per_stack": 25,
+		"effects": [
+			{
+				"effect": "minecraft:resistance",
+				"amplifier": 1,
+				"is_ambient": true,
+				"show_particles": false,
+				"show_icon": false
+			},
+			{
+				"effect": "minecraft:strength",
+				"is_ambient": true,
+				"show_particles": false,
+				"show_icon": false
+			},
+			{
+				"effect": "minecraft:speed",
+				"is_ambient": true,
+				"show_particles": false,
+				"show_icon": false
+			}
+		],
+		"condition": {
+			"type": "origins:command",
+			"command": "execute if predicate inkbat:world_end",
+			"comparison": "==",
+			"compare_to": 1
+		}
+	},
+	
+	"jump_boost": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:apply_effect",
+			"effect": {
+				"effect": "minecraft:jump_boost",
+				"duration": 25,
+				"amplifier": 4,
+				"is_ambient": true,
+				"show_particles": false,
+				"show_icon": true
+			}
+		},
+		"falling_action": {
+			"type": "origins:clear_effect",
+			"effect": "minecraft:jump_boost"
+		},
+		"condition": {
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:command",
+					"command": "execute if entity @s[x_rotation=-90,predicate=inkbat:world_end,predicate=!inkbat:player_sneaking]",
+					"comparison": "==",
+					"compare_to": 1
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if entity @s[x_rotation=90,predicate=inkbat:world_end,predicate=!inkbat:player_sneaking]",
+					"comparison": "==",
+					"compare_to": 1
+				}
+			]
+		}
+	},
+	
+	"team": {
+		"type": "origins:action_on_callback",
+		"entity_action_chosen": {
+			"type": "origins:execute_command",
+			"command": "team add EndermanIgnore",
+			"permission_level": 2
+		},
+		"entity_action_added": {
+			"type": "origins:execute_command",
+			"command": "team add EndermanIgnore",
+			"permission_level": 2
+		},
+		"entity_action_lost": {
+			"type": "origins:execute_command",
+			"command": "team leave @s",
+			"permission_level": 2
+		},
+		"entity_action_removed": {
+			"type": "origins:execute_command",
+			"command": "team leave @s",
+			"permission_level": 2
+		},
+		"entity_action_respawned": {
+			"type": "origins:execute_command",
+			"command": "team leave @s[predicate=!inkbat:world_end]",
+			"permission_level": 2
+		}
+	},
+	
+	"join_team_in_end": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "team join EndermanIgnore @s[predicate=inkbat:world_end]",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "team join EndermanIgnore @e[type=enderman,predicate=inkbat:world_end]",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "team leave @s[predicate=!inkbat:world_end]",
+					"permission_level": 2
+				}
+			]
+		}
+	}
+}

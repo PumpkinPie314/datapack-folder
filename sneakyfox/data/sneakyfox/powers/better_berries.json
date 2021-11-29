@@ -1,0 +1,19 @@
+{
+  "name": "Berry diet",
+  "description": "Eating berries give you more hunger and saturation then usual",
+  "type": "origins:modify_food",
+  "item_condition": {
+    "type": "origins:ingredient",
+    "ingredient": {
+      "item": "minecraft:sweet_berries"
+    }
+  },
+  "food_modifier": {
+    "operation": "addition",
+    "value": 2.0
+  },
+  "saturation_modifier": {
+    "operation": "addition",
+    "value": 1.0
+  }
+}

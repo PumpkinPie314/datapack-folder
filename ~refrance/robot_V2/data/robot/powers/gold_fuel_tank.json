@@ -1,0 +1,22 @@
+{
+    "type": "origins:resource",
+    "min": 0,
+    "max": 80,
+    "hud_render": {
+        "should_render": true,
+        "sprite_location": "origins:textures/gui/resource_bar.png",
+        "bar_index": 7,
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource":"robot:gold_fuel_tank",
+                    "comparison":"!=",
+                    "compare_to":0
+                }
+            ]
+        }
+    },
+    "hidden":true
+}

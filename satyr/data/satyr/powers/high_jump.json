@@ -1,0 +1,28 @@
+{
+    "name": "Big jump",
+    "description": "Sneak while you jump for big jump",
+    "type": "origins:modify_jump",
+    "modifier": {
+        "operation": "addition",
+        "value": 1
+    },
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:play_sound",
+                "sound": "minecraft:entity.goat.ram_impact",
+                "volume": 0.7
+            },
+            {
+                "type": "origins:change_resource",
+                "operation": "set",
+                "resource": "*:temporary_fall_immune_time",
+                "change": 40
+            }
+        ]
+    },
+    "condition": {
+        "type": "origins:sneaking"
+    }
+}

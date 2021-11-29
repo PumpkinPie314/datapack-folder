@@ -1,0 +1,4 @@
+execute if entity @s[nbt=!{Inventory:[{Slot:103b,tag:{netheritechecked:1}}]}] if entity @s[nbt={Inventory:[{Slot:103b,id:"minecraft:netherite_helmet"}]}] run replaceitem entity @s armor.head air 
+execute if entity @s[nbt=!{Inventory:[{Slot:102b,tag:{netheritechecked:1}}]}] if entity @s[nbt={Inventory:[{Slot:102b,id:"minecraft:netherite_chestplate"}]}] at @s run replaceitem entity @s armor.chest air 
+execute if entity @s[nbt=!{Inventory:[{Slot:101b,tag:{netheritechecked:1}}]}] if entity @s[nbt={Inventory:[{Slot:101b,id:"minecraft:netherite_leggings"}]}] at @s run replaceitem entity @s armor.legs air 
+execute if entity @s[nbt=!{Inventory:[{Slot:100b,tag:{netheritechecked:1}}]}] if entity @s[nbt={Inventory:[{Slot:100b,id:"minecraft:netherite_boots"}]}] at @s run replaceitem entity @s armor.feet air 

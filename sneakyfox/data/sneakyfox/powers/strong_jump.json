@@ -1,0 +1,12 @@
+{
+  "name": "Big jump",
+  "description": "If you jump while sprinting you go 2 block high",
+  "type": "origins:modify_jump",
+  "modifier": {
+    "operation": "multiply_base",
+    "value": 0.5
+  },
+  "condition": {
+    "type": "origins:sprinting"
+  }
+}

@@ -1,0 +1,46 @@
+{
+    "description": "you cant start grappling near the ground",
+    "hidden": true,
+    "type": "origins:action_over_time",
+    "interval": 1,
+    "rising_action": {
+        "type": "origins:change_resource",
+        "operation": "set",
+        "resource": "*:grapple/resources_can_cast",
+        "change": 0
+    },
+    "falling_action": {
+        "type": "origins:change_resource",
+        "operation": "set",
+        "resource": "*:grapple/resources_can_cast",
+        "change": 1
+    },
+    "condition":{
+        "type": "origins:and",
+        "conditions": [
+            {
+                "type": "origins:or",
+                "conditions": [
+                    {
+                        "type": "origins:block_collision",
+                        "offset_x": 0,
+                        "offset_y": -1,
+                        "offset_z": 0
+                    },
+                    {
+                        "type": "origins:block_collision",
+                        "offset_x": 0,
+                        "offset_y": -2,
+                        "offset_z": 0
+                    }
+                ]
+            },
+            {
+                "type": "origins:resource",
+                "resource": "*:grapple/resources_is_casting",
+                "comparison": "==",
+                "compare_to": 0
+            }
+        ]
+    }
+}

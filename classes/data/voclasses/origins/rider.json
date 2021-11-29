@@ -1,0 +1,10 @@
+{
+    "powers": [
+        "voclasses:ride_speed"
+    ],
+    "icon": "minecraft:minecart",
+    "order": 6,
+    "impact": 0,
+    "name": "rider",
+    "description": "Anything you ride moves 20% faster"
+}

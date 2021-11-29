@@ -1,0 +1,10 @@
+{
+    "powers": [
+        "voclasses:looting"
+    ],
+    "icon": "minecraft:chest",
+    "order": 6,
+    "impact": 0,
+    "name": "Looter",
+    "description": "Always bring a Looter along to any dungeon."
+}

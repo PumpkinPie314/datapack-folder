@@ -1,0 +1,19 @@
+{
+    "name": "axes",
+    "description": "You can't attack with axes",
+    "type": "origins:modify_damage_dealt",
+    "modifier": {
+        "operation": "multiply_total",
+        "value": -1
+    },
+    "condition": {
+        "type": "origins:equipped_item",
+        "equipment_slot": "mainhand",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "tag": "plague:axes"
+            }
+        }
+    }
+}

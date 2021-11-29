@@ -1,0 +1,2 @@
+team add foxcrafter
+team modify foxcrafter collisionRule pushOtherTeams

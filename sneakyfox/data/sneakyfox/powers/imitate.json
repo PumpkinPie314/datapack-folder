@@ -1,0 +1,148 @@
+{
+    "name": "imitate",
+    "description": " Send a sound effect 10 blocks away from you. Hold different items in your hand for different sounds",
+    "type": "origins:active_self",
+    "entity_action": {
+        "type": "origins:if_else_list",
+        "actions": [
+            {
+                "action": {
+                    "type": "origins:execute_command",
+                    "command": "/playsound minecraft:entity.creeper.primed voice @a ^ ^ ^10"
+                },
+                "condition": {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "mainhand",
+                    "item_condition":{
+                        "type":"origins:ingredient",
+                        "ingredient":{
+                            "item":"minecraft:gunpowder"
+                        }
+                    }
+                }
+            },
+            {
+                "action": {
+                    "type": "origins:execute_command",
+                    "command": "/playsound minecraft:entity.pig.ambient voice @a ^ ^ ^10"
+                },
+                "condition": {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "mainhand",
+                    "item_condition":{
+                        "type":"origins:ingredient",
+                        "ingredient":{
+                            "item":"minecraft:porkchop"
+                        }
+                    }
+                }
+            },
+            {
+                "action": {
+                    "type": "origins:execute_command",
+                    "command": "/playsound minecraft:entity.wolf.ambient voice @a ^ ^ ^10"
+                },
+                "condition": {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "mainhand",
+                    "item_condition":{
+                        "type":"origins:ingredient",
+                        "ingredient":{
+                            "item":"minecraft:bone"
+                        }
+                    }
+                }
+            },
+            {
+                "action": {
+                    "type": "origins:execute_command",
+                    "command": "/playsound minecraft:entity.sheep.ambient voice @a ^ ^ ^10"
+                },
+                "condition":{
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "mainhand",
+                    "item_condition": {
+                        "type": "origins:ingredient",
+                        "ingredient": {
+                            "tag": "minecraft:wool"
+                        }
+                    }
+                }
+            },
+            {
+                "action": {
+                    "type": "origins:execute_command",
+                    "command": "/playsound minecraft:entity.cow.ambient voice @a ^ ^ ^10"
+                },
+                "condition":{
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "mainhand",
+                    "item_condition": {
+                        "type": "origins:ingredient",
+                        "ingredient": {
+                            "item": "minecraft:beef"
+                        }
+                    }
+                }
+            },
+            {
+                "action": {
+                    "type": "origins:execute_command",
+                    "command": "/playsound minecraft:entity.spider.ambient voice @a ^ ^ ^10"
+                },
+                "condition": {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "mainhand",
+                    "item_condition":{
+                        "type":"origins:ingredient",
+                        "ingredient":{
+                            "item":"minecraft:spider_eye"
+                        }
+                    }
+                }
+            },
+            {
+                "action": {
+                    "type": "origins:execute_command",
+                    "command": "/playsound minecraft:entity.fox.aggro voice @a ^ ^ ^10"
+                },
+                "condition": {
+                    "type": "origins:command",
+                    "command": "execute if entity @s[nbt={SelectedItemSlot:0}]",
+                    "comparison": "==",
+                    "compare_to": 1
+                }
+            },
+            {
+                "action": {
+                    "type": "origins:execute_command",
+                    "command": "/playsound minecraft:entity.fox.screech voice @a ^ ^ ^10"
+                },
+                "condition": {
+                    "type": "origins:command",
+                    "command": "execute if entity @s[nbt={SelectedItemSlot:8}]",
+                    "comparison": "==",
+                    "compare_to": 1
+                }
+            },
+            {
+                "action": {
+                    "type": "origins:execute_command",
+                    "command": "/playsound minecraft:entity.fox.ambient voice @a ^ ^ ^10"
+                },
+                "condition": {
+                    "type": "origins:constant",
+                    "value": true
+                }
+            }
+        ]
+    },
+    "cooldown": 20,
+    "hud_render": {
+        "should_render": false
+    },
+    "key": {
+        "key": "key.origins.secondary_active",
+        "continuous": true
+    }
+}

@@ -1,0 +1,56 @@
+{
+    "name": "Chimes",
+    "description": "you make pretty chime noises",
+    "hidden": false,
+    "type": "origins:multiple",
+    "is": {
+        "type": "origins:resource",
+        "start_value": 0,
+        "min": 0,
+        "max": 1,
+        "hud_render": {"should_render": false}
+    },
+    "toggle": {
+        "type": "origins:active_self",
+        "cooldown": 1,
+        "entity_action": {
+            "type": "origins:if_else_list",
+            "actions": [
+                {
+                    "action": {
+                        "type": "origins:change_resource",
+                        "operation": "set",
+                        "resource": "*:*_is",
+                        "change": 1
+                    },
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "*:*_is",
+                        "comparison": "==",
+                        "compare_to": 0
+                    }
+                },
+                {
+                    "action": {
+                        "type": "origins:change_resource",
+                        "operation": "set",
+                        "resource": "*:*_is",
+                        "change": 0
+                    },
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "*:*_is",
+                        "comparison": "==",
+                        "compare_to": 1
+                    }
+                }
+            ]
+        },
+        "key": {
+            "key":"key.origins.secondary_active"
+        },
+        "hud_render": {
+            "should_render": false
+        }
+    }
+}

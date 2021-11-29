@@ -1,0 +1,649 @@
+{
+    "name": "Longer Potions",
+    "description": "The potions you drink last twice as long",
+    "hidden": false,
+    "type": "origins:multiple",
+    
+    "night_vision":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:night_vision",      
+                "duration": 7200,
+                "amplifier": 0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:night_vision\"}"
+        }
+    },
+
+    "invisibility":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:invisibility",      
+                "duration": 7200,
+                "amplifier": 0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:invisibility\"}"
+        }
+    },
+
+    "leaping":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:jump_boost",        
+                "duration": 7200,
+                "amplifier": 0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:leaping\"}"
+        }
+    },
+
+    "fire_resistance":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:fire_resistance",
+                "duration": 7200,
+                "amplifier": 0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:fire_resistance\"}"
+        }
+    },
+
+    "swiftness":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:speed",
+                "duration": 7200,
+                "amplifier": 0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:swiftness\"}"
+        }
+    },
+
+    "water_breathing":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:water_breathing",
+                "duration": 7200,
+                "amplifier": 0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:water_breathing\"}"
+        }
+    },
+
+    "strength":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:strength",
+                "duration": 7200,
+                "amplifier": 0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:strength\"}"
+        }
+    },
+
+    "hogsbane":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "charm:hogsbane",
+                "duration": 7200,
+                "amplifier": 0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"charm:hogsbane\"}"
+        }
+    },
+
+    "piercing_vision":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:glowing",
+                "duration": 7200,
+                "amplifier": 0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"charm:piercing_vision\"}"
+        }
+    },
+
+    "long_night_vision":{
+        "type": "origins:action_on_item_use",      
+        "entity_action": {
+            "type": "origins:apply_effect",        
+            "effect": {
+                "effect": "minecraft:night_vision",
+                "duration": 19200,
+                "amplifier": 0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:long_night_vision\"}"
+        }
+    },
+
+    "long_invisibility":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:invisibility",
+                "duration": 19200,
+                "amplifier": 0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:long_invisibility\"}"
+        }
+    },
+
+    "long_leaping":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:jump_boost",
+                "duration": 19200,
+                "amplifier": 0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:long_leaping\"}"
+        }
+    },
+
+    "long_fire_resistance":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:fire_resistance",
+                "duration": 19200,
+                "amplifier": 0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:long_fire_resistance\"}"
+        }
+    },
+
+    "long_swiftness":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:speed",
+                "duration": 19200,
+                "amplifier": 0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:long_swiftness\"}"
+        }
+    },
+
+    "long_water_breathing":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:water_breathing",
+                "duration": 19200,
+                "amplifier": 0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:long_water_breathing\"}"
+        }
+    },
+
+    "long_strength":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:strength",
+                "duration": 19200,
+                "amplifier": 0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:long_strength\"}"
+        }
+    },
+
+    "long_hogsbane":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "charm:hogsbane",
+                "duration": 19200,
+                "amplifier": 0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"charm:long_hogsbane\"}"
+        }
+    },
+
+    "long_piercing_vision":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:glowing",
+                "duration": 19200,
+                "amplifier": 0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"charm:long_piercing_vision\"}"
+        }
+    },
+    "strong_leaping":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:jump_boost",
+                "duration": 3600,
+                "amplifier": 1
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:strong_leaping\"}"
+        }
+    },
+
+    "strong_swiftness":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:speed",
+                "duration": 3600,
+                "amplifier": 1
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:strong_swiftness\"}"
+        }
+    },
+
+    "strong_strength":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:strength",
+                "duration": 3600,
+                "amplifier": 1
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:strong_strength\"}"
+        }
+    },
+
+
+
+    
+
+    "slowness":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:slowness",
+                "duration": 3600,
+                "amplifier": 0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:slowness\"}"
+        }
+    },
+    "long_slowness":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:slowness",
+                "duration": 9600,
+                "amplifier": 0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:long_slowness\"}"
+        }
+    },
+    "strong_slowness":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:slowness",
+                "duration": 400,
+                "amplifier": 1
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:strong_slowness\"}"
+        }
+    },
+    "poison":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:posion",
+                "duration": 1800,
+                "amplifier": 0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:poison\"}"
+        }
+    },
+
+    "long_poison":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:posion",
+                "duration": 3600,
+                "amplifier": 0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:long_poison\"}"
+        }
+    },
+
+    "strong_poison":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:posion",
+                "duration": 840,
+                "amplifier": 1
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:strong_poison\"}"
+        }
+    },
+    "regeneration":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:regeneration",
+                "duration": 1800,
+                "amplifier": 0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:regeneration\"}"
+        }
+    },
+
+    "long_regeneration":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:regeneration",
+                "duration": 3600,
+                "amplifier": 0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:long_regeneration\"}"
+        }
+    },
+
+    "strong_regeneration":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:regeneration",
+                "duration": 880,
+                "amplifier": 1
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:strong_regeneration\"}"
+        }
+    },
+    "weakness":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:weakness",
+                "duration": 3600,
+                "amplifier": 0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:weakness\"}"
+        }
+    },
+
+    "long_weakness":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:weakness",
+                "duration": 9600,
+                "amplifier": 0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:long_weakness\"}"
+        }
+    },
+
+    "luck":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:luck",
+                "duration": 12000,
+                "amplifier": 0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:luck\"}"
+        }
+    },
+
+    "slow_falling":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:slow_falling",
+                "duration": 3600,
+                "amplifier":0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:slow_falling\"}"
+        }
+    },
+
+    "long_slow_falling":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:slow_falling",
+                "duration": 9600,
+                "amplifier": 0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:long_slow_falling\"}"
+        }
+    },
+
+    "spelunking":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "charm:spelunking",
+                "duration": 1200,
+                "amplifier": 0
+            }
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"charm:spelunking\"}"
+        }
+    },
+
+    "turtle_master":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effects": [
+                {
+                    "effect": "minecraft:slowness",
+                    "duration": 800,
+                    "amplifier": 3
+                },
+                {
+                    "effect": "minecraft:resistance",
+                    "duration": 800,
+                    "amplifier": 2
+                }
+            ]
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:turtle_master\"}"
+        }
+    },
+
+    "long_turtle_master":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effects": [
+                {
+                    "effect": "minecraft:slowness",
+                    "duration": 1600,
+                    "amplifier": 3
+                },
+                {
+                    "effect": "minecraft:resistance",
+                    "duration": 1600,
+                    "amplifier": 2
+                }
+            ]
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:long_turtle_master\"}"
+        }
+    },
+
+    "strong_turtle_master":{
+        "type": "origins:action_on_item_use",
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effects": [
+                {
+                    "effect": "minecraft:slowness",
+                    "duration": 800,
+                    "amplifier": 6
+                },
+                {
+                    "effect": "minecraft:resistance",
+                    "duration": 800,
+                    "amplifier": 3
+                }
+            ]
+        },
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{Potion: \"minecraft:strong_turtle_master\"}"
+        }
+    }
+}

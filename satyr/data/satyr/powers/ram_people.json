@@ -1,0 +1,74 @@
+{
+    "name": "Ram people",
+    "description": "right click someone while sprinting to push them backwards",
+    "type": "origins:action_on_entity_use",
+    "bientity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:add_velocity",
+                "y": 0.5,
+                "z": 3
+            },
+            {
+                "type": "origins:target_action",
+                "action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:damage",
+                            "amount": 1,
+                            "source": {
+                                "name": "mob"
+                            }
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "particle minecraft:cloud ~ ~ ~ 0 0 0 1 50"
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "origins:actor_action",
+                "action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:play_sound",
+                            "sound": "minecraft:entity.goat.ram_impact"
+                        },
+                        {
+                            "type": "origins:choice",
+                            "actions": [
+                                {
+                                    "element": {    
+                                        "type": "origins:nothing"
+                                    },
+                                    "weight": 80
+                                },
+                                {
+                                    "element": {    
+                                        "type": "origins:play_sound",
+                                        "sound": "minecraft:entity.goat.prepare_ram"
+                                    },
+                                    "weight": 10
+                                },
+                                {
+                                    "element": {    
+                                        "type": "origins:play_sound",
+                                        "sound": "minecraft:entity.goat.screaming.hurt"
+                                    },
+                                    "weight": 10
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "condition": {
+        "type": "origins:sprinting"
+    }
+}

@@ -1,0 +1,48 @@
+{
+	"type":"origins:multiple",
+    "sleep":{
+        "type": "origins:action_over_time",
+        "interval": 40,
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "playsound minecraft:entity.fox.sleep voice @a ~ ~ ~ 10"
+        },
+        "condition": {
+            "type": "origins:command",
+            "command": "data get entity @s SleepTimer",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    },
+    "take_damage":{
+        "type": "origins:self_action_when_hit",
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "playsound minecraft:entity.fox.hurt voice @a ~ ~1 ~ 0.1"
+        },
+        "cooldown": 1
+    },
+    "give_damage":{
+        "type": "origins:self_action_on_hit",
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "playsound minecraft:entity.fox.bite voice @a ~ ~1 ~ 0.5"
+        },
+        "cooldown": 1
+    },
+    "death": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "playsound minecraft:entity.fox.death voice @a ~ ~ ~ 10"
+        },
+        "condition": {
+            "type": "origins:command",
+            "command": "data get entity @s DeathTime",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "hidden": true
+}

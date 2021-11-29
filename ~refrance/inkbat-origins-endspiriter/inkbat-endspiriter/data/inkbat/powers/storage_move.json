@@ -1,0 +1,1000 @@
+{
+	"name": "Spirited Away",
+	"description": "Use the secondary key in front of a chest or barrel and you'll pick it up. Use it again to put it down.",
+	
+	"type": "origins:multiple",
+	
+	"is_carrying": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 1,
+		"hud_render": {
+			"should_render": true,
+			"sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
+			"bar_index": 1,
+			"condition": {
+				"type": "origins:resource",
+				"resource": "inkbat:storage_move_is_carrying",
+				"comparison": "!=",
+				"compare_to": 0
+			}
+		}
+	},
+	
+	"chest_on_head": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "execute at @s run tp @e[type=minecraft:armor_stand,tag=ChestCarrier,distance=..5,sort=nearest,limit=1] ~ ~0.5 ~ ~ ~",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute at @s run data modify entity @e[type=minecraft:falling_block,tag=ChestStorage,distance=..5,sort=nearest,limit=1] Time set value 1",
+					"permission_level": 2
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:command",
+					"command": "execute if entity @e[type=minecraft:falling_block,tag=ChestStorage,distance=..5]",
+					"comparison": ">=",
+					"compare_to": 1
+				},
+				{
+					"type": "origins:resource",
+					"resource": "inkbat:storage_move_is_carrying",
+					"comparison": "==",
+					"compare_to": 1
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if predicate inkbat:player_standing",
+					"comparison": "==",
+					"compare_to": 1
+				},
+				{
+					"type": "origins:fall_flying",
+					"inverted": true
+				}
+			]
+		}
+	},
+	
+	"chest_on_head_sneaking": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "execute at @s run tp @e[type=minecraft:armor_stand,tag=ChestCarrier,distance=..5,sort=nearest,limit=1] ~ ~0.17 ~ ~ ~",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute at @s run data modify entity @e[type=minecraft:falling_block,tag=ChestStorage,distance=..5,sort=nearest,limit=1] Time set value 1",
+					"permission_level": 2
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:command",
+					"command": "execute if entity @e[type=minecraft:falling_block,tag=ChestStorage,distance=..5]",
+					"comparison": ">=",
+					"compare_to": 1
+				},
+				{
+					"type": "origins:resource",
+					"resource": "inkbat:storage_move_is_carrying",
+					"comparison": "==",
+					"compare_to": 1
+				},
+				{
+					"type": "origins:command",
+					"command": "execute if predicate inkbat:player_sneaking",
+					"comparison": "==",
+					"compare_to": 1
+				},
+				{
+					"type": "origins:fall_flying",
+					"inverted": true
+				}
+			]
+		}
+	},
+	
+	"chest_on_back_flying": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "execute at @s run tp @e[type=minecraft:armor_stand,tag=ChestCarrier,distance=..5,sort=nearest,limit=1] ~ ~-0.8 ~ ~ ~",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute at @s run data modify entity @e[type=minecraft:falling_block,tag=ChestStorage,distance=..5,sort=nearest,limit=1] Time set value 1",
+					"permission_level": 2
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:command",
+					"command": "execute if entity @e[type=minecraft:falling_block,tag=ChestStorage,distance=..5]",
+					"comparison": ">=",
+					"compare_to": 1
+				},
+				{
+					"type": "origins:resource",
+					"resource": "inkbat:storage_move_is_carrying",
+					"comparison": "==",
+					"compare_to": 1
+				},
+				{
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:command",
+							"command": "execute if predicate inkbat:player_swimming",
+							"comparison": "==",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:fall_flying"
+						}
+					]
+				}
+			]
+		}
+	},
+
+	"pickup_north": {
+		"type": "origins:active_self",
+		"cooldown": 20,
+		"hud_render": {
+			"should_render": false
+		},
+		"key": {
+			"key": "key.origins.secondary_active"
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "playsound minecraft:item.armor.equip_generic master @s ~ ~ ~ 1 0.7",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute at @s run summon armor_stand ~ ~0.5 ~ {Tags:[ChestCarrier],Invisible:1,NoGravity:1,Passengers:[{id:'minecraft:falling_block',Time:1,BlockState:{Name:'minecraft:chest'},NoGravity:1,Tags:[ChestStorage]}],ArmorItems:[{},{},{},{id:'minecraft:chest',Count:1b}]}",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute at @s align xz run data modify entity @e[type=minecraft:falling_block,sort=nearest,limit=1,tag=ChestStorage] TileEntityData.Items set from block ~0.5 ~ ~-0.5 Items",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 1,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "execute at @s align xz run fill ~0.5 ~ ~-0.5 ~0.5 ~ ~-0.5 air replace chest[waterlogged=false]",
+						"permission_level": 2
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 1,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "execute at @s align xz run fill ~0.5 ~ ~-0.5 ~0.5 ~ ~-0.5 water replace chest[waterlogged=true]",
+						"permission_level": 2
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 2,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "execute at @s align xz if block ~0.5 ~ ~-0.5 minecraft:water run resource set @s inkbat:aquaphobia_waterlogged 1",
+						"permission_level": 2
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 2,
+					"action": {
+						"type": "origins:change_resource",
+						"resource": "inkbat:storage_move_is_carrying",
+						"change": 1
+					}
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:or",
+					"conditions": [
+						{
+							"description": "NORTH_L",
+							"type": "origins:command",
+							"command": "execute at @s[y_rotation=-181..-135] align xz if block ~0.5 ~ ~-0.5 chest",
+							"comparison": "==",
+							"compare_to": 1
+						},
+						{
+							"description": "NORTH_R",
+							"type": "origins:command",
+							"command": "execute at @s[y_rotation=135..181] align xz if block ~0.5 ~ ~-0.5 chest",
+							"comparison": "==",
+							"compare_to": 1
+						}
+					]
+				},
+				{
+					"type": "origins:resource",
+					"resource": "inkbat:storage_move_is_carrying",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:resource",
+					"resource": "inkbat:storage_movebarrel_is_carrying",
+					"comparison": "==",
+					"compare_to": 0
+				}
+			]
+		}
+	},
+	
+	"pickup_south": {
+		"type": "origins:active_self",
+		"cooldown": 20,
+		"hud_render": {
+			"should_render": false
+		},
+		"key": {
+			"key": "key.origins.secondary_active"
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "playsound minecraft:item.armor.equip_generic master @s ~ ~ ~ 1 0.7",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute at @s run summon armor_stand ~ ~0.5 ~ {Tags:[ChestCarrier],Invisible:1,NoGravity:1,Passengers:[{id:'minecraft:falling_block',Time:1,BlockState:{Name:'minecraft:chest'},NoGravity:1,Tags:[ChestStorage]}],ArmorItems:[{},{},{},{id:'minecraft:chest',Count:1b}]}",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute at @s align xz run data modify entity @e[type=minecraft:falling_block,sort=nearest,limit=1,tag=ChestStorage] TileEntityData.Items set from block ~0.5 ~ ~1.5 Items",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 1,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "execute at @s align xz run fill ~0.5 ~ ~1.5 ~0.5 ~ ~1.5 air replace chest[waterlogged=false]",
+						"permission_level": 2
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 1,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "execute at @s align xz run fill ~0.5 ~ ~1.5 ~0.5 ~ ~1.5 water replace chest[waterlogged=true]",
+						"permission_level": 2
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 2,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "execute at @s align xz if block ~0.5 ~ ~1.5 minecraft:water run resource set @s inkbat:aquaphobia_waterlogged 1",
+						"permission_level": 2
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 2,
+					"action": {
+						"type": "origins:change_resource",
+						"resource": "inkbat:storage_move_is_carrying",
+						"change": 1
+					}
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"description": "SOUTH",
+					"type": "origins:command",
+					"command": "execute at @s[y_rotation=-45..45] align xz if block ~0.5 ~ ~1.5 chest",
+					"comparison": "==",
+					"compare_to": 1
+				},
+				{
+					"type": "origins:resource",
+					"resource": "inkbat:storage_move_is_carrying",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:resource",
+					"resource": "inkbat:storage_movebarrel_is_carrying",
+					"comparison": "==",
+					"compare_to": 0
+				}
+			]
+		}
+	},
+	
+	"pickup_east": {
+		"type": "origins:active_self",
+		"cooldown": 20,
+		"hud_render": {
+			"should_render": false
+		},
+		"key": {
+			"key": "key.origins.secondary_active"
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "playsound minecraft:item.armor.equip_generic master @s ~ ~ ~ 1 0.7",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute at @s run summon armor_stand ~ ~0.5 ~ {Tags:[ChestCarrier],Invisible:1,NoGravity:1,Passengers:[{id:'minecraft:falling_block',Time:1,BlockState:{Name:'minecraft:chest'},NoGravity:1,Tags:[ChestStorage]}],ArmorItems:[{},{},{},{id:'minecraft:chest',Count:1b}]}",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute at @s align xz run data modify entity @e[type=minecraft:falling_block,sort=nearest,limit=1,tag=ChestStorage] TileEntityData.Items set from block ~1.5 ~ ~0.5 Items",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 1,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "execute at @s align xz run fill ~1.5 ~ ~0.5 ~1.5 ~ ~0.5 air replace chest[waterlogged=false]",
+						"permission_level": 2
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 1,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "execute at @s align xz run fill ~1.5 ~ ~0.5 ~1.5 ~ ~0.5 water replace chest[waterlogged=true]",
+						"permission_level": 2
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 2,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "execute at @s align xz if block ~1.5 ~ ~0.5 minecraft:water run resource set @s inkbat:aquaphobia_waterlogged 1",
+						"permission_level": 2
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 2,
+					"action": {
+						"type": "origins:change_resource",
+						"resource": "inkbat:storage_move_is_carrying",
+						"change": 1
+					}
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:command",
+					"command": "execute at @s[y_rotation=-135..-45] align xz if block ~1.5 ~ ~0.5 chest",
+					"comparison": "==",
+					"compare_to": 1
+				},
+				{
+					"type": "origins:resource",
+					"resource": "inkbat:storage_move_is_carrying",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:resource",
+					"resource": "inkbat:storage_movebarrel_is_carrying",
+					"comparison": "==",
+					"compare_to": 0
+				}
+			]
+		}
+	},
+	
+	"pickup_west": {
+		"type": "origins:active_self",
+		"cooldown": 20,
+		"hud_render": {
+			"should_render": false
+		},
+		"key": {
+			"key": "key.origins.secondary_active"
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "playsound minecraft:item.armor.equip_generic master @s ~ ~ ~ 1 0.7",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute at @s run summon armor_stand ~ ~0.5 ~ {Tags:[ChestCarrier],Invisible:1,NoGravity:1,Passengers:[{id:'minecraft:falling_block',Time:1,BlockState:{Name:'minecraft:chest'},NoGravity:1,Tags:[ChestStorage]}],ArmorItems:[{},{},{},{id:'minecraft:chest',Count:1b}]}",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute at @s align xz run data modify entity @e[type=minecraft:falling_block,sort=nearest,limit=1,tag=ChestStorage] TileEntityData.Items set from block ~-0.5 ~ ~0.5 Items",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 1,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "execute at @s align xz run fill ~-0.5 ~ ~0.5 ~-0.5 ~ ~0.5 air replace chest[waterlogged=false]",
+						"permission_level": 2
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 1,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "execute at @s align xz run fill ~-0.5 ~ ~0.5 ~-0.5 ~ ~0.5 water replace chest[waterlogged=true]",
+						"permission_level": 2
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 2,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "execute at @s align xz if block ~-0.5 ~ ~0.5 minecraft:water run resource set @s inkbat:aquaphobia_waterlogged 1",
+						"permission_level": 2
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 2,
+					"action": {
+						"type": "origins:change_resource",
+						"resource": "inkbat:storage_move_is_carrying",
+						"change": 1
+					}
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:command",
+					"command": "execute at @s[y_rotation=45..135] align xz if block ~-0.5 ~ ~0.5 chest",
+					"comparison": "==",
+					"compare_to": 1
+				},
+				{
+					"type": "origins:resource",
+					"resource": "inkbat:storage_move_is_carrying",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:resource",
+					"resource": "inkbat:storage_movebarrel_is_carrying",
+					"comparison": "==",
+					"compare_to": 0
+				}
+			]
+		}
+	},
+	
+	
+	"putdown_north": {
+		"type": "origins:active_self",
+		"cooldown": 20,
+		"hud_render": {
+			"should_render": false
+		},
+		"key": {
+			"key": "key.origins.secondary_active"
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "playsound minecraft:entity.armor_stand.fall master @s ~ ~ ~ 1 0.7",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "data remove entity @e[type=armor_stand,tag=ChestCarrier,distance=..5,sort=nearest,limit=1] ArmorItems[]",
+					"permission_level": 2
+				},
+				{
+					"description": "Puts down normal chest if air",
+					"type": "origins:execute_command",
+					"command": "execute at @s align xz if block ~0.5 ~ ~-0.5 air run setblock ~0.5 ~ ~-0.5 chest[facing=south]",
+					"permission_level": 2
+				},
+				{
+					"description": "Takes damage if water",
+					"type": "origins:execute_command",
+					"command": "execute at @s align xz if block ~0.5 ~ ~-0.5 water[level=0] run resource set @s inkbat:aquaphobia_waterlogged 1",
+					"permission_level": 2
+				},
+				{
+					"description": "Puts down waterlogged chest if water",
+					"type": "origins:delay",
+					"ticks": 1,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "execute at @s align xz if block ~0.5 ~ ~-0.5 water[level=0] run setblock ~0.5 ~ ~-0.5 chest[facing=south,waterlogged=true]",
+						"permission_level": 2
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 1,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "execute at @s align xz run data modify block ~0.5 ~ ~-0.5 Items set from entity @e[type=minecraft:falling_block,sort=nearest,limit=1,tag=ChestStorage] TileEntityData.Items",
+						"permission_level": 2
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 2,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "kill @e[type=armor_stand,tag=ChestCarrier,distance=..5,sort=nearest,limit=1,nbt={ArmorItems:[{}]}]",
+						"permission_level": 2
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 2,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "kill @e[type=falling_block,tag=ChestStorage,distance=..4,sort=nearest,limit=1]",
+						"permission_level": 2
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 2,
+					"action": {
+						"type": "origins:change_resource",
+						"resource": "inkbat:storage_move_is_carrying",
+						"change": -1
+					}
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:or",
+					"conditions": [
+						{
+							"description": "NORTH_L",
+							"type": "origins:command",
+							"command": "execute at @s[y_rotation=-181..-135] align xz if block ~0.5 ~ ~-0.5 air",
+							"comparison": "==",
+							"compare_to": 1
+						},
+						{
+							"description": "NORTH_R",
+							"type": "origins:command",
+							"command": "execute at @s[y_rotation=135..181] align xz if block ~0.5 ~ ~-0.5 air",
+							"comparison": "==",
+							"compare_to": 1
+						},
+						{
+							"description": "NORTH_L",
+							"type": "origins:command",
+							"command": "execute at @s[y_rotation=-181..-135] align xz if block ~0.5 ~ ~-0.5 water[level=0]",
+							"comparison": "==",
+							"compare_to": 1
+						},
+						{
+							"description": "NORTH_R",
+							"type": "origins:command",
+							"command": "execute at @s[y_rotation=135..181] align xz if block ~0.5 ~ ~-0.5 water[level=0]",
+							"comparison": "==",
+							"compare_to": 1
+						}
+					]
+				},
+				{
+					"type": "origins:resource",
+					"resource": "inkbat:storage_move_is_carrying",
+					"comparison": "==",
+					"compare_to": 1
+				}
+			]
+		}
+	},
+	
+	"putdown_south": {
+		"type": "origins:active_self",
+		"cooldown": 20,
+		"hud_render": {
+			"should_render": false
+		},
+		"key": {
+			"key": "key.origins.secondary_active"
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "playsound minecraft:entity.armor_stand.fall master @s ~ ~ ~ 1 0.7",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "data remove entity @e[type=armor_stand,tag=ChestCarrier,distance=..5,sort=nearest,limit=1] ArmorItems[]",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute at @s align xz if block ~0.5 ~ ~1.5 air run setblock ~0.5 ~ ~1.5 chest[facing=north]",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute at @s align xz if block ~0.5 ~ ~1.5 water[level=0] run resource set @s inkbat:aquaphobia_waterlogged 1",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 1,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "execute at @s align xz if block ~0.5 ~ ~1.5 water[level=0] run setblock ~0.5 ~ ~1.5 chest[facing=north,waterlogged=true]",
+						"permission_level": 2
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 1,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "execute at @s align xz run data modify block ~0.5 ~ ~1.5 Items set from entity @e[type=minecraft:falling_block,sort=nearest,limit=1,tag=ChestStorage] TileEntityData.Items",
+						"permission_level": 2
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 2,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "kill @e[type=armor_stand,tag=ChestCarrier,distance=..5,sort=nearest,limit=1,nbt={ArmorItems:[{}]}]",
+						"permission_level": 2
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 2,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "kill @e[type=falling_block,tag=ChestStorage,distance=..4,sort=nearest,limit=1]",
+						"permission_level": 2
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 2,
+					"action": {
+						"type": "origins:change_resource",
+						"resource": "inkbat:storage_move_is_carrying",
+						"change": -1
+					}
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:or",
+					"conditions": [
+						{
+							"description": "SOUTH",
+							"type": "origins:command",
+							"command": "execute at @s[y_rotation=-45..45] align xz if block ~0.5 ~ ~1.5 air",
+							"comparison": "==",
+							"compare_to": 1
+						},
+						{
+							"description": "SOUTH",
+							"type": "origins:command",
+							"command": "execute at @s[y_rotation=-45..45] align xz if block ~0.5 ~ ~1.5 water[level=0]",
+							"comparison": "==",
+							"compare_to": 1
+						}
+					]
+				},
+				{
+					"type": "origins:resource",
+					"resource": "inkbat:storage_move_is_carrying",
+					"comparison": "==",
+					"compare_to": 1
+				}
+			]
+		}
+	},
+	
+	"putdown_east": {
+		"type": "origins:active_self",
+		"cooldown": 20,
+		"hud_render": {
+			"should_render": false
+		},
+		"key": {
+			"key": "key.origins.secondary_active"
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "playsound minecraft:entity.armor_stand.fall master @s ~ ~ ~ 1 0.7",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "data remove entity @e[type=armor_stand,tag=ChestCarrier,distance=..5,sort=nearest,limit=1] ArmorItems[]",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute at @s align xz if block ~1.5 ~ ~0.5 air run setblock ~1.5 ~ ~0.5 chest[facing=west]",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute at @s align xz if block ~1.5 ~ ~0.5 water[level=0] run resource set @s inkbat:aquaphobia_waterlogged 1",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 1,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "execute at @s align xz if block ~1.5 ~ ~0.5 water[level=0] run setblock ~1.5 ~ ~0.5 chest[facing=west,waterlogged=true]",
+						"permission_level": 2
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 1,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "execute at @s align xz run data modify block ~1.5 ~ ~0.5 Items set from entity @e[type=minecraft:falling_block,sort=nearest,limit=1,tag=ChestStorage] TileEntityData.Items",
+						"permission_level": 2
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 2,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "kill @e[type=armor_stand,tag=ChestCarrier,distance=..5,sort=nearest,limit=1,nbt={ArmorItems:[{}]}]",
+						"permission_level": 2
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 2,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "kill @e[type=falling_block,tag=ChestStorage,distance=..4,sort=nearest,limit=1]",
+						"permission_level": 2
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 2,
+					"action": {
+						"type": "origins:change_resource",
+						"resource": "inkbat:storage_move_is_carrying",
+						"change": -1
+					}
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:command",
+							"command": "execute at @s[y_rotation=-135..-45] align xz if block ~1.5 ~ ~0.5 air",
+							"comparison": "==",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute at @s[y_rotation=-135..-45] align xz if block ~1.5 ~ ~0.5 water[level=0]",
+							"comparison": "==",
+							"compare_to": 1
+						}
+					]
+				},
+				{
+					"type": "origins:resource",
+					"resource": "inkbat:storage_move_is_carrying",
+					"comparison": "==",
+					"compare_to": 1
+				}
+			]
+		}
+	},
+	
+	"putdown_west": {
+		"type": "origins:active_self",
+		"cooldown": 20,
+		"hud_render": {
+			"should_render": false
+		},
+		"key": {
+			"key": "key.origins.secondary_active"
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "playsound minecraft:entity.armor_stand.fall master @s ~ ~ ~ 1 0.7",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "data remove entity @e[type=armor_stand,tag=ChestCarrier,distance=..5,sort=nearest,limit=1] ArmorItems[]",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute at @s align xz if block ~-0.5 ~ ~0.5 air run setblock ~-0.5 ~ ~0.5 chest[facing=east]",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute at @s align xz if block ~-0.5 ~ ~0.5 water[level=0] run resource set @s inkbat:aquaphobia_waterlogged 1",
+					"permission_level": 2
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 1,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "execute at @s align xz if block ~-0.5 ~ ~0.5 water[level=0] run setblock ~-0.5 ~ ~0.5 chest[facing=east,waterlogged=true]",
+						"permission_level": 2
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 1,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "execute at @s align xz run data modify block ~-0.5 ~ ~0.5 Items set from entity @e[type=minecraft:falling_block,sort=nearest,limit=1,tag=ChestStorage] TileEntityData.Items",
+						"permission_level": 2
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 2,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "kill @e[type=armor_stand,tag=ChestCarrier,distance=..5,sort=nearest,limit=1,nbt={ArmorItems:[{}]}]",
+						"permission_level": 2
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 2,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "kill @e[type=falling_block,tag=ChestStorage,distance=..4,sort=nearest,limit=1]",
+						"permission_level": 2
+					}
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 2,
+					"action": {
+						"type": "origins:change_resource",
+						"resource": "inkbat:storage_move_is_carrying",
+						"change": -1
+					}
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:command",
+							"command": "execute at @s[y_rotation=45..135] align xz if block ~-0.5 ~ ~0.5 air",
+							"comparison": "==",
+							"compare_to": 1
+						},
+						{
+							"type": "origins:command",
+							"command": "execute at @s[y_rotation=45..135] align xz if block ~-0.5 ~ ~0.5 water[level=0]",
+							"comparison": "==",
+							"compare_to": 1
+						}
+					]
+				},
+				{
+					"type": "origins:resource",
+					"resource": "inkbat:storage_move_is_carrying",
+					"comparison": "==",
+					"compare_to": 1
+				}
+			]
+		}
+	}
+}

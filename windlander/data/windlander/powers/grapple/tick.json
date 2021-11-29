@@ -1,0 +1,110 @@
+{
+    "hidden": true,
+    "type": "origins:multiple",
+    "accelerate":{
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:add_velocity",
+            "z": 0.25,
+            "space": "local",
+            "set": false
+        },
+        "condition":{
+            "type": "origins:resource",
+            "resource": "*:grapple/resources_is_grappling",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "gravity": {
+        "type": "origins:modify_falling",
+        "velocity": 0,
+        "take_fall_damage": false,
+        "condition":{
+            "type": "origins:resource",
+            "resource": "*:grapple/resources_is_grappling",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "manage_bar":{
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:if_else_list",
+            "actions": [
+                {
+                    "action":{
+                        "type": "origins:change_resource",
+                        "operation": "add",
+                        "resource": "*:grapple/resources_grapple_bar",
+                        "change": -1
+                    },
+                    "condition":{
+                        "type": "origins:resource",
+                        "resource": "*:grapple/resources_is_grappling",
+                        "comparison": "==",
+                        "compare_to": 1
+                    }
+                },
+                {
+                    "action":{
+                        "type": "origins:change_resource",
+                        "operation": "add",
+                        "resource": "*:grapple/resources_grapple_bar",
+                        "change": 1
+                    },
+                    "condition":{
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:resource",
+                                "resource": "*:grapple/resources_is_casting",
+                                "comparison": "==",
+                                "compare_to": 0
+                            },
+                            {
+                                "type": "origins:resource",
+                                "resource": "*:grapple/resources_bar_can_refill",
+                                "comparison": "==",
+                                "compare_to": 1
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "cast_ray": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "falling_action": {
+            "type": "origins:change_resource",
+            "operation": "set",
+            "resource": "windlander:grapple/resources_is_grappling",
+            "change": 0
+        },
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "execute anchored eyes run function windlander:ray_trace"
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:grapple/resources_is_casting",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:grapple/resources_grapple_bar",
+                    "comparison": "!=",
+                    "compare_to": 0
+                }
+            ]
+        }
+    }
+}

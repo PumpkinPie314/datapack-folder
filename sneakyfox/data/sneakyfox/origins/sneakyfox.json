@@ -1,0 +1,21 @@
+{
+	"powers": [
+		"sneakyfox:berry_immune",
+		"sneakyfox:better_berries",
+		"sneakyfox:bribe",
+		"sneakyfox:fox_sounds",
+		"sneakyfox:hunger",
+		"sneakyfox:imitate",
+		"sneakyfox:less_fall_damage",
+		"sneakyfox:mighty_mouth",
+		"sneakyfox:raw_food",
+		"sneakyfox:sneaky",
+		"sneakyfox:speed",
+		"sneakyfox:strong_jump"
+	],
+	"icon": "minecraft:sweet_berries",
+	"order": 10,
+	"impact": 0,
+	"name": "sneakyfox",
+	"description": "a magic fox"
+}

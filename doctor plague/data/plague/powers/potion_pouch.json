@@ -1,0 +1,16 @@
+{
+    "type": "origins:inventory",
+    "drop_on_death": true,
+    "drop_on_death_filter": {
+      "type": "origins:ingredient",
+      "ingredient": {
+        "tag": "plague:potions"
+      },
+      "inverted": true
+    },
+    "key": {
+      "key": "key.loadToolbarActivator"
+    },
+    "name": "potion Sack",
+    "description": "you have a pouch storing potions 9 spaces doesnt drop potion or potion ingrediance on death"
+  }

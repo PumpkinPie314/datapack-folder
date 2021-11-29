@@ -1,0 +1,74 @@
+{
+    "name": "water",
+    "description": "you cant breath if your touching water",
+    "type": "origins:action_over_time",
+    "interval": 1,
+    "rising_action": {
+        "type": "origins:execute_command",
+        "command": "power grant @s origins:water_breathing"
+    },
+    "entity_action":{
+        "type": "origins:if_else",
+        "if_action": {
+            "type": "origins:gain_air",
+            "value": -1
+        },
+        "condition": {
+            "type": "origins:in_rain"
+        }
+    },
+    "falling_action": {
+        "type": "origins:execute_command",
+        "command": "power revoke @s origins:water_breathing"
+    },
+    "condition":{
+        "type": "origins:and",
+        "conditions": [
+            {
+                "type": "origins:or",
+                "conditions": [
+                    {
+                        "type": "origins:in_rain"
+                    },
+                    {
+                        "type": "origins:block_in_radius",
+                        "block_condition": {
+                            "type": "origins:or",
+                            "conditions": [
+                                {
+                                    "type": "origins:block",
+                                    "block": "minecraft:water"
+                                },
+                                {
+                                    "type": "origins:block_state",
+                                    "property": "waterlogged",
+                                    "value": "true"
+                                }
+                            ]
+                        },
+                        "radius": 1,
+                        "shape": "star",
+                        "comparison": ">=",
+                        "compare_to": 1
+                    }
+                ]
+            },
+            {
+                "type": "origins:submerged_in",
+                "fluid": "minecraft:water",
+                "inverted": true
+            },
+            {
+                "type": "origins:riding",
+                "bientity_condition": {
+                    "type": "origins:target_condition",
+                    "condition": {
+                        "type": "origins:constant",
+                        "value": true
+                    }
+                },
+                "inverted": true
+            }
+        ]
+    }
+}

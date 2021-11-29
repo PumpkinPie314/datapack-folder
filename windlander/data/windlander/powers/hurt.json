@@ -1,0 +1,27 @@
+{
+    "hidden": true,
+    "type": "origins:action_on_callback",
+    "execute_chosen_when_orb": true,
+    "entity_action_added": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:damage",
+                "amount": 4,
+                "source": {
+                    "name": "anvil",
+                    "bypasses_armor": false,
+                    "fire": false,
+                    "unblockable": false,
+                    "magic": false,
+                    "out_of_world": false
+                }
+            },
+            {
+                "type": "origins:revoke_power",
+                "power": "*:*",
+                "source": "apoli:command"
+            }
+        ]
+    }
+}

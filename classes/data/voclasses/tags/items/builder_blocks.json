@@ -1,0 +1,24 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:planks",
+    "#minecraft:slabs",
+    "#minecraft:stone_bricks",
+    "#minecraft:stairs",
+    "#minecraft:walls",
+    "#minecraft:fences",
+
+    "minecraft:stone_bricks",
+    "minecraft:chiseled_stone_bricks",
+    "minecraft:chiseled_deepslate",
+    "minecraft:cobblestone",
+    "minecraft:infested_stone_bricks",
+    "minecraft:end_stone_bricks",
+    "minecraft:infested_chiseled_stone_bricks",
+    "minecraft:infested_cracked_stone_bricks",
+    "minecraft:mossy_stone_bricks",
+    "minecraft:bricks",
+    "minecraft:cobbled_deepslate",
+    "minecraft:cut_copper"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+    "name": "",
+    "description": "",
+    "condition": {
+        "type": "origins:power_active",
+        "power": "*:toggle"
+    }
+}

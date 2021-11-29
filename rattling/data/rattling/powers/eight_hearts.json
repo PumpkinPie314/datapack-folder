@@ -1,0 +1,10 @@
+{
+    "name": "small",
+    "description": "you have 8 hearts instead of 10",
+    "type": "origins:attribute",
+    "modifier": {
+        "attribute": "minecraft:generic.max_health",
+        "value": -4,
+        "operation": "addition"
+    }
+  }

@@ -1,0 +1,10 @@
+{
+    "name": "no fall damage",
+    "description": "due to your mastery of the air and wind, you can save yourself from any fall.",
+    "hidden": false,
+    "type": "origins:invulnerability",
+    "damage_condition": {
+        "type": "origins:name",
+        "name": "fall"
+    }
+}

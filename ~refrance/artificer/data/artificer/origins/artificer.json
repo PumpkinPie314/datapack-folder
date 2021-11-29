@@ -1,0 +1,11 @@
+{
+	"powers": [
+		"artificer:primary",
+		"artificer:entity_use"
+	],
+	"icon": "minecraft:clock",
+	"order": 1,
+	"impact": 0,
+	"name": "Artificer",
+	"description": "a crafty witch"
+}

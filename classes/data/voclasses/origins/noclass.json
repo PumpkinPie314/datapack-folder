@@ -1,0 +1,10 @@
+{
+  "powers": [
+    "voclasses:null_power"
+  ],
+  "icon": "minecraft:stone",
+  "order": 1,
+  "impact": 0,
+  "name": "No class",
+  "description": "you dont have a class"
+}

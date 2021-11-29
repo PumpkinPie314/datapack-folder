@@ -1,0 +1,6 @@
+{
+  "name": "Strong Stomach",
+  "description": "You can eat rotten flesh and raw chicken without repercussions, be carful of spider eyes tho",
+  "type": "origins:effect_immunity",
+  "effect": "minecraft:hunger"
+}

@@ -1,0 +1,178 @@
+{
+    "name": "Grapple",
+    "description": "use your primary key to pull you toward a block you're looking at",
+	"type":"origins:multiple",
+    "pull_resource":{
+        "type": "origins:resource",
+        "min": 0,
+        "max": 120,
+        "min_action":{
+            "type": "origins:change_resource",
+            "resource": "*:*_empty_cooldown",
+            "change": 20
+        },
+        "hud_render": {
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_01.png",
+            "bar_index": 14,
+            "condition": {
+                "type": "origins:resource",
+                "resource": "*:*_*",
+                "comparison": "!=",
+                "compare_to": 120
+            }
+        }
+    },
+    "empty_cooldown":{
+        "type": "origins:resource",
+        "start_value": 0,
+        "min": 0,
+        "max": 20,
+        "min_action": {
+        },
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "vel_buffer":{
+        "type": "origins:resource",
+        "min": 0,
+        "max": 20,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "ray": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute anchored eyes run function windlander:ray_trace"
+                },
+                {
+                    "type": "origins:if_else",
+                    "if_action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_pull_resource",
+                        "change": -2
+                    },
+                    "else_action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_pull_resource",
+                        "change": -20
+                    },
+                    "condition":{
+                        "type":"origins:resource",
+                        "resource":"*:*_pull_resource",
+                        "comparison":">",
+                        "compare_to":20
+                    }
+                }
+            ]
+        },
+        "cooldown": 1,
+        "hud_render": {
+            "should_render": false
+        },
+		"condition":{
+            "type":"origins:and",
+            "conditions": [
+                {
+                    "type":"origins:resource",
+                    "resource":"*:*_pull_resource",
+                    "comparison":">=",
+                    "compare_to":20
+                },
+                {
+                    "type":"origins:resource",
+                    "resource":"*:*_pull_resource",
+                    "comparison":">=",
+                    "compare_to":20
+                }
+            ]
+        },
+        "key": {
+            "key": "key.origins.primary_active",
+            "continuous": true
+        }
+    },
+    "refill_fly":{
+        "description": "fills the bar. if below threshold fill half speed",
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:if_else_list",
+            "actions": [
+                {
+                    "action":{
+                        "type": "origins:change_resource",
+                        "resource": "*:*_pull_resource",
+                        "change": 2
+                    },
+                    "condition":{
+                        "type":"origins:resource",
+                        "resource":"*:*_pull_resource",
+                        "comparison":">=",
+                        "compare_to":20
+                    }
+                },
+                {
+                    "action":{
+                        "type": "origins:change_resource",
+                        "resource": "*:*_pull_resource",
+                        "change": 1
+                    },
+                    "condition":{
+                        "type":"origins:resource",
+                        "resource":"*:*_pull_resource",
+                        "comparison":"<",
+                        "compare_to":20
+                    }
+                }
+            ]
+        },
+        "condition": {
+            "description": "will only fill when not actively accelerating",
+            "type":"origins:resource",
+            "resource":"*:*_vel_buffer",
+            "comparison":"==",
+            "compare_to":0
+        }
+    },
+    "pull":{
+        "description": "if velocity is buffered; give player velocity and remove the buffer",
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:add_velocity",
+                    "space":"local",
+                    "z": 0.25
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_vel_buffer",
+                    "change": -1
+                }
+            ]
+        },
+		"condition":{
+			"type":"origins:and",
+			"conditions":[
+				{
+					"type":"origins:resource",
+					"resource":"*:*_vel_buffer",
+					"comparison":">=",
+					"compare_to":1
+				}
+			]
+		}
+    },
+    "key": {
+        "key": "key.origins.primary_active",
+        "continuous": true
+    }
+}

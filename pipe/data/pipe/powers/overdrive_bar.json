@@ -1,0 +1,81 @@
+{
+    "hidden": true,
+    "type": "origins:multiple",
+    "resource": {
+        "type": "origins:resource",
+        "start_value": 300,
+        "min": 0,
+        "max": 300,
+        "min_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "operation": "set",
+                    "resource": "*:overdrive_is",
+                    "change": 0
+                },
+                {
+                    "type": "origins:change_resource",
+                    "operation": "set",
+                    "resource": "*:overdrive_cooling_down",
+                    "change": 1
+                }
+            ]
+        },
+        "max_action": {
+            "type": "origins:change_resource",
+            "operation": "set",
+            "resource": "*:overdrive_cooling_down",
+            "change": 0
+        },
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+            "bar_index": 15,
+            "condition": {
+                "type": "origins:resource",
+                "resource": "*:*_resource",
+                "comparison": "!=",
+                "compare_to": 300
+            }
+        }
+    },
+    "tick": {
+        "type": "origins:action_over_time",
+        "interval": 20,
+        "entity_action": {
+            "type": "origins:if_else_list",
+            "actions": [
+                {
+                    "action":{
+                        "type": "origins:change_resource",
+                        "operation": "add",
+                        "resource": "*:*_resource",
+                        "change": 1
+                    },
+                    "condition":{
+                        "type": "origins:resource",
+                        "resource": "*:overdrive_is",
+                        "comparison": "==",
+                        "compare_to": 0
+                    }
+                },
+                {
+                    "action":{
+                        "type": "origins:change_resource",
+                        "operation": "add",
+                        "resource": "*:*_resource",
+                        "change": -1
+                    },
+                    "condition":{
+                        "type": "origins:resource",
+                        "resource": "*:overdrive_is",
+                        "comparison": "==",
+                        "compare_to": 1
+                    }
+                }
+            ]
+        }
+    }
+}

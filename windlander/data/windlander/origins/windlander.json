@@ -1,0 +1,19 @@
+{
+	"powers": [
+		"windlander:grapple/cast_check",
+		"windlander:grapple/primary",
+		"windlander:grapple/resources",
+		"windlander:grapple/tick",
+		"windlander:fall_damage",
+		"windlander:ground_effect",
+		"windlander:ground_slam",
+		"windlander:hollowed_out",
+		"windlander:light_arms",
+		"windlander:push"
+	],
+	"icon": "minecraft:trident",
+	"order": 0,
+	"impact": 0,
+	"name": "windlander",
+	"description": "Has mastered the art of the Grappling Hook, moving like the wind in the sky."
+}

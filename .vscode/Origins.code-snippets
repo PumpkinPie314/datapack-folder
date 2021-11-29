@@ -1,0 +1,775 @@
+{
+    "o": {
+        "prefix": "o",
+        "body": [
+          "\"$1\": {",
+          "\t\"type\": \"origins:conditioned_attribute\",",
+          "\t\"modifier\": {",
+          "\t\t\"attribute\": \"minecraft:generic.max_health\",",
+          "\t\t\"operation\": \"addition\",",
+          "\t\t\"value\": 2",
+          "\t\t},",
+          "\t\"tick_rate\": 20,",
+          "\t\t\"condition\": {",
+          "\t\t\"type\": \"origins:resource\",",
+          "\t\t\"resource\": \"*:*_resource\",",
+          "\t\t\"comparison\": \">=\",",
+          "\t\t\"compare_to\": $2",
+          "\t}",
+          "},"
+        ],
+        "description": ""
+    },
+    "origins:multiple":{
+        "prefix": "multiple",
+        "body": [
+            "{",
+            "\t\"name\": \"\",",
+            "\t\"description\": \"\",",
+            "\t\"hidden\": false,",
+            "\t\"type\": \"origins:multiple\",",
+            "}"
+        ]
+    },
+    "origins:attribute": {
+        "prefix": "attribute",
+        "body": [
+          "\"type\": \"origins:attribute\",",
+          "\"modifier\": {",
+          "\t$0",
+          "}"
+        ]
+    },
+    "origins:attributes": {
+        "prefix": "attributes",
+        "body": [
+          "\"type\": \"origins:attribute\",",
+          "\"modifiers\": [",
+          "\t{",
+          "\t\t$0",
+          "\t}",
+          "]"
+        ]
+    },
+    "origins:conditioned_attribute": {
+        "prefix": "conditioned_attribute",
+        "body": [
+          "\"type\": \"origins:conditioned_attribute\",",
+          "\"tick_rate\": 20,",
+          "\"modifier\": {",
+          "},",
+          "\"condition\": {",
+          "}"
+        ],
+        "description": ""
+    },
+    "origins:attribute_modifire": {
+        "prefix": "attribute_modifire",
+        "body": [
+          "\"attribute\": \"${1|minecraft:generic.armor,minecraft:generic.armor_toughness,minecraft:generic.attack_damage,minecraft:generic.attack_knockback,minecraft:generic.attack_speed,minecraft:generic.flying_speed,minecraft:generic.follow_range,minecraft:generic.knockback_resistance,minecraft:generic.luck,minecraft:generic.max_health,minecraft:generic.movement_speed,minecraft:horse.jump_strength,minecraft:zombie.spawn_reinforcements,reach-entity-attributes:attack_range,reach-entity-attributes:reach|}\",",
+          "\"operation\": \"${2|multiply_total,multiply_base,addition|}\",",
+          "\"value\": $0"
+        ]
+    },
+    "define_resource_detailed":{
+        "prefix": "define_resource_detailed",
+        "body": [
+          "\"type\": \"origins:resource\",",
+          "\"start_value\": 0,",
+          "\"min\": 0,",
+          "\"max\": 1,",
+          "\"min_action\": {",
+          "},",
+          "\"max_action\": {",
+          "},",
+          "\"hud_render\": {",
+          "\t\"should_render\": false",
+          "}"
+        ]
+    },
+    "define_resource":{
+        "prefix": "define_resource",
+        "body": [
+          "\"type\": \"origins:resource\",",
+          "\"start_value\": 0,",
+          "\"min\": 0,",
+          "\"max\": ${0:1},",
+          "\"hud_render\": {\"should_render\": false}",
+        ]
+    },
+    "origins:fire_projectile": {
+        "prefix": "fire_projectile",
+        "body": [
+          "\"type\": \"origins:fire_projectile\",",
+          "\"entity_type\": \"minecraft:snowball\",",
+          "\"cooldown\": 100,",
+          "\"hud_render\": {",
+          "},",
+          "\"count\": 4,",
+          "\"interval\": 0,",
+          "\"start_delay\": 0,",
+          "\"speed\": 1.5,",
+          "\"divergence\": 1.0,",
+          "\"tag\": \"\",",
+          "\"key\": {",
+          "}"
+        ]
+    },
+    "origins:invulnerability": {
+        "prefix": "invulnerability",
+        "body": [
+            "\"type\": \"origins:invulnerability\",",
+            "\"damage_condition\": {",
+            "\t$0",
+            "}"
+        ]
+    },
+    "inventory": {
+        "prefix": "inventory",
+        "body": [
+          "\"type\": \"origins:inventory\",",
+          "\"title\": \"${1:inventory}\",",
+          "\"drop_on_death\": ${2|true,false|},",
+          "\"drop_on_death_filter\": {",
+          "},",
+          "\"key\": {",
+          "\t",
+          "}"
+        ]
+    },
+    "origins:active_self": {
+        "prefix": "active_self",
+        "body": [
+            "\"type\": \"origins:active_self\",",
+            "\"cooldown\": ${1:20},",
+            "\"entity_action\": {",
+            "\t$0",
+            "},",
+            "\"hud_render\": {\"should_render\": false},",
+            "\"key\": {",
+            "}"
+        ],
+        "description": "origins:active_self"
+    },
+    "origins:action_over_time": {
+        "prefix": "action_over_time",
+        "body": [
+            "\"type\": \"origins:action_over_time\",",
+            "\"interval\": ${1:20},",
+            "\"entity_action\": {",
+            "\t$0",
+            "}"
+        ],
+    },
+    "origins:action_over_time_detailed": {
+        "prefix": "action_over_time_detailed",
+        "body": [
+            "\"type\": \"origins:action_over_time\",",
+            "\"interval\": ${1:20},",
+            "\"rising_action\": {",
+            "},",
+            "\"falling_action\": {",
+            "},",
+            "\"entity_action\": {",
+            "\t$0",
+            "},",
+            "\"condition\":{",
+            "}"
+        ],
+    },
+    "origins:self_action_on_hit": {
+        "prefix": "self_action_on_hit",
+        "body": [
+            "\"type\": \"origins:self_action_on_hit\",",
+            "\"cooldown\": 0,",
+            "\"entity_action\": {",
+            "\t$0",
+            "},",
+            "\"damage_condition\": {",
+            "},",
+            "\"target_condition\": {",
+            "},",
+            "\"hud_render\": {",
+            "}"
+        ],
+        "description": ""
+    },
+    "origins:self_action_when_hit": {
+        "prefix": "self_action_when_hit",
+        "body": [
+            "\"type\": \"origins:self_action_when_hit\",",
+            "\"cooldown\": 0,",
+            "\"entity_action\": {",
+            "\t$0",
+            "},",
+            "\"damage_condition\": {",
+            "},",
+            "\"hud_render\": {",
+            "}"
+        ],
+        "description": ""
+    },
+    "origins:target_action_on_hit": {
+        "prefix": "target_action_on_hit",
+        "body": [
+            "\"type\": \"origins:target_action_on_hit\",",
+            "\"cooldown\": 0,",
+            "\"entity_action\": {",
+            "\t$0",
+            "},",
+            "\"damage_condition\": {",
+            "},",
+            "\"target_condition\": {",
+            "},",
+            "\"hud_render\": {",
+            "}"
+        ],
+        "description": ""
+    },
+    "origins:action_on_land": {
+        "prefix": "action_on_land",
+        "body": [
+            "\"type\": \"origins:action_on_land\",",
+            "\"entity_action\": {",
+            "\t$0",
+            "}"
+        ],
+    },
+    "origins:action_on_callback": {
+        "prefix": "action_on_callback",
+        "body": [
+            "\"type\": \"origins:action_on_callback\",",
+            "\"execute_chosen_when_orb\": true,",
+            "\"entity_action_chosen\": {",
+            "},",
+            "\"entity_action_lost\": {",
+            "},",
+            "\"entity_action_added\": {",
+            "},",
+            "\"entity_action_removed\": {",
+            "},",
+            "\"entity_action_respawned\": {",
+            "}"
+        ],
+        "description": ""
+    },
+    "origins:modify_break_speed": {
+        "prefix": "modify_break_speed",
+        "body": [
+          "\"type\": \"origins:modify_break_speed\",",
+          "\"block_condition\": {",
+          "},",
+          "\"modifier\": {",
+          "\t\"operation\": \"${1|multiply_total,multiply_base,addition|}\",",
+          "\t\"value\": $0",
+          "}"
+        ]
+    },
+    "origins:modify_damage_dealt": {
+        "prefix": "modify_damage_dealt",
+        "body": [
+            "\"type\": \"origins:modify_damage_dealt\",",
+            "\"target_condition\": {",
+            "},",
+            "\"modifier\": {",
+            "\t\"operation\": \"${1|multiply_total,multiply_base,addition|}\",",
+            "\t\"value\": $0",
+            "}"
+        ]
+    },
+    "origins:modify_damage_taken": {
+        "prefix": "modify_damage_taken",
+        "body": [
+            "\"type\": \"origins:modify_damage_taken\",",
+            "\"damage_condition\": {",
+            "\t",
+            "},",
+            "\"modifier\": {",
+            "\t\"operation\": \"${1|multiply_total,multiply_base,addition|}\",",
+            "\t\"value\": $0",
+            "}"
+        ]
+    },
+    "origins:modify_jump": {
+        "prefix": "modify_jump",
+        "body": [
+          "\"type\": \"origins:modify_jump\",",
+          "\"entity_action\": {",
+          "},",
+          "\"modifier\": {",
+          "\t\"operation\": \"${1|multiply_total,multiply_base,addition|}\",",
+          "\t\"value\": $0",
+          "}"
+        ],
+        "description": ""
+    },
+    "origins:modify_falling": {
+        "prefix": "modify_falling",
+        "body": [
+          "\"type\": \"origins:modify_falling\",",
+          "\"velocity\": ${0:0.1},",
+          "\"take_fall_damage\": ${1|false,true|}"
+        ]
+    },
+    "origins:prevent_item_use": {
+        "prefix": "prevent_item_use",
+        "body": [
+          "\"type\": \"origins:prevent_item_use\",",
+          "\"item_condition\": {",
+          "\t$0",
+          "}"
+        ]
+    },
+    "origins:entity_glow": {
+        "prefix": "entity_glow",
+        "body": [
+          "\"type\": \"origins:entity_glow\",",
+          "\"entity_condition\": {",
+          "\t$0",
+          "}",
+        ]
+    },
+    "origins:entity_glow-detailed": {
+        "prefix": "entity_glow-detailed",
+        "body": [
+          "\"type\": \"origins:entity_glow\",",
+          "\"entity_condition\": {",
+          "\t$0",
+          "},",
+          "\"bientity_condition\": {",
+          "},",
+          "\"use_teams\": true,",
+          "\"red\": 1.0,",
+          "\"green\": 1.0,",
+          "\"blue\": 1.0"
+        ]
+    },
+
+
+
+
+    "modifier": {
+        "prefix": "modifier",
+        "body": [
+            "\"operation\": \"${1|multiply_total,multiply_base,addition|}\",",
+            "\"value\": $0"
+        ]
+    },
+    "key": {
+        "prefix": "key",
+        "body": [
+          "\"key\":\"key.${1|origins.primary_active,origins.secondary_active,attack,use,saveToolbarActivator,loadToolbarActivator,sprint,forward,left,back,right,jump,inventory,drop,swapOffhand,chat,sneak,playerlist,pickItem,command,screenshot,togglePerspective,smoothCamera,fullscreen,spectatorOutlines,hotbar.1,hotbar.2,hotbar.3,hotbar.4,hotbar.5,hotbar.6,hotbar.7,hotbar.8,hotbar.9,advancements|}\",",
+          "\"continuous\": ${2|true,false|}"
+        ]
+    },
+    "hud_render": {
+        "prefix": "hud_render",
+        "body": [
+            "\"should_render\": true,",
+            "\"sprite_location\": \"${1|origins:textures/gui/resource_bar.png,origins:textures/gui/community/spiderkolo/resource_bar_01.png,origins:textures/gui/community/spiderkolo/resource_bar_02.png,origins:textures/gui/community/spiderkolo/resource_bar_03.png,origins:textures/gui/community/spiderkolo/resource_bar_points_01.png,origins:textures/gui/community/huang/resource_bar_01.png,origins:textures/gui/community/huang/resource_bar_02.png|}\",",
+            "\"bar_index\": 1"
+        ]
+    },
+
+
+
+
+    
+    "origins:name":{
+        "prefix": "damage_condition-name",
+        "body": [
+            "\"type\": \"origins:name\",",
+            "\"name\": \"${1|anvil,arrow,cactus,cramming,dragonBreath,drown,explosion.player,explosion,fall,fallingBlock,fallingStalactite,fireworks,flyIntoWall,freeze,generic,hotFloor,indirectMagic,inFire,inWall,lava,lightningBolt,magic,mob,onFire,outOfWorld,player,stalagmite,starve,sting,sweetBerryBush,thorns,thrown,trident,wither,witherSkull,no_water_for_gills,hurt_by_water,genericDamageOverTime|}\""
+        ]
+    },
+    "origins:attacker":{
+        "prefix": "damage_condition-attacker",
+        "body": [
+            "\"type\": \"origins:attacker\",",
+            "\"entity_condition\": {",
+            "\t$0",
+            "}"
+        ]
+    },
+    "origins:amount":{
+        "prefix": "damage_condition-amount",
+        "body": [
+            "\"type\": \"origins:amount\",",
+            "\"comparison\": \"${2|==,!=,>=,<,>,<=|}\",",
+            "\"compare_to\": ${3:1}",
+        ]
+    },
+    "origins:ingredient":{
+        "prefix": "ingredient",
+        "body": [
+            "\"type\": \"origins:ingredient\",",
+            "\"ingredient\": {",
+            "\t\"${1|item,tag|}\": \"$0\"",
+            "}"
+        ],
+        "description": "item_condition"
+    },
+    "origins:block":{
+        "prefix": "block",
+        "body": [
+            "\"type\": \"origins:block\",",
+            "\"block\": \"$0\"",
+        ],
+        "description": "block_condition"
+    },
+    "origins:in_tag":{
+        "prefix": "in_tag",
+        "body": [
+            "\"type\": \"origins:in_tag\",",
+            "\"tag\": \"$0\"",
+        ]
+    },
+    "origins:block_state_bool":{
+        "prefix": "block_state_bool",
+        "body": [
+            "\"type\": \"origins:block_state\",",
+            "\"property\": \"$1\",",
+            "\"value\": \"${2|true,false|}\"",
+        ]
+    },
+    "origins:block_state_enum":{
+        "prefix": "block_state_enum",
+        "body": [
+            "\"type\": \"origins:block_state\",",
+            "\"property\": \"$1\",",
+            "\"enum\": \"${2|north,south,east,west|}\"",
+        ]
+    },
+    "origins:block_state_comparison":{
+        "prefix": "block_state_comparison",
+        "body": [
+            "\"type\": \"origins:block_state\",",
+            "\"property\": \"$1\",",
+            "\"comparison\": \"${2|==,!=,>=,<,>,<=|}\",",
+            "\"compare_to\": ${3:1}",
+        ]
+    },
+    
+
+
+
+
+
+    "origins:and": {
+        "prefix": "and",
+        "body": [
+            "\"type\": \"origins:and\",",
+            "\"${1|actions,conditions|}\": [",
+            "\t{",
+            "\t\t$0",
+            "\t}",
+            "]"
+        ]
+    },
+    "origins:or": {
+        "prefix": "or",
+        "body": [
+            "\"type\": \"origins:or\",",
+            "\"${1|actions,conditions|}\": [",
+            "\t{",
+            "\t\t$0",
+            "\t}",
+            "]"
+        ]
+    },
+    "origins:if_else_list": {
+        "prefix": "if_else_list",
+        "body": [
+            "\"type\": \"origins:if_else_list\",",
+            "\"actions\": [",
+            "\t{",
+            "\t\t\"action\":{",
+            "\t\t},",
+            "\t\t\"condition\":{",
+            "\t\t}",
+            "\t}",
+            "]"
+        ]
+    },
+    "origins:if_else": {
+        "prefix": "if_else",
+        "body": [
+            "\"type\": \"origins:if_else\",",
+            "\"if_action\": {",
+            "},",
+            "\"else_action\": {",
+            "},",
+            "\"condition\": {",
+            "\t$0",
+            "}",
+        ]
+    },
+    "origins:delay": {
+        "prefix": "delay",
+        "body": [
+          "\"type\": \"origins:delay\",",
+          "\"ticks\": ${1:20},",
+          "\"action\": {",
+          "\t$0",
+          "}"
+        ]
+    },
+    "origins:riding_action": {
+        "prefix": "riding_action",
+        "body": [
+          "\"type\": \"origins:riding_action\",",
+          "\"action\": {",
+          "\t$0",
+          "}"
+        ]
+    },
+    "origins:passenger_action": {
+        "prefix": "passenger_action",
+        "body": [
+            "\"type\": \"origins:passenger_action\",",
+            "\"recursive\": true,",
+            "\"${1|action,bientity_action|}\": {",
+            "\t$0",
+            "},",
+            "\"bientity_condition\": {",
+            "}",
+        ]
+    },
+    
+    
+
+
+
+
+
+    "origins:add_velocity": {
+        "prefix": "add_velocity",
+        "body": [
+          "\"type\": \"origins:add_velocity\",",
+          "\"x\": 0,",
+          "\"y\": 0,",
+          "\"z\": 0,",
+          "\"space\": \"${1|world,local,velocity,velocity_normalized,velocity_horizontal,velocity_horizontal_normalized|}\",",
+          "\"set\": ${2|false,true|}"
+        ]
+    },
+    "origins:change_resource": {
+        "prefix": "change_resource",
+        "body": [
+            "\"type\": \"origins:change_resource\",",
+            "\"operation\": \"${1|add,set|}\",",
+            "\"resource\": \"\",",
+            "\"change\": $0",
+        ]
+    },
+    "origins:execute_command": {
+        "prefix": "execute_command",
+        "body": [
+            "\"type\": \"origins:execute_command\",",
+            "\"command\": \"$0\""
+        ],
+        "description": "origins:execute_command"
+    },
+    "origins:gain_air": {
+        "prefix": "gain_air",
+        "body": [
+          "\"type\": \"origins:gain_air\",",
+          "\"value\": ${0:20}"
+        ]
+    },
+    "origins:set_fall_distance": {
+        "prefix": "set_fall_distance",
+        "body": [
+          "\"type\": \"origins:set_fall_distance\",",
+          "\"fall_distance\": ${0:0}"
+        ]
+    },
+    "origins:play_sound": {
+        "prefix": "play_sound",
+        "body": [
+          "\"type\": \"origins:play_sound\",",
+          "\"sound\": \"\",",
+          "\"volume\": 1,",
+          "\"pitch\": 1"
+        ],
+    },
+    "origins:apply_effect": {
+        "prefix": "apply_effect",
+        "body": [
+          "\"type\": \"origins:apply_effect\",",
+          "\"effect\": {",
+          "\t\"effect\": \"minecraft:${1|speed,slowness,haste,mining_fatigue,strength,instant_health,instant_damage,jump_boost,nausea,regeneration,resistance,fire_resistance,water_breathing,invisibility,blindness,night_vision,hunger,weakness,poison,wither,health_boost,absorption,saturation,glowing,levitation,luck,unluck,slow_falling,conduit_power,dolphins_grace,bad_omen,hero_of_the_village‌|}\",",
+          "\t\"duration\": ${2:20},",
+          "\t\"amplifier\": ${3:0}",
+          "}"
+        ],
+        "description": "entity_actiom"
+    },
+    "origins:grant_power": {
+        "prefix": "grant_power",
+        "body": [
+          "\"type\": \"origins:grant_power\",",
+          "\"power\": \"$1\",",
+          "\"source\": \"$0\"",
+        ]
+    },
+    "origins:revoke_power": {
+        "prefix": "revoke_power",
+        "body": [
+          "\"type\": \"origins:revoke_power\",",
+          "\"power\": \"$1\",",
+          "\"source\": \"$0\"",
+        ]
+    },
+    "origins:damage": {
+        "prefix": "damage",
+        "body": [
+            "\"type\": \"origins:damage\",",
+            "\"amount\": ${1:4},",
+            "\"source\": {",
+            "\t\"name\": \"${2|anvil,arrow,cactus,cramming,dragonBreath,drown,explosion.player,explosion,fall,fallingBlock,fallingStalactite,fireworks,flyIntoWall,freeze,generic,hotFloor,indirectMagic,inFire,inWall,lava,lightningBolt,magic,mob,onFire,outOfWorld,player,stalagmite,starve,sting,sweetBerryBush,thorns,thrown,trident,wither,witherSkull,no_water_for_gills,hurt_by_water,genericDamageOverTime|}\",",
+            "\t\"bypasses_armor\": ${3|false,true|},",
+            "\t\"fire\": ${4|false,true|},",
+            "\t\"unblockable\": ${5|false,true|},",
+            "\t\"magic\": ${6|false,true|},",
+            "\t\"out_of_world\": ${7|false,true|}",
+            "}"
+        ]
+    },
+
+
+
+
+
+
+
+    "origins:constant": {
+        "prefix": "constant",
+        "body": [
+            "\"type\": \"origins:constant\",",
+            "\"value\": true"
+        ],
+        "description": "origins:execute_command"
+    },
+    "origins:command": {
+        "prefix": "command",
+        "body": [
+          "\"type\": \"origins:command\",",
+          "\"command\": \"$0\",",
+          "\"comparison\": \"${1|==,!=,>=,<,>,<=|}\",",
+          "\"compare_to\": 1"
+        ]
+    },
+    "origins:equipped_item": {
+        "prefix": "equipped_item",
+        "body": [
+          "\"type\": \"origins:equipped_item\",",
+          "\"equipment_slot\": \"${1|mainhand,offhand,head,chest,legs,feet|}\",",
+          "\"item_condition\": {",
+          "\t$0",
+          "}"
+        ]
+    },
+    "origins:entity_type": {
+        "prefix": "entity_type",
+        "body": [
+          "\"type\": \"origins:entity_type\",",
+          "\"entity_type\": \"${0|minecraft:area_effect_cloud,minecraft:armor_stand,minecraft:arrow,minecraft:axolotl,minecraft:bat,minecraft:bee,minecraft:blaze,minecraft:boat,minecraft:cat,minecraft:cave_spider,minecraft:chest_minecart,minecraft:chicken,minecraft:cod,minecraft:cow,minecraft:creeper,minecraft:dolphin,minecraft:donkey,minecraft:dragon_fireball,minecraft:drowned,minecraft:egg,minecraft:elder_guardian,minecraft:end_crystal,minecraft:ender_dragon,minecraft:ender_pearl,minecraft:enderman,minecraft:endermite,minecraft:evoker,minecraft:evoker_fangs,minecraft:experience_bottle,minecraft:experience_orb,minecraft:eye_of_ender,minecraft:falling_block,minecraft:fireball,minecraft:firework_rocket,minecraft:fox,minecraft:furnace_minecart,minecraft:ghast,minecraft:glow_item_frame,minecraft:glow_squid,minecraft:goat,minecraft:guardian,minecraft:hoglin,minecraft:hopper_minecart,minecraft:horse,minecraft:husk,minecraft:illusioner,minecraft:iron_golem,minecraft:item,minecraft:item_frame,minecraft:leash_knot,minecraft:lightning_bolt,minecraft:llama,minecraft:llama_spit,minecraft:magma_cube,minecraft:marker,minecraft:minecart,minecraft:mooshroom,minecraft:mule,minecraft:ocelot,minecraft:painting,minecraft:panda,minecraft:parrot,minecraft:phantom,minecraft:pig,minecraft:piglin,minecraft:piglin_brute,minecraft:pillager,minecraft:polar_bear,minecraft:potion,minecraft:pufferfish,minecraft:rabbit,minecraft:ravager,minecraft:salmon,minecraft:sheep,minecraft:shulker,minecraft:shulker_bullet,minecraft:silverfish,minecraft:skeleton,minecraft:skeleton_horse,minecraft:slime,minecraft:small_fireball,minecraft:snow_golem,minecraft:snowball,minecraft:spawner_minecart,minecraft:spectral_arrow,minecraft:spider,minecraft:squid,minecraft:stray,minecraft:strider,minecraft:tnt,minecraft:tnt_minecart,minecraft:trader_llama,minecraft:trident,minecraft:tropical_fish,minecraft:turtle,minecraft:vex,minecraft:villager,minecraft:vindicator,minecraft:wandering_trader,minecraft:witch,minecraft:wither,minecraft:wither_skeleton,minecraft:wither_skull,minecraft:wolf,minecraft:zoglin,minecraft:zombie,minecraft:zombie_horse,minecraft:zombie_villager,minecraft:zombified_piglin|}\""
+        ]
+    },
+    "origins:resource": {
+        "prefix": "resource_condition",
+        "body": [
+            "\"type\": \"origins:resource\",",
+            "\"resource\": \"\",",
+            "\"comparison\": \"${1|==,!=,>=,<,>,<=|}\",",
+            "\"compare_to\": $0"
+        ]
+    },
+    "origins:block_collision":{
+        "prefix": "block_collision",
+        "body": [
+            "\"type\": \"origins:block_collision\",",
+            "\"offset_x\": $1,",
+            "\"offset_y\": $2,",
+            "\"offset_z\": $3"
+        ]
+    },
+    "origins:block_in_radius":{
+        "prefix": "block_in_radius",
+        "body": [
+            "\"type\": \"origins:block_in_radius\",",
+            "\"block_condition\": {",
+            "\t$0",
+            "},",
+            "\"radius\": ${1:1},",
+            "\"shape\": \"${2|cube,star|}\",",
+            "\"comparison\": \"${3|==,!=,>=,<,>,<=|}\",",
+            "\"compare_to\": ${4:1}"
+        ]
+    },
+    "origins:fluid_height": {
+        "prefix": "fluid_height",
+        "body": [
+          "\"type\": \"origins:fluid_height\",",
+          "\"fluid\": \"minecraft:${1|water,lava|}\",",
+          "\"comparison\": \"${2|==,!=,>=,<,>,<=|}\",",
+          "\"compare_to\": $0"
+        ]
+    },
+    "origins:in_rain": {
+        "prefix": "in_rain",
+        "body": "\"type\": \"origins:in_rain\""
+    },
+    "origins:exposed_to_sun": {
+        "prefix": "exposed_to_sun",
+        "body": "\"type\": \"origins:exposed_to_sun\""
+    },
+    "origins:fall_distance": {
+        "prefix": "fall_distance",
+        "body": [
+            "\"type\": \"origins:fall_distance\",",
+            "\"comparison\": \"${1|==,!=,>=,<,>,<=|}\",",
+            "\"compare_to\": $4"
+        ]
+    },
+    "origins:riding": {
+        "prefix": "riding",
+        "body": [
+            "\"type\": \"origins:riding\",",
+            "\"bientity_condition\": {",
+            "\t\"type\": \"origins:target_condition\",",
+            "\t\"condition\": {",
+            "\t\t$0",
+            "\t}",
+            "}"
+        ],
+        "description": "condition"
+    },
+
+
+
+
+
+    "origins:category": {
+        "prefix": "biome_category",
+        "body": [
+            "\"type\": \"origins:biome\",",
+            "\"condition\": {",
+            "\t\"type\": \"origins:category\",",
+            "\t\"category\": \"${0|beach,desert,extreme_hills,forest,icy,jungle,mesa,mushroom,nether,none,ocean,plains,river,savanna,swamp,taiga,the_end|}\",",
+            "}"
+        ],
+    },
+    "origins:temperature": {
+        "prefix": "biome_temperature",
+        "body": [
+            "\"type\": \"origins:biome\",",
+            "\"condition\": {",
+            "\t\"type\": \"origins:temperature\",",
+            "\t\"comparison\": \"${1|==,!=,>=,<,>,<=|}\",",
+            "\t\"compare_to\": ${0:1}",
+            "}"
+        ],
+    }
+}

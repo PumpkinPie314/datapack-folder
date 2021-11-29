@@ -1,0 +1,164 @@
+{
+    "name": "overdrive",
+    "description": "When your Steam Meter is completely full, you can activate Overdrive, which gives you Speed 3, Jump Boost 3, and Haste 1 for 20 minutes. While Overdrive is active, your Steam Meter depletes 5x faster, and smoke particles are created around you.",
+    "type": "origins:multiple",
+    "is": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "cooling_down":{
+        "type": "origins:resource",
+        "start_value": 0,
+        "min": 0,
+        "max": 1,
+        "hud_render": {"should_render": false}
+    },
+    "particles": {
+        "type": "origins:particle",
+        "particle": "minecraft:cloud",
+        "frequency": 10,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_is",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "toggle": {
+        "type": "origins:active_self",
+        "cooldown": 1,
+        "entity_action": {
+            "type": "origins:if_else_list",
+            "actions": [
+                {
+                    "action": {
+                        "type": "origins:change_resource",
+                        "operation": "set",
+                        "resource": "*:*_is",
+                        "change": 1
+                    },
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:resource",
+                                "resource": "*:overdrive_cooling_down",
+                                "comparison": "==",
+                                "compare_to": 0
+                            },
+                            {
+                                "type": "origins:resource",
+                                "resource": "*:*_is",
+                                "comparison": "==",
+                                "compare_to": 0
+                            }
+                        ]
+                    }
+                },
+                {
+                    "action": {
+                        "type": "origins:change_resource",
+                        "operation": "set",
+                        "resource": "*:*_is",
+                        "change": 0
+                    },
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "*:*_is",
+                        "comparison": "==",
+                        "compare_to": 1
+                    }
+                }
+            ]
+        },
+        "key": {
+            "key": "key.origins.primary_active"
+        },
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "jump": {
+        "type": "origins:modify_jump",
+        "modifier": {
+            "operation": "multiply_base",
+            "value": 0.75
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle cloud ~ ~ ~ 0.3 0.3 0.3 0.01 16 normal @a"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 15,
+                    "action": {
+                        "type": "origins:set_fall_distance",
+                        "fall_distance": 0
+                    }
+                }
+            ]
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_is",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "fall_damage": {
+        "type": "origins:modify_damage_taken",
+        "damage_condition": {
+            "type": "origins:name",
+            "name": "fall"
+        },
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -0.5
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_is",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "speed":{
+        "type": "origins:conditioned_attribute",
+        "tick_rate": 20,
+        "modifier": {
+            "attribute": "minecraft:generic.movement_speed",
+            "operation": "multiply_base",
+            "value":0.6
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_is",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "haste":{
+        "type": "origins:modify_break_speed",
+        "block_condition": {
+            "type": "origins:constant",
+            "value": true
+        },
+        "modifier": {
+            "operation": "multiply_total",
+            "value": 0.20
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_is",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    }
+}
