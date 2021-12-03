@@ -1,2 +1,1 @@
 scoreboard objectives add netheritecheck dummy
-say netherite
