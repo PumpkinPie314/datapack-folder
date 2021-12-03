@@ -1,0 +1,6 @@
+{
+  "pack": {
+    "pack_format": 7,
+    "description": "fixes charm storage crate dupe with carpet script"
+  }
+}
