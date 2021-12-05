@@ -10,7 +10,7 @@
         "max": 1,
         "hud_render": {"should_render": false}
     },
-    "toggle": {
+    "secondary": {
         "type": "origins:active_self",
         "cooldown": 1,
         "entity_action": {
@@ -32,10 +32,19 @@
                 },
                 {
                     "action": {
-                        "type": "origins:change_resource",
-                        "operation": "set",
-                        "resource": "*:*_is",
-                        "change": 0
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:change_resource",
+                                "operation": "set",
+                                "resource": "*:*_is",
+                                "change": 0
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": ""
+                            }
+                        ]
                     },
                     "condition": {
                         "type": "origins:resource",
