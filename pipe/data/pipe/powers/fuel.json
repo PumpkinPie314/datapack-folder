@@ -37,7 +37,7 @@
                     "item_condition": {
                         "type": "origins:ingredient",
                         "ingredient": {
-                            "tag": "pipe:fuel_eight"
+                            "tag": "pipe:coal"
                         }
                     }
                 }
@@ -45,8 +45,29 @@
         ]
     },
     "condition": {
-        "type": "origins:sneaking",
-        "inverted": true
+        "type": "origins:and",
+        "conditions": [
+            {
+                "type": "origins:sneaking",
+                "inverted": true
+            },
+            {
+                "type": "origins:equipped_item",
+                "equipment_slot": "mainhand",
+                "item_condition": {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "tag": "pipe:fuel"
+                    }
+                }
+            },
+            {
+                "type": "origins:resource",
+                "resource": "*:steam_resource",
+                "comparison": "<=",
+                "compare_to": 17900
+            }
+        ]
     },
     "key": {
         "key": "key.use",
