@@ -4,6 +4,7 @@
 		"pipe:chimes",
 		"pipe:clunky",
 		"pipe:conductive",
+		"pipe:fuel",
 		"pipe:inefficient_fuel",
 		"pipe:steam",
 		"pipe:overdrive_bar",
