@@ -642,13 +642,34 @@
 
 
 
+    "origins:inverted": {
+        "prefix": "inverted",
+        "body": "\"inverted\": true",
+        "description": "entity_condition_componet"
+    },
+
     "origins:constant": {
         "prefix": "constant",
         "body": [
             "\"type\": \"origins:constant\",",
             "\"value\": true"
         ],
-        "description": "origins:execute_command"
+        "description": "entity_condition"
+    },
+    "origins:in_rain": {
+        "prefix": "in_rain",
+        "body": "\"type\": \"origins:in_rain\"",
+        "description": "entity_condition"
+    },
+    "origins:exposed_to_sun": {
+        "prefix": "exposed_to_sun",
+        "body": "\"type\": \"origins:exposed_to_sun\"",
+        "description": "entity_condition"
+    },
+    "origins:sneaking": {
+        "prefix": "sneaking",
+        "body": "\"type\": \"origins:sneaking\"",
+        "description": "entity_condition"
     },
     "origins:command": {
         "prefix": "command",
@@ -674,7 +695,8 @@
         "body": [
           "\"type\": \"origins:entity_type\",",
           "\"entity_type\": \"${0|minecraft:area_effect_cloud,minecraft:armor_stand,minecraft:arrow,minecraft:axolotl,minecraft:bat,minecraft:bee,minecraft:blaze,minecraft:boat,minecraft:cat,minecraft:cave_spider,minecraft:chest_minecart,minecraft:chicken,minecraft:cod,minecraft:cow,minecraft:creeper,minecraft:dolphin,minecraft:donkey,minecraft:dragon_fireball,minecraft:drowned,minecraft:egg,minecraft:elder_guardian,minecraft:end_crystal,minecraft:ender_dragon,minecraft:ender_pearl,minecraft:enderman,minecraft:endermite,minecraft:evoker,minecraft:evoker_fangs,minecraft:experience_bottle,minecraft:experience_orb,minecraft:eye_of_ender,minecraft:falling_block,minecraft:fireball,minecraft:firework_rocket,minecraft:fox,minecraft:furnace_minecart,minecraft:ghast,minecraft:glow_item_frame,minecraft:glow_squid,minecraft:goat,minecraft:guardian,minecraft:hoglin,minecraft:hopper_minecart,minecraft:horse,minecraft:husk,minecraft:illusioner,minecraft:iron_golem,minecraft:item,minecraft:item_frame,minecraft:leash_knot,minecraft:lightning_bolt,minecraft:llama,minecraft:llama_spit,minecraft:magma_cube,minecraft:marker,minecraft:minecart,minecraft:mooshroom,minecraft:mule,minecraft:ocelot,minecraft:painting,minecraft:panda,minecraft:parrot,minecraft:phantom,minecraft:pig,minecraft:piglin,minecraft:piglin_brute,minecraft:pillager,minecraft:polar_bear,minecraft:potion,minecraft:pufferfish,minecraft:rabbit,minecraft:ravager,minecraft:salmon,minecraft:sheep,minecraft:shulker,minecraft:shulker_bullet,minecraft:silverfish,minecraft:skeleton,minecraft:skeleton_horse,minecraft:slime,minecraft:small_fireball,minecraft:snow_golem,minecraft:snowball,minecraft:spawner_minecart,minecraft:spectral_arrow,minecraft:spider,minecraft:squid,minecraft:stray,minecraft:strider,minecraft:tnt,minecraft:tnt_minecart,minecraft:trader_llama,minecraft:trident,minecraft:tropical_fish,minecraft:turtle,minecraft:vex,minecraft:villager,minecraft:vindicator,minecraft:wandering_trader,minecraft:witch,minecraft:wither,minecraft:wither_skeleton,minecraft:wither_skull,minecraft:wolf,minecraft:zoglin,minecraft:zombie,minecraft:zombie_horse,minecraft:zombie_villager,minecraft:zombified_piglin|}\""
-        ]
+        ],
+        "description": "condition"
     },
     "origins:resource": {
         "prefix": "resource_condition",
@@ -683,7 +705,8 @@
             "\"resource\": \"\",",
             "\"comparison\": \"${1|==,!=,>=,<,>,<=|}\",",
             "\"compare_to\": $0"
-        ]
+        ],
+        "description": "entity_condition"
     },
     "origins:block_collision":{
         "prefix": "block_collision",
@@ -692,7 +715,8 @@
             "\"offset_x\": $1,",
             "\"offset_y\": $2,",
             "\"offset_z\": $3"
-        ]
+        ],
+        "description": "entity_condition"
     },
     "origins:block_in_radius":{
         "prefix": "block_in_radius",
@@ -705,7 +729,8 @@
             "\"shape\": \"${2|cube,star|}\",",
             "\"comparison\": \"${3|==,!=,>=,<,>,<=|}\",",
             "\"compare_to\": ${4:1}"
-        ]
+        ],
+        "description": "entity_condition"
     },
     "origins:fluid_height": {
         "prefix": "fluid_height",
@@ -714,15 +739,8 @@
           "\"fluid\": \"minecraft:${1|water,lava|}\",",
           "\"comparison\": \"${2|==,!=,>=,<,>,<=|}\",",
           "\"compare_to\": $0"
-        ]
-    },
-    "origins:in_rain": {
-        "prefix": "in_rain",
-        "body": "\"type\": \"origins:in_rain\""
-    },
-    "origins:exposed_to_sun": {
-        "prefix": "exposed_to_sun",
-        "body": "\"type\": \"origins:exposed_to_sun\""
+        ],
+        "description": "entity_condition"
     },
     "origins:fall_distance": {
         "prefix": "fall_distance",
@@ -730,7 +748,8 @@
             "\"type\": \"origins:fall_distance\",",
             "\"comparison\": \"${1|==,!=,>=,<,>,<=|}\",",
             "\"compare_to\": $4"
-        ]
+        ],
+        "description": "entity_condition"
     },
     "origins:riding": {
         "prefix": "riding",
@@ -743,7 +762,7 @@
             "\t}",
             "}"
         ],
-        "description": "condition"
+        "description": "entity_condition"
     },
 
 
