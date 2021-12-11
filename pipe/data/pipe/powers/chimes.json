@@ -3,14 +3,28 @@
     "description": "you make pretty chime noises",
     "hidden": false,
     "type": "origins:multiple",
-    "is": {
+    "instrument":{
+        "type": "origins:resource",
+        "start_value": 1,
+        "min": 1,
+        "max": 2,
+        "hud_render": {"should_render": false}
+    },
+    "can_piano": {
         "type": "origins:resource",
         "start_value": 0,
         "min": 0,
         "max": 1,
         "hud_render": {"should_render": false}
     },
-    "secondary": {
+    "offset_piano":{
+        "type": "origins:resource",
+        "start_value": 1,
+        "min": -2,
+        "max": 12,
+        "hud_render": {"should_render": false}
+    },
+    "toggle_piano": {
         "type": "origins:active_self",
         "cooldown": 1,
         "entity_action": {
@@ -18,14 +32,23 @@
             "actions": [
                 {
                     "action": {
-                        "type": "origins:change_resource",
-                        "operation": "set",
-                        "resource": "*:*_is",
-                        "change": 1
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "title @s actionbar {\"text\":\"Piano Enabled\",\"color\":\"green\",\"bold\":true}"
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "operation": "set",
+                                "resource": "*:*_can_piano",
+                                "change": 1
+                            }
+                        ]
                     },
                     "condition": {
                         "type": "origins:resource",
-                        "resource": "*:*_is",
+                        "resource": "*:*_can_piano",
                         "comparison": "==",
                         "compare_to": 0
                     }
@@ -35,31 +58,363 @@
                         "type": "origins:and",
                         "actions": [
                             {
-                                "type": "origins:change_resource",
-                                "operation": "set",
-                                "resource": "*:*_is",
-                                "change": 0
+                                "type": "origins:execute_command",
+                                "command": "title @s actionbar {\"text\":\"Piano Disabled\",\"color\":\"red\",\"bold\":true}"
                             },
                             {
-                                "type": "origins:execute_command",
-                                "command": ""
+                                "type": "origins:change_resource",
+                                "operation": "set",
+                                "resource": "*:*_can_piano",
+                                "change": 0
                             }
                         ]
                     },
                     "condition": {
                         "type": "origins:resource",
-                        "resource": "*:*_is",
+                        "resource": "*:*_can_piano",
                         "comparison": "==",
                         "compare_to": 1
                     }
                 }
             ]
         },
-        "key": {
-            "key":"key.origins.secondary_active"
+        "condition": {
+            "type": "origins:sneaking"
         },
-        "hud_render": {
-            "should_render": false
+        "key": {
+            "key":"key.origins.secondary_active",
+            "continuous": false
+        },
+        "hud_render": {"should_render": false}
+    },
+    "jingle": {
+        "type": "origins:active_self",
+        "cooldown": 2,
+        "entity_action": {
+            "type": "origins:delay",
+            "ticks": 1,
+            "action": {
+                "type": "origins:execute_command",
+                "command": "script run play_random_note()"
+            }
+        },
+        "condition": {
+            "type": "origins:sneaking",
+            "inverted": true
+        },
+        "key": {
+            "key":"key.origins.secondary_active",
+            "continuous": true
+        },
+        "hud_render": {"should_render": false}
+    },
+    "change_offset_down":{
+        "type": "origins:active_self",
+        "cooldown": 1,
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "script run set_offset(-1)"
+        },
+        "condition": {
+            "type": "origins:sneaking"
+        },
+        "hud_render": {"should_render": false},
+        "key": {
+            "key":"key.hotbar.8"
         }
+    },
+    "change_offset_up":{
+        "type": "origins:active_self",
+        "cooldown": 1,
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "script run set_offset(1)"
+        },
+        "condition": {
+            "type": "origins:sneaking"
+        },
+        "hud_render": {"should_render": false},
+        "key": {
+            "key":"key.hotbar.9"
+        }
+    },
+    "one": {
+        "type": "origins:active_self",
+        "cooldown": 1,
+        "entity_action": {
+            "type": "origins:delay",
+            "ticks": 1,
+            "action": {
+                "type": "origins:execute_command",
+                "command": "script run play_note()"
+            }
+        },
+        "condition":{
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:sneaking",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_can_piano",
+                    "comparison": "==",
+                    "compare_to": 1
+                }
+            ]
+        },
+        "key": {
+            "key":"key.hotbar.1"
+        },
+        "hud_render": {"should_render": false}
+    },
+    "two": {
+        "type": "origins:active_self",
+        "cooldown": 1,
+        "entity_action": {
+            "type": "origins:delay",
+            "ticks": 1,
+            "action": {
+                "type": "origins:execute_command",
+                "command": "script run play_note()"
+            }
+        },
+        "condition":{
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:sneaking",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_can_piano",
+                    "comparison": "==",
+                    "compare_to": 1
+                }
+            ]
+        },
+        "key": {
+            "key":"key.hotbar.2"
+        },
+        "hud_render": {"should_render": false}
+    },
+    "three": {
+        "type": "origins:active_self",
+        "cooldown": 1,
+        "entity_action": {
+            "type": "origins:delay",
+            "ticks": 1,
+            "action": {
+                "type": "origins:execute_command",
+                "command": "script run play_note()"
+            }
+        },
+        "condition":{
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:sneaking",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_can_piano",
+                    "comparison": "==",
+                    "compare_to": 1
+                }
+            ]
+        },
+        "key": {
+            "key":"key.hotbar.3"
+        },
+        "hud_render": {"should_render": false}
+    },
+    "four": {
+        "type": "origins:active_self",
+        "cooldown": 1,
+        "entity_action": {
+            "type": "origins:delay",
+            "ticks": 1,
+            "action": {
+                "type": "origins:execute_command",
+                "command": "script run play_note()"
+            }
+        },
+        "condition":{
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:sneaking",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_can_piano",
+                    "comparison": "==",
+                    "compare_to": 1
+                }
+            ]
+        },
+        "key": {
+            "key":"key.hotbar.4"
+        },
+        "hud_render": {"should_render": false}
+    },
+    "five": {
+        "type": "origins:active_self",
+        "cooldown": 1,
+        "entity_action": {
+            "type": "origins:delay",
+            "ticks": 1,
+            "action": {
+                "type": "origins:execute_command",
+                "command": "script run play_note()"
+            }
+        },
+        "condition":{
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:sneaking",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_can_piano",
+                    "comparison": "==",
+                    "compare_to": 1
+                }
+            ]
+        },
+        "key": {
+            "key":"key.hotbar.5"
+        },
+        "hud_render": {"should_render": false}
+    },
+    "six": {
+        "type": "origins:active_self",
+        "cooldown": 1,
+        "entity_action": {
+            "type": "origins:delay",
+            "ticks": 1,
+            "action": {
+                "type": "origins:execute_command",
+                "command": "script run play_note()"
+            }
+        },
+        "condition":{
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:sneaking",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_can_piano",
+                    "comparison": "==",
+                    "compare_to": 1
+                }
+            ]
+        },
+        "key": {
+            "key":"key.hotbar.6"
+        },
+        "hud_render": {"should_render": false}
+    },
+    "seven": {
+        "type": "origins:active_self",
+        "cooldown": 1,
+        "entity_action": {
+            "type": "origins:delay",
+            "ticks": 1,
+            "action": {
+                "type": "origins:execute_command",
+                "command": "script run play_note()"
+            }
+        },
+        "condition":{
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:sneaking",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_can_piano",
+                    "comparison": "==",
+                    "compare_to": 1
+                }
+            ]
+        },
+        "key": {
+            "key":"key.hotbar.7"
+        },
+        "hud_render": {"should_render": false}
+    },
+    "eight": {
+        "type": "origins:active_self",
+        "cooldown": 1,
+        "entity_action": {
+            "type": "origins:delay",
+            "ticks": 1,
+            "action": {
+                "type": "origins:execute_command",
+                "command": "script run play_note()"
+            }
+        },
+        "condition":{
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:sneaking",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_can_piano",
+                    "comparison": "==",
+                    "compare_to": 1
+                }
+            ]
+        },
+        "key": {
+            "key":"key.hotbar.8"
+        },
+        "hud_render": {"should_render": false}
+    },
+    "nine": {
+        "type": "origins:active_self",
+        "cooldown": 1,
+        "entity_action": {
+            "type": "origins:delay",
+            "ticks": 1,
+            "action": {
+                "type": "origins:execute_command",
+                "command": "script run play_note()"
+            }
+        },
+        "condition":{
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:sneaking",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_can_piano",
+                    "comparison": "==",
+                    "compare_to": 1
+                }
+            ]
+        },
+        "key": {
+            "key":"key.hotbar.9"
+        },
+        "hud_render": {"should_render": false}
     }
 }
